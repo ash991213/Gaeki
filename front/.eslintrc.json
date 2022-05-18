@@ -1,0 +1,9 @@
+{
+    "extends": ["next/core-web-vitals", "prettier"],
+    // prettier plugin을 eslint 설정에 추가
+    "plugins": ["prettier"],
+    // prettier 코드 스타일이 어긋나면 eslint에 걸리도록 처리
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}
