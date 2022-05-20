@@ -45,29 +45,15 @@ const Ranking = () => {
     const usersStage = () => {
         return stageList.map((v: number, k: number): any => {
             return (
-                <>
-                    {stage === v ? (
-                        <p
-                            className="onStage"
-                            key={k}
-                            onClick={() => {
-                                stageRank(v);
-                            }}
-                        >
-                            <p className="pStage">{v}</p>
-                        </p>
-                    ) : (
-                        <p
-                            className="offStage"
-                            key={k}
-                            onClick={() => {
-                                stageRank(v);
-                            }}
-                        >
-                            <p className="pStage">{v}</p>
-                        </p>
-                    )}
-                </>
+                <span
+                    key={k}
+                    className={stage === v ? 'onStage' : 'offStage'}
+                    onClick={() => {
+                        stageRank(v);
+                    }}
+                >
+                    <p className="pStage">{v}</p>
+                </span>
             );
         });
     };
