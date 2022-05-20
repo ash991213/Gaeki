@@ -18,8 +18,8 @@ const Setting = styled.div`
 
     .wrap {
         /* position: fixed; */
-        width: 100%;
-        height:100%;
+        width: 80%;
+        height:80%;
         margin: 0 auto;
         margin-top: 115px;
         border: 1px solid black;
