@@ -36,7 +36,6 @@ const minusAPI = async (action: any) => {
 function* handleMinus(action: any) {
     try {
         const result: resultType = yield call(minusAPI, action.payload);
-        console.log(result);
         yield put({
             type: 'MINUS_CLICK_SUCCESS',
         });
@@ -67,7 +66,6 @@ function* counteNumber() {
 }
 
 export default function* watchCounter() {
-    console.log('counter saga');
     yield takeLatest('PLUS_CLICK_REQUEST', handlePlus);
     yield takeLatest('MINUS_CLICK_REQUEST', handleMinus);
     yield takeLatest('COUNTING_NUMBER_REQUEST', counteNumber);
