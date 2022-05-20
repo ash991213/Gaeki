@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
         },
         nickname: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(16),
             allowNull: true,
         },
         stage: {

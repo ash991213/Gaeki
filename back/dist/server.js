@@ -96,6 +96,32 @@ app.post('/count/list', (req, res) => __awaiter(void 0, void 0, void 0, function
         res.json(result);
     }
 }));
+const { User } = models;
+app.post('/rank/list', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let { num } = req.body;
+    try {
+        if (num === undefined) {
+            num = 1;
+        }
+        const list = yield User.findAll({
+            attributes: ['nickname', 'gold'],
+            order: [['gold', 'DESC']],
+            limit: 10,
+            where: {
+                stage: num,
+            },
+        });
+        const result = {
+            list,
+        };
+        res.json(result);
+    }
+    catch (e) {
+        console.log(e);
+        const result = null;
+        res.json(result);
+    }
+}));
 app.listen(4000, () => {
     console.log('Server ON');
 });

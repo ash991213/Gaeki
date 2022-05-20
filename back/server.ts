@@ -103,6 +103,33 @@ app.post('/count/list', async (req: any, res: any) => {
 	}
 });
 
+const { User } = models;
+
+app.post('/rank/list', async (req: any, res: any) => {
+	let { num } = req.body;
+	try {
+		if (num === undefined) {
+			num = 1;
+		}
+		const list = await User.findAll({
+			attributes: ['nickname', 'gold'],
+			order: [['gold', 'DESC']],
+			limit: 10,
+			where: {
+				stage: num,
+			},
+		});
+		const result = {
+			list,
+		};
+		res.json(result);
+	} catch (e) {
+		console.log(e);
+		const result = null;
+		res.json(result);
+	}
+});
+
 app.listen(4000, () => {
 	console.log('Server ON');
 });
