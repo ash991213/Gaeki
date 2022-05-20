@@ -8,7 +8,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 				unique: true,
 			},
 			nickname: {
-				type: DataTypes.STRING(20),
+				type: DataTypes.STRING(16),
 				allowNull: true,
 			},
 			stage: {
