@@ -4,7 +4,7 @@ const { sequelize } = require('./models');
 const cors = require('cors');
 const models = require('./models');
 const router = require('./api');
-import qs from 'qs';
+const qs = require('qs')
 
 app.use(
 	cors({
