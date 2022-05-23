@@ -7,6 +7,7 @@ interface rankingType {
     ranking: {
         usersRanking: [];
         stageList: [];
+        isShowing: boolean;
     };
 }
 
@@ -17,6 +18,9 @@ const Ranking = () => {
     );
     const stageList = useSelector(
         (state: rankingType) => state.ranking.stageList
+    );
+    const isShowing = useSelector(
+        (state: rankingType) => state.ranking.isShowing
     );
     const [stage, setStage] = useState(1);
 
@@ -63,36 +67,46 @@ const Ranking = () => {
         setStage(num);
     };
 
+    const closePage = () => {
+        dispatch({ type: 'CLOSE_RANKING_REQUEST' });
+    };
+
     return (
-        <RankingTemplate>
-            <div className="content">
-                <div className="header">
-                    <div className="header_wrap">
-                        <div className="logo">로고</div>
-                        <div className="rank">랭킹</div>
+        <>
+            {isShowing == true ? (
+                <RankingTemplate>
+                    <div className="content">
+                        <div className="header">
+                            <div className="header_wrap">
+                                <div className="logo">로고</div>
+                                <div className="rank">랭킹</div>
+                            </div>
+                            <button className="button" onClick={closePage}>
+                                X
+                            </button>
+                        </div>
+                        <div className="stage">stage</div>
+                        <div className="stage_wrap">{usersStage()}</div>
+                        <div className="img">
+                            <img src="./redux.png" />
+                        </div>
+                        <div className="ranking">
+                            <ul className="info">
+                                <li>순위</li>
+                                <li>닉네임</li>
+                                <li>재화</li>
+                            </ul>
+                            {usersRank()}
+                            <ul className="myRank">
+                                <li>순위권 밖</li>
+                                <li>ㄹㄹㅇㄹㅇㄹㄷㅈ</li>
+                                <li>본인 재화</li>
+                            </ul>
+                        </div>
                     </div>
-                    <button className="button">X</button>
-                </div>
-                <div className="stage">stage</div>
-                <div className="stage_wrap">{usersStage()}</div>
-                <div className="img">
-                    <img src="./redux.png" />
-                </div>
-                <div className="ranking">
-                    <ul className="info">
-                        <li>순위</li>
-                        <li>닉네임</li>
-                        <li>재화</li>
-                    </ul>
-                    {usersRank()}
-                    <ul className="myRank">
-                        <li>순위권 밖</li>
-                        <li>ㄹㄹㅇㄹㅇㄹㄷㅈ</li>
-                        <li>본인 재화</li>
-                    </ul>
-                </div>
-            </div>
-        </RankingTemplate>
+                </RankingTemplate>
+            ) : null}
+        </>
     );
 };
 

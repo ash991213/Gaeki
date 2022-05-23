@@ -7,7 +7,6 @@ const GameTemplate = styled.div`
     bottom: 0;
     left: 0;
     background: gray;
-
     * {
         margin: 0;
         padding: 0;

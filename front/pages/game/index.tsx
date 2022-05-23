@@ -2,9 +2,26 @@ import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GameTemplate from '../../components/game/main/gameMain';
-import { ProgressBar } from 'react-bootstrap';
+import Ranking from '../ranking';
+
+interface rankingType {
+    ranking: {
+        usersRanking: [];
+        stageList: [];
+        isShowing: boolean;
+    };
+}
 
 const Game = () => {
+    const dispatch = useDispatch();
+    const isShowing = useSelector(
+        (state: rankingType) => state.ranking.isShowing
+    );
+
+    const openRanking = () => {
+        dispatch({ type: 'OPEN_RANKING_REQUEST' });
+    };
+
     return (
         <GameTemplate>
             <div className="header">
@@ -32,7 +49,7 @@ const Game = () => {
                 </div>
                 <div className="header_right">
                     <div className="service">
-                        <div className="ranking">
+                        <div className="ranking" onClick={openRanking}>
                             <img src="" />
                         </div>
                         <div className="setting">
@@ -64,6 +81,7 @@ const Game = () => {
                     <img src="./설정.jpg" />
                 </div>
             </div>
+            <Ranking></Ranking>
         </GameTemplate>
     );
 };
