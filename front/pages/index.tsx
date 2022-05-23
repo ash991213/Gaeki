@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Loadding from '../components/game/loadding/';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loadding: NextPage = () => {
     return (

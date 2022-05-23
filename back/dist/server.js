@@ -101,17 +101,43 @@ app.post('/count/list', (req, res) => __awaiter(void 0, void 0, void 0, function
         res.json(result);
     }
 }));
+const { User } = models;
+app.post('/rank/list', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let { num } = req.body;
+    try {
+        if (num === undefined) {
+            num = 1;
+        }
+        const list = yield User.findAll({
+            attributes: ['nickname', 'gold'],
+            order: [['gold', 'DESC']],
+            limit: 10,
+            where: {
+                stage: num,
+            },
+        });
+        const result = {
+            list,
+        };
+        res.json(result);
+    }
+    catch (e) {
+        console.log(e);
+        const result = null;
+        res.json(result);
+    }
+}));
 /* google-api */
-const CLIENT_ID = "558081775123-tplut889u1hm5mbq3ok0ffnfh8mto866.apps.googleusercontent.com";
-const AUTHORIZE_URI = "https://accounts.google.com/o/oauth2/v2/auth";
-const Redirect_uri = "http://localhost:4000";
+const CLIENT_ID = '558081775123-tplut889u1hm5mbq3ok0ffnfh8mto866.apps.googleusercontent.com';
+const AUTHORIZE_URI = 'https://accounts.google.com/o/oauth2/v2/auth';
+const Redirect_uri = 'http://localhost:4000';
 const queryStr = qs_1.default.stringify({
     client_id: CLIENT_ID,
     redirect_uri: Redirect_uri,
-    response_type: "token",
-    scope: "https://www.googleapis.com/auth/games",
+    response_type: 'token',
+    scope: 'https://www.googleapis.com/auth/games',
 });
-const loginUrl = AUTHORIZE_URI + "?" + queryStr;
+const loginUrl = AUTHORIZE_URI + '?' + queryStr;
 app.get('/auth', (req, res) => {
     console.log('h1?');
     res.redirect(loginUrl);
