@@ -1,23 +1,14 @@
 import styled from 'styled-components'
 
 const Setting = styled.div`
-    /* position: fixed; */
-    /* display: none; */
-    /* width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    backdrop-filter:blur(4px); */
     
-    .closebt{
-        margin-right: -30px;
+    .closebt {
         margin-top: -30px;
         width: 10px; 
         float: right;
         }   
 
     .wrap {
-        /* position: fixed; */
         width: 80%;
         height:80%;
         margin: 0 auto;
@@ -26,7 +17,6 @@ const Setting = styled.div`
         padding: 50px 60px;
         box-shadow: 7px   7px   5px   black;
         
-
         & > .img {
             /* width : 100%; 
              height: 10%; */
@@ -41,51 +31,44 @@ const Setting = styled.div`
 
     }
 
-    
-
-    .header{
+    .header {
         width: 100%;
         height: 20%;
         margin: 0 auto;
+        padding-bottom: 50px;
         text-align:center;
         font-weight: bold;
         font-size:50px
     }
 
-    .button{
-        /* width: 100%; */
+    .button {
         display: flex;
         justify-content: space-evenly;
         
     }
 
-    .effectbutton{
-        margin-right: 5px;
+    .effectbutton {
+        text-align: center;
     }
 
-    .text1{
-        padding: 50%  0 0 30%;
-        font-size:20px;
+    .backbutton {
+        text-align: center;
+    }
+
+    .text1 {
+        padding: 10px;
+        font-size:3vw;
         font-weight: bold;
     }
     
     .button1 {
-        width: 70%;
-        height: 40%;
         display:inline-block;
-        padding: 20px;
-        margin-left: 25px;
 
-        & > img{
-            width: 100%;
-            /* height: 80%; */
+        & > img {
+            width: 60%;
             object-fit: cover;
         }
     }
-   
-
-    
-
 `;
 
 const Responsive = ({ children }: any) => {
