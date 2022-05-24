@@ -1,6 +1,6 @@
 // css
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Market = styled.div`
     margin: 0;
@@ -33,7 +33,7 @@ const Market = styled.div`
     }
 
     .content_name {
-        border-bottom: 1px solid ;
+        border-bottom: 1px solid;
         padding: 2.5px 0;
     }
 
@@ -47,45 +47,42 @@ const Market = styled.div`
     .content_down {
         display: flex;
         justify-content: space-around;
-        
 
         & > div > img {
             width: 2rem;
             object-fit: cover;
-            
         }
     }
 
-    .upbt{
+    .upbt {
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
         border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;  
+        border-bottom-right-radius: 5px;
     }
-   
-    .upbt{
+
+    .upbt {
         border: 2px solid indigo;
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0);
         color: indigo;
         padding: 5px;
     }
-    .upbt:hover{
-        color:white;
+    .upbt:hover {
+        color: white;
         background-color: violet;
     }
 
     .footer {
         width: 100%;
         height: 10%;
-        display:flex;
+        display: flex;
         text-align: center;
         & > div {
             width: 33.33333%;
-              
         }
         & > .stat {
             background: orange;
-        }  
+        }
         & > .gold {
             background: indigo;
         }
@@ -93,10 +90,7 @@ const Market = styled.div`
             background: purple;
         }
     }
-
-
-
-`
+`;
 
 const Responsive = ({ children }: any) => {
     return <Market>{children}</Market>;

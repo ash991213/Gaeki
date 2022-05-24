@@ -6,10 +6,6 @@ interface actionType {
     type: string;
 }
 
-interface resultType {
-    data: {};
-}
-
 const EffectAPI = async (action: any) => {
     const { userid, effectOn } = action;
     const body = {

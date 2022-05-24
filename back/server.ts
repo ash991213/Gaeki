@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const { sequelize } = require('./models');
 const cors = require('cors');
-const models = require('./models');
-const router = require('./api');
+const router = require('./routes');
 import qs from 'qs';
 
 app.use(
@@ -26,139 +25,7 @@ sequelize
 		console.log('Disconect');
 	});
 
-app.get('/', (req: any, res: any) => {
-	res.send('hello');
-});
-
-interface reqType {
-	body: any;
-}
-
-const { Counte } = models;
-
-app.post('/count/plus', async (req: any, res: any) => {
-	const { action } = req.body;
-	try {
-		await Counte.update(
-			{
-				num: action + 1,
-			},
-			{
-				where: { id: 1 },
-			}
-		);
-		const number = await Counte.findOne({
-			attributes: ['num'],
-			where: {
-				id: 1,
-			},
-		});
-		const result = number.num;
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-app.post('/count/minus', async (req: any, res: any) => {
-	const { action } = req.body;
-	try {
-		await Counte.update(
-			{
-				num: action - 1,
-			},
-			{
-				where: { id: 1 },
-			}
-		);
-		const number = await Counte.findOne({
-			attributes: ['num'],
-			where: {
-				id: 1,
-			},
-		});
-		const result = number.num;
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-app.post('/count/list', async (req: any, res: any) => {
-	try {
-		const number = await Counte.findOne({
-			attributes: ['num'],
-			where: {
-				id: 1,
-			},
-		});
-		const result = number.num;
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-const { User } = models;
-
-app.post('/rank/list', async (req: any, res: any) => {
-	let { num } = req.body;
-	try {
-		if (num === undefined) {
-			num = 1;
-		}
-		const list = await User.findAll({
-			attributes: ['nickname', 'gold'],
-			order: [['gold', 'DESC']],
-			limit: 10,
-			where: {
-				stage: num,
-			},
-		});
-		const result = {
-			list,
-		};
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-app.post('/setting/effect', (req: any, res: any) => {
-	const { userid, effectOn } = req.body;
-
-	User.update(
-		{
-			background_sound: !effectOn,
-		},
-		{
-			where: { userid: userid },
-		}
-	),
-		res.json({ type: 'SUCCESS' });
-});
-
-app.post('/setting/back', (req: any, res: any) => {
-	const { userid, backOn } = req.body;
-
-	User.update(
-		{
-			sound_effect: !backOn,
-		},
-		{
-			where: { userid: userid },
-		}
-	),
-		res.json({ type: 'SUCCESS' });
-});
+app.use(router);
 
 /* google-api */
 const CLIENT_ID = '558081775123-tplut889u1hm5mbq3ok0ffnfh8mto866.apps.googleusercontent.com';

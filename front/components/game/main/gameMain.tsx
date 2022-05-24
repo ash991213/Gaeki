@@ -171,6 +171,10 @@ const GameTemplate = styled.div`
                 height: 80%;
                 position: relative;
                 top: -10%;
+                & > div > img {
+                    width: 100%;
+                    height: 100%;
+                }
                 & > .user_chair_desk {
                     width: 30%;
                     height: 50%;
@@ -215,7 +219,7 @@ const GameTemplate = styled.div`
                     top: 10%;
                     left: 10%;
                 }
-                & > .part_cheer {
+                & > .cheer {
                     width: 30%;
                     height: 50%;
                     background: yellow;
@@ -223,7 +227,7 @@ const GameTemplate = styled.div`
                     top: -80%;
                     left: 5%;
                 }
-                & > .part_cook {
+                & > .cook {
                     width: 30%;
                     height: 50%;
                     background: orange;
@@ -231,7 +235,7 @@ const GameTemplate = styled.div`
                     top: -130%;
                     left: 35%;
                 }
-                & > .part_homekeeper {
+                & > .homekeeper {
                     width: 30%;
                     height: 50%;
                     background: pink;
@@ -239,7 +243,7 @@ const GameTemplate = styled.div`
                     top: -180%;
                     left: 65%;
                 }
-                & > .move {
+                & > .vehicle {
                     width: 30%;
                     height: 30%;
                     background: aqua;

@@ -76,15 +76,33 @@ const Game = () => {
                         </div>
                     </div>
                     <div className="main">
-                        <div className="user_chair_desk">의자 유저 책상</div>
-                        <div className="pet_cat">고양이</div>
-                        <div className="pet_dog">강아지</div>
-                        <div className="pet_bird">새</div>
-                        <div className="pet_fish">물고기</div>
-                        <div className="part_cheer">응원</div>
-                        <div className="part_cook">요리사</div>
-                        <div className="part_homekeeper">가정부</div>
-                        <div className="move">이동수단</div>
+                        <div className="user_chair_desk">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="pet_cat">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="pet_dog">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="pet_bird">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="pet_fish">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="cheer">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="cook">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="homekeeper">
+                            <img src="loading.gif" />
+                        </div>
+                        <div className="vehicle">
+                            <img src="loading.gif" />
+                        </div>
                     </div>
                 </div>
             </div>
