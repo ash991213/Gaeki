@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 const express = require('express');
 const app = express();
 const { sequelize } = require('./models');
 const cors = require('cors');
 const router = require('./routes');
-import qs from 'qs';
+const qs = require('qs');
 
 app.use(
 	cors({
@@ -47,22 +47,21 @@ app.get('/auth', (req: any, res: any) => {
 });
 
 app.get('/login', async (req: any, res: any) => {
-	const URI =  'https://www.googleapis.com/games/v1/achievements'
-	console.log("응??",req.body.body)
-	const access_token = req.body.body
+	const URI = 'https://www.googleapis.com/games/v1/achievements';
+	console.log('응??', req.body.body);
+	const access_token = req.body.body;
 	try {
-		const user = await axios.get(URI,{
-			headers:{
-				'Authorization':`Bearer ${access_token}`
-			}
-		})
-		console.log('user:',user)
+		const user = await axios.get(URI, {
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		});
+		console.log('user:', user);
 	} catch (e) {
-		console.log('ㅇ우우우우우우')
-		console.log(e)
+		console.log('ㅇ우우우우우우');
+		console.log(e);
 	}
-
-})
+});
 
 app.listen(4000, () => {
 	console.log('Server ON');
