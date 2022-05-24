@@ -7,9 +7,11 @@ const Loadding = styled.div`
     }
 
     .wrap {
-        width: 1200px;
-        height: 1000px;
+        position: fixed;
+        width: 100%;
+        height: 100%;
         margin: 0 auto;
+        padding: 40px;
         background-color: gray;
         display: flex;
         justify-content: space-evenly;
@@ -17,8 +19,8 @@ const Loadding = styled.div`
     }
 
     .header {
-        width: 500px;
-        height: 300px;
+        width: 100%;
+        height: 20%;
         background-color: #efefef;
         margin: 0 auto;
         & > .logo {
@@ -27,8 +29,8 @@ const Loadding = styled.div`
     }
 
     .loading {
-        width: 500px;
-        height: 300px;
+        width: 100%;
+        height: 35%;
         margin: 0 auto;
         & > img {
             width: 100%;
@@ -37,15 +39,29 @@ const Loadding = styled.div`
         }
     }
 
+    /* @media screen and (min-width: 768px) {
+        .wrap {
+            padding: 70px;
+        }
+        .loading {
+            height: 70%;
+        }
+    } */
+
     .loading_bar {
-        width: 500px;
-        height: 100px;
-        background: green;
+        width: 100%;
+        height: 100%;
         margin: 0 auto;
         & > img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .loading_bar {
+            width: 100%;
+            height: 20%;
         }
     }
 `;

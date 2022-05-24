@@ -32,8 +32,6 @@ const Setting = () => {
         <Setting1>
             <div className='wrap'>
                 <h1 className='closebt'>x</h1>
-                <div className='closebt'>
-                </div>
                 <div className='img'>
                     <img src='./설정.jpg'/>
                 </div>    

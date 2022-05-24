@@ -5,6 +5,7 @@ import qs from 'qs';
 import axios from 'axios';
 import { LOGIN_REQUEST,LOGIN_SUCCESS } from '../src/reducers/login'
 import Loadding from '../components/game/loadding/';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loadding: NextPage = () => {
     // 프론트에서 gapi 테스트
