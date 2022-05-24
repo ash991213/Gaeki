@@ -21,14 +21,23 @@ const Market = styled.div`
         background: red;
 
     }
+
+    /* .default1 {
+        width: 100%;
+    } */
     
     .content1 {
         overflow-y: scroll; 
+        /* position: fixed; */
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 30%;
     }
+
+    /* .content {
+        display:none;
+    } */
 
     .content_name {
         border-bottom: 1px solid;
@@ -69,17 +78,37 @@ const Market = styled.div`
         background-color: violet;
     }
 
+    /* .item:visited {
+            height: 60%;
+    }
+
+    .content:visited {
+            height: 30%;
+     */
+
+    /* .footer:checked {
+        & > .item {
+            height: 60%;
+        }
+    }  */
+
     .footer {
         width: 100%;
         height: 10%;
         display: flex;
         text-align: center;
+        
         & > div {
             width: 33.33333%;
         }
         & > .stat {
             background: orange;
+<<<<<<< HEAD
+            
+        }  
+=======
         }
+>>>>>>> bee20926da342597b94b7fcfc22648b764451289
         & > .gold {
             background: indigo;
         }
