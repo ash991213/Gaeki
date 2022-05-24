@@ -127,6 +127,24 @@ app.post('/rank/list', (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.json(result);
     }
 }));
+app.post('/setting/effect', (req, res) => {
+    const { userid, effectOn } = req.body;
+    User.update({
+        background_sound: !effectOn,
+    }, {
+        where: { userid: userid },
+    }),
+        res.json({ type: 'SUCCESS' });
+});
+app.post('/setting/back', (req, res) => {
+    const { userid, backOn } = req.body;
+    User.update({
+        sound_effect: !backOn,
+    }, {
+        where: { userid: userid },
+    }),
+        res.json({ type: 'SUCCESS' });
+});
 /* google-api */
 const CLIENT_ID = '558081775123-tplut889u1hm5mbq3ok0ffnfh8mto866.apps.googleusercontent.com';
 const AUTHORIZE_URI = 'https://accounts.google.com/o/oauth2/v2/auth';

@@ -31,32 +31,6 @@ function* ranking(action: actionType) {
     }
 }
 
-function* closeRanking(action: actionType) {
-    try {
-        yield put({
-            type: 'CLOSE_RANKING_SUCCESS',
-        });
-    } catch (e) {
-        yield put({
-            type: 'CLOSE_RANKING_FAILURE',
-        });
-    }
-}
-
-function* openRanking(action: actionType) {
-    try {
-        yield put({
-            type: 'OPEN_RANKING_SUCCESS',
-        });
-    } catch {
-        yield put({
-            type: 'OPEN_RANKING_FAILURE',
-        });
-    }
-}
-
 export default function* watchRanking() {
     yield takeLatest('RANKING_LIST_REQUEST', ranking);
-    yield takeLatest('OPEN_RANKING_REQUEST', openRanking);
-    yield takeLatest('CLOSE_RANKING_REQUEST', closeRanking);
 }
