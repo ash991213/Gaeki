@@ -1,353 +1,353 @@
-import React, { useReducer } from 'react'
-import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
-import Market1 from '../../components/market/market'
-
+import React, { useReducer } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import Market1 from '../../components/market/market';
 
 interface marketType {
     market: {
-        clickgold: boolean,
-        ignoregold: boolean,
-        ignoreexp: boolean,
-    }
+        clickgold: boolean;
+        ignoregold: boolean;
+        ignoreexp: boolean;
+    };
 }
 declare global {
-    interface Window { MyNamespace: any; }
+    interface Window {
+        MyNamespace: any;
+    }
 }
 const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
 
     const clickGold = () => {
-        dispatch({ type: 'CLICK_GOLD', })
+        dispatch({ type: 'CLICK_GOLD' });
     };
 
     const ignoreGold = () => {
-        dispatch({ type: 'IGNORE_GOLD', })
+        dispatch({ type: 'IGNORE_GOLD' });
     };
 
     const ignoreExp = () => {
-        dispatch({ type: 'IGNORE_EXP', })
+        dispatch({ type: 'IGNORE_EXP' });
     };
 
     const clickHandle = () => {
         return (
-            <div className='content'>
-                <div className='content_name'>
-                    <div className='content_up'>
+            <div className="content">
+                <div className="content_name">
+                    <div className="content_up">
                         <div>체력</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./hp.png' />
+                            <img src="./hp.png" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>타수</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./type.png' />
+                            <img src="./type.png" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>운</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./luck.png' />
+                            <img src="./luck.png" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>인내력</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./patience.png' />
+                            <img src="./patience.png" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>코딩력</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./coding.png' />
+                            <img src="./coding.png" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-        )
-    }
+        );
+    };
 
     const ignoreHandle = () => {
         return (
-            <div className='content'>
-                <div className='content_name'>
-                    <div className='content_up'>
+            <div className="content">
+                <div className="content_name">
+                    <div className="content_up">
                         <div>책상</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./hp.png' />
+                            <img src="./loading.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>의자</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./type.png' />
+                            <img src="./loading.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>노트북</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./luck.png' />
+                            <img src="./loading.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>펫</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./patience.png' />
+                            <img src="./loading.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>알바생</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./coding.png' />
+                            <img src="./loading.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-        )
-    }
+        );
+    };
 
     const ignoreEx = () => {
         return (
-            <div className='content'>
-                <div className='content_name'>
-                    <div className='content_up'>
+            <div className="content">
+                <div className="content_name">
+                    <div className="content_up">
                         <div>방치</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./hp.png' />
+                            <img src="./loading-bar.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>방치</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./type.png' />
+                            <img src="./loading-bar.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>방치</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./luck.png' />
+                            <img src="./loading-bar.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>방치</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./patience.png' />
+                            <img src="./loading-bar.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
-                <div className='content_name'>
-                    <div className='content_up'>
+                <div className="content_name">
+                    <div className="content_up">
                         <div>방치</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
-                    <div className='content_down'>
+                    <div className="content_down">
                         <div>
-                            <img src='./coding.png' />
+                            <img src="./loading-bar.gif" />
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className='upbt'>강화버튼</button>
+                            <button className="upbt">강화버튼</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-        )
-    }
+        );
+    };
 
     const sum = () => {
-        if (typeof window !== "undefined") {
-            // Client-side-only code
-            console.log(window)
+        if (typeof window !== 'undefined') {
             window.scroll({
                 top: 0,
-                
-                behavior: 'smooth'
-            })
+                behavior: 'smooth',
+            });
         }
 
         if (checkMarket.clickgold === true) {
-            return clickHandle()
+            return clickHandle();
         } else if (checkMarket.ignoregold === true) {
-            return ignoreHandle()
+            return ignoreHandle();
         } else if (checkMarket.ignoreexp === true) {
-            return ignoreEx()    
+            return ignoreEx();
         } else {
             {
-                null
+                null;
             }
         }
+    };
 
-    }
-    
-    if (typeof window !== "undefined") {
-        // Client-side-only code
-        // console.log(window)
-        window.scroll({
-            top: 100,
-            left: 100,
-            behavior: 'smooth'
-        })
-    }
-   
     return (
-
         <Market1>
-            <div className='wrap'>
-                <div className='item'>메인입니다</div>
-                <div className='content1'>
-                    {/* {checkMarket.clickgold?clickHandle():null} */}
-                    {/* {checkMarket.ignoregold?ignoreGold():null} */}
-                    {sum()}
-                </div>
+            <div className="wrap">
+                <div className="item">메인입니다</div>
+                <div className="content1">{sum()}</div>
 
-                <div className='footer'>
-                    <div className='stat' onClick={() => { clickGold() }}>클릭골드</div>
-                    <div className='gold' onClick={() => { ignoreGold() }}>방치골드</div>
-                    <div className='exp' onClick={() => { ignoreExp() }}>방치경험치</div>
+                <div className="footer">
+                    <div
+                        className="stat"
+                        onClick={() => {
+                            clickGold();
+                        }}
+                    >
+                        클릭골드
+                    </div>
+                    <div
+                        className="gold"
+                        onClick={() => {
+                            ignoreGold();
+                        }}
+                    >
+                        방치골드
+                    </div>
+                    <div
+                        className="exp"
+                        onClick={() => {
+                            ignoreExp();
+                        }}
+                    >
+                        방치경험치
+                    </div>
                 </div>
             </div>
         </Market1>
-    )
-}
+    );
+};
 
 export default Market;
