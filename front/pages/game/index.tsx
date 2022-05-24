@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import GameTemplate from '../../components/game/main/gameMain';
 import Ranking from '../ranking';
 import Setting from '../setting';
+import Market from '../market';
 
 const Game = () => {
     const dispatch = useDispatch();
@@ -119,6 +120,7 @@ const Game = () => {
             </div>
             {ranking ? <Ranking closeRanking={closeRanking} /> : null}
             {setting ? <Setting closeSetting={closeSetting} /> : null}
+            <Market />
         </GameTemplate>
     );
 };

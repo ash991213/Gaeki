@@ -1,5 +1,4 @@
-import React, { useReducer } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Market1 from '../../components/market/market';
 
@@ -33,7 +32,7 @@ const Market = () => {
 
     const clickHandle = () => {
         return (
-            <div className="content">
+            <div className="content_clickGold">
                 <div className="content_name">
                     <div className="content_up">
                         <div>체력</div>
@@ -120,7 +119,7 @@ const Market = () => {
 
     const ignoreHandle = () => {
         return (
-            <div className="content">
+            <div className="content_ignoreGold">
                 <div className="content_name">
                     <div className="content_up">
                         <div>책상</div>
@@ -207,7 +206,7 @@ const Market = () => {
 
     const ignoreEx = () => {
         return (
-            <div className="content">
+            <div className="content_ignoreExp">
                 <div className="content_name">
                     <div className="content_up">
                         <div>방치</div>
@@ -293,13 +292,6 @@ const Market = () => {
     };
 
     const sum = () => {
-        if (typeof window !== 'undefined') {
-            window.scroll({
-                top: 0,
-                behavior: 'smooth',
-            });
-        }
-
         if (checkMarket.clickgold === true) {
             return clickHandle();
         } else if (checkMarket.ignoregold === true) {
@@ -316,9 +308,8 @@ const Market = () => {
     return (
         <Market1>
             <div className="wrap">
-                <div className="item">메인입니다</div>
+                <div className="item"></div>
                 <div className="content1">{sum()}</div>
-
                 <div className="footer">
                     <div
                         className="stat"

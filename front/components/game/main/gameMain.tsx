@@ -150,17 +150,23 @@ const GameTemplate = styled.div`
         }
     }
 
-    .ranking > img {
-        background: yellow;
+    .ranking {
+        z-index: 7;
+        & > img {
+            background: yellow;
+        }
     }
 
-    .setting > img {
-        background: black;
+    .setting {
+        z-index: 7;
+        & > img {
+            background: black;
+        }
     }
 
     .content {
         width: 100%;
-        height: 70%;
+        height: 75%;
         font-size: 12px;
         & > .background {
             width: 100%;
@@ -180,7 +186,7 @@ const GameTemplate = styled.div`
                     height: 50%;
                     background: red;
                     position: relative;
-                    top: 55%;
+                    top: 10%;
                     left: 50%;
                     transform: translate(-50%, 0%);
                     z-index: 1;
@@ -190,7 +196,6 @@ const GameTemplate = styled.div`
                     height: 10%;
                     background: blue;
                     position: relative;
-                    top: 45%;
                     left: 60%;
                     z-index: 2;
                 }
@@ -199,7 +204,7 @@ const GameTemplate = styled.div`
                     height: 10%;
                     background: gray;
                     position: relative;
-                    top: 35%;
+                    top: -10%;
                     left: 30%;
                     z-index: 2;
                 }
@@ -232,7 +237,7 @@ const GameTemplate = styled.div`
                     height: 50%;
                     background: orange;
                     position: relative;
-                    top: -130%;
+                    top: -80%;
                     left: 35%;
                 }
                 & > .homekeeper {
@@ -283,7 +288,7 @@ const GameTemplate = styled.div`
 
     .footer {
         width: 100%;
-        height: 15%;
+        height: 10%;
         display: flex;
         & > div {
             width: 33.33%;
