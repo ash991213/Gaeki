@@ -11,7 +11,9 @@ interface marketType {
         ignoreexp: boolean,
     }
 }
-
+declare global {
+    interface Window { MyNamespace: any; }
+}
 const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
@@ -293,6 +295,15 @@ const Market = () => {
     }
 
     const sum = () => {
+        if (typeof window !== "undefined") {
+            // Client-side-only code
+            console.log(window)
+            window.scroll({
+                top: 0,
+                
+                behavior: 'smooth'
+            })
+        }
 
         if (checkMarket.clickgold === true) {
             return clickHandle()
@@ -307,7 +318,17 @@ const Market = () => {
         }
 
     }
-
+    
+    if (typeof window !== "undefined") {
+        // Client-side-only code
+        // console.log(window)
+        window.scroll({
+            top: 100,
+            left: 100,
+            behavior: 'smooth'
+        })
+    }
+   
     return (
 
         <Market1>
