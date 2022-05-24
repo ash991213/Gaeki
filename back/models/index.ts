@@ -20,7 +20,6 @@ const User = require('./user.js')(sequelize, DataTypes);
 const Auto_Gold = require('./auto_Gold.js')(sequelize, DataTypes);
 const Auto_Exp = require('./auto_Exp.js')(sequelize, DataTypes);
 const Status = require('./status.js')(sequelize, DataTypes);
-const Counte = require('./counter.js')(sequelize, DataTypes);
 
 fs.readdirSync(__dirname)
 	.filter((file: any) => {
@@ -43,7 +42,6 @@ db.User = User;
 db.Auto_Gold = Auto_Gold;
 db.Auto_Exp = Auto_Exp;
 db.Status = Status;
-db.Counte = Counte;
 
 module.exports = db;
 

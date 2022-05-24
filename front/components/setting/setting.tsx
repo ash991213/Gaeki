@@ -1,34 +1,36 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Setting = styled.div`
-    
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+
     .closebt {
         margin-top: -30px;
-        width: 10px; 
+        width: 10px;
         float: right;
-        }   
+    }
 
     .wrap {
         width: 80%;
-        height:80%;
+        height: 80%;
         margin: 0 auto;
-        margin-top: 115px;
+        margin-top: 15%;
         border: 1px solid black;
         padding: 50px 60px;
-        box-shadow: 7px   7px   5px   black;
-        
-        & > .img {
-            /* width : 100%; 
-             height: 10%; */
+        box-shadow: 7px 7px 5px black;
+        background: white;
 
+        & > .img {
             & > img {
                 width: 50%;
-                /* height: 50%; */
                 object-fit: cover;
             }
-        
         }
-
     }
 
     .header {
@@ -36,15 +38,14 @@ const Setting = styled.div`
         height: 20%;
         margin: 0 auto;
         padding-bottom: 50px;
-        text-align:center;
+        text-align: center;
         font-weight: bold;
-        font-size:50px
+        font-size: 50px;
     }
 
     .button {
         display: flex;
         justify-content: space-evenly;
-        
     }
 
     .effectbutton {
@@ -57,15 +58,15 @@ const Setting = styled.div`
 
     .text1 {
         padding: 10px;
-        font-size:3vw;
+        font-size: 3vw;
         font-weight: bold;
     }
-    
+
     .button1 {
-        display:inline-block;
+        display: inline-block;
 
         & > img {
-            width: 60%;
+            width: 100%;
             object-fit: cover;
         }
     }

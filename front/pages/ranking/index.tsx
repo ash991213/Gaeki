@@ -10,7 +10,7 @@ interface rankingType {
     };
 }
 
-const Ranking = () => {
+const Ranking = ({ closeRanking }: any) => {
     const dispatch = useDispatch();
     const Rank = useSelector(
         (state: rankingType) => state.ranking.usersRanking
@@ -18,6 +18,7 @@ const Ranking = () => {
     const stageList = useSelector(
         (state: rankingType) => state.ranking.stageList
     );
+
     const [stage, setStage] = useState(1);
 
     useEffect(() => {
@@ -71,7 +72,9 @@ const Ranking = () => {
                         <div className="logo">로고</div>
                         <div className="rank">랭킹</div>
                     </div>
-                    <button className="button">X</button>
+                    <button className="button" onClick={() => closeRanking()}>
+                        X
+                    </button>
                 </div>
                 <div className="stage">stage</div>
                 <div className="stage_wrap">{usersStage()}</div>
