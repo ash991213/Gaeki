@@ -13,23 +13,21 @@ const Market = styled.div`
         text-align: center;
         margin: 0 auto;
         border: 1px solid black;
-
-        /* height: 80%; */
-        /* height: 46rem; */
     }
 
     .item {
         width: 100%;
-        height: 40%;
+        height: 60%;
         background: red;
-    }
 
-    .content {
+    }
+    
+    .content1 {
+        overflow-y: scroll; 
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 50%;
-        /* padding:10px;   */
+        height: 30%;
     }
 
     .content_name {
@@ -48,11 +46,9 @@ const Market = styled.div`
         display: flex;
         justify-content: space-around;
         
-
         & > div > img {
             width: 2rem;
-            object-fit: cover;
-            
+            object-fit: cover; 
         }
     }
 
@@ -69,6 +65,7 @@ const Market = styled.div`
         color: indigo;
         padding: 5px;
     }
+
     .upbt:hover{
         color:white;
         background-color: violet;
@@ -93,9 +90,6 @@ const Market = styled.div`
             background: purple;
         }
     }
-
-
-
 `
 
 const Responsive = ({ children }: any) => {
