@@ -5,6 +5,9 @@ import styled from 'styled-components';
 const Market = styled.div`
     margin: 0;
     padding: 0;
+    position: relative;
+    top: -100%;
+    z-index: 5;
 
     .wrap {
         position: fixed;
@@ -18,25 +21,27 @@ const Market = styled.div`
     .item {
         width: 100%;
         height: 60%;
-        background: red;
     }
 
-    /* .default1 {
-        width: 100%;
-    } */
-
     .content1 {
-        overflow-y: scroll;
-        /* position: fixed; */
+        overflow: auto;
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 30%;
     }
 
-    /* .content {
-        display:none;
-    } */
+    .content_clickGold {
+        background: black;
+    }
+
+    .content_ignoreGold {
+        background: black;
+    }
+
+    .content_ignoreExp {
+        background: black;
+    }
 
     .content_name {
         border-bottom: 1px solid;
@@ -76,21 +81,6 @@ const Market = styled.div`
         color: white;
         background-color: violet;
     }
-
-    /* .item:visited {
-            height: 60%;
-    }
-
-    .content:visited {
-            height: 30%;
-     */
-
-    /* .footer:checked {
-        & > .item {
-            height: 60%;
-        }
-    }  */
-
     .footer {
         width: 100%;
         height: 10%;
@@ -99,15 +89,6 @@ const Market = styled.div`
 
         & > div {
             width: 33.33333%;
-        }
-        & > .stat {
-            background: orange;
-            & > .gold {
-                background: indigo;
-            }
-            & > .exp {
-                background: purple;
-            }
         }
     }
 `;

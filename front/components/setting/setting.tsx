@@ -7,7 +7,7 @@ const Setting = styled.div`
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.4);
-    z-index: 3;
+    z-index: 8;
 
     .closebt {
         margin-top: -30px;
