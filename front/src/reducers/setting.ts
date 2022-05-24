@@ -1,35 +1,52 @@
 interface settingType {
-    effectbutton: boolean;
-    backbutton: boolean;
+    effectOn: boolean;
+    backOn: boolean;
 }
 
 const initialState: settingType = {
-    effectbutton: true,
-    backbutton: true
+    effectOn: true,
+    backOn: true,
+};
 
-
-}
-
-const EFFECT_BUTTON = 'EFFECT_BUTTON'
-const BACK_BUTTON = 'BACK_BUTTON'
+const EFFECT_BUTTON_REQUEST = 'EFFECT_BUTTON_REQUEST';
+const EFFECT_BUTTON_SUCCESS = 'EFFECT_BUTTON_SUCCESS';
+const EFFECT_BUTTON_FAILURE = 'EFFECT_BUTTON_FAILURE';
+const BACK_BUTTON_REQUEST = 'BACK_BUTTON_REQUEST';
+const BACK_BUTTON_SUCCESS = 'BACK_BUTTON_SUCCESS';
+const BACK_BUTTON_FAILURE = 'BACK_BUTTON_FAILURE';
 
 const setting = (state: settingType = initialState, action: any) => {
     switch (action.type) {
-        case EFFECT_BUTTON:
+        case EFFECT_BUTTON_REQUEST:
             return {
                 ...state,
-                effectbutton: !state.effectbutton
-            }
-        case BACK_BUTTON:
+            };
+        case EFFECT_BUTTON_SUCCESS:
             return {
                 ...state,
-                backbutton: !state.backbutton
-            }; 
+                effectOn: !state.effectOn,
+            };
+        case EFFECT_BUTTON_FAILURE:
+            return {
+                ...state,
+            };
+        case BACK_BUTTON_REQUEST:
+            return {
+                ...state,
+            };
+        case BACK_BUTTON_SUCCESS:
+            return {
+                ...state,
+                backOn: !state.backOn,
+            };
+        case BACK_BUTTON_FAILURE:
+            return {
+                ...state,
+            };
         default: {
             return state;
         }
     }
+};
 
-}
-
-export default setting
+export default setting;

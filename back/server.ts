@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 const express = require('express');
 const app = express();
 const { sequelize } = require('./models');
 const cors = require('cors');
-const models = require('./models');
-const qs = require('qs')
+const router = require('./routes');
+const qs = require('qs');
 
 app.use(
 	cors({
@@ -26,111 +26,7 @@ sequelize
 		console.log('Disconect');
 	});
 
-app.get('/', (req: any, res: any) => {
-	res.send('hello');
-});
-
-interface reqType {
-	body: any;
-}
-
-const { Counte } = models;
-
-app.post('/count/plus', async (req: any, res: any) => {
-	const { action } = req.body;
-	try {
-		await Counte.update(
-			{
-				num: action + 1,
-			},
-			{
-				where: { id: 1 },
-			}
-		);
-		const number = await Counte.findOne({
-			attributes: ['num'],
-			where: {
-				id: 1,
-			},
-		});
-		const result = number.num;
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-app.post('/count/minus', async (req: any, res: any) => {
-	const { action } = req.body;
-	try {
-		await Counte.update(
-			{
-				num: action - 1,
-			},
-			{
-				where: { id: 1 },
-			}
-		);
-		const number = await Counte.findOne({
-			attributes: ['num'],
-			where: {
-				id: 1,
-			},
-		});
-		const result = number.num;
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-app.post('/count/list', async (req: any, res: any) => {
-	try {
-		const number = await Counte.findOne({
-			attributes: ['num'],
-			where: {
-				id: 1,
-			},
-		});
-		const result = number.num;
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
-
-const { User } = models;
-
-app.post('/rank/list', async (req: any, res: any) => {
-	let { num } = req.body;
-	try {
-		if (num === undefined) {
-			num = 1;
-		}
-		const list = await User.findAll({
-			attributes: ['nickname', 'gold'],
-			order: [['gold', 'DESC']],
-			limit: 10,
-			where: {
-				stage: num,
-			},
-		});
-		const result = {
-			list,
-		};
-		res.json(result);
-	} catch (e) {
-		console.log(e);
-		const result = null;
-		res.json(result);
-	}
-});
+app.use(router);
 
 /* google-api (백에서 테스트)*/
 const CLIENT_ID = '558081775123-tplut889u1hm5mbq3ok0ffnfh8mto866.apps.googleusercontent.com';
@@ -151,22 +47,21 @@ app.get('/auth', (req: any, res: any) => {
 });
 
 app.get('/login', async (req: any, res: any) => {
-	const URI =  'https://www.googleapis.com/games/v1/achievements'
-	console.log("응??",req.body.body)
-	const access_token = req.body.body
+	const URI = 'https://www.googleapis.com/games/v1/achievements';
+	console.log('응??', req.body.body);
+	const access_token = req.body.body;
 	try {
-		const user = await axios.get(URI,{
-			headers:{
-				'Authorization':`Bearer ${access_token}`
-			}
-		})
-		console.log('user:',user)
+		const user = await axios.get(URI, {
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		});
+		console.log('user:', user);
 	} catch (e) {
-		console.log('ㅇ우우우우우우')
-		console.log(e)
+		console.log('ㅇ우우우우우우');
+		console.log(e);
 	}
-
-})
+});
 
 app.listen(4000, () => {
 	console.log('Server ON');
