@@ -31,7 +31,7 @@ const Setting = ({ closeSetting }: any) => {
                 <div className="img">
                     <img src="./설정.jpg" />
                 </div>
-                <div className="header">설정</div>
+                <span className="">설정</span>
                 <div className="button">
                     <div className="effectbutton">
                         <div className="text1">효과음</div>

@@ -91,6 +91,15 @@ const Market = styled.div`
             width: 33.33333%;
         }
     }
+    .alignCenter {
+        padding: 1.1rem;
+    }
+    .fontNoWrap {
+        white-space:nowrap;
+    }
+    .menuBackgroundYellow {
+        background-color: yellow;
+    }
 `;
 
 const Responsive = ({ children }: any) => {

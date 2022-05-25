@@ -135,6 +135,9 @@ const RankingTemplate = styled.div`
             width: 40%;
             margin-right: 0;
         }
+        & > .myRank {
+            overflow: hidden;
+        }
         & > .myRank > li {
             background: white;
             margin-bottom: 0;

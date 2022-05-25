@@ -204,7 +204,7 @@ const Market = () => {
         );
     };
 
-    const ignoreEx = () => {
+    const ignoreExHandle = () => {
         return (
             <div className="content_ignoreExp">
                 <div className="content_name">
@@ -297,14 +297,34 @@ const Market = () => {
         } else if (checkMarket.ignoregold === true) {
             return ignoreHandle();
         } else if (checkMarket.ignoreexp === true) {
-            return ignoreEx();
+            return ignoreExHandle();
         } else {
             {
                 null;
             }
         }
     };
-
+    const marketClickMenu = () => {
+        if (checkMarket.clickgold === true) {
+            return "stat alignCenter menuBackgroundYellow"
+        } else {
+            return "stat alignCenter"
+        }
+    }
+    const marketIgnoreMenu = () => {
+        if (checkMarket.ignoregold === true) {
+            return "gold alignCenter menuBackgroundYellow"
+        } else {
+            return "gold alignCenter"
+        }
+    }
+    const marketIgnoreExpMenu = () => {
+        if (checkMarket.ignoreexp === true) {
+            return "exp alignCenter menuBackgroundYellow"
+        } else {
+            return "exp alignCenter"
+        }
+    }
     return (
         <Market1>
             <div className="wrap">
@@ -312,28 +332,28 @@ const Market = () => {
                 <div className="content1">{sum()}</div>
                 <div className="footer">
                     <div
-                        className="stat"
+                        className={marketClickMenu()}
                         onClick={() => {
                             clickGold();
                         }}
                     >
-                        클릭골드
+                        <span>클릭골드</span>
                     </div>
                     <div
-                        className="gold"
+                        className={marketIgnoreMenu()}
                         onClick={() => {
                             ignoreGold();
                         }}
                     >
-                        방치골드
+                        <span>방치골드</span>
                     </div>
                     <div
-                        className="exp"
+                        className={marketIgnoreExpMenu()}
                         onClick={() => {
                             ignoreExp();
                         }}
                     >
-                        방치경험치
+                        <span className="fontNoWrap">방치경험치</span>
                     </div>
                 </div>
             </div>
