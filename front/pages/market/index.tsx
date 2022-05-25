@@ -42,6 +42,10 @@ const Market = () => {
         dispatch({ type: 'IGNORE_EXP' });
     };
 
+    const typingUp = () => {
+        dispatch({ type: 'TYPING_UP_REQUEST' });
+    };
+
     const clickHandle = () => {
         return (
             <div className="content_clickGold">
@@ -73,7 +77,14 @@ const Market = () => {
                         </div>
                         <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className="upbt"
+                                onClick={() => {
+                                    typingUp();
+                                }}
+                            >
+                                강화버튼
+                            </button>
                         </div>
                     </div>
                 </div>

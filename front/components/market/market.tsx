@@ -32,15 +32,15 @@ const Market = styled.div`
     }
 
     .content_clickGold {
-        background: black;
+        background: plum;
     }
 
     .content_ignoreGold {
-        background: black;
+        background: plum;
     }
 
     .content_ignoreExp {
-        background: black;
+        background: plum;
     }
 
     .content_name {

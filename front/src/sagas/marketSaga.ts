@@ -1,20 +1,15 @@
-// import { takeLatest, call, put } from 'redux-saga/effects';
-// import axios from 'axios';
+import { takeLatest, call, put } from 'redux-saga/effects';
+import axios from 'axios';
 
-// interface resultType {
-//     data: {};
-// }
+const typingUpAPI = async () => {
+    return await axios.post('http://localhost:4000/market/stat');
+};
 
-// const asdfAPI: any = async (action: { payload: string }) => {
-//     const body = {
-//         userInfo: action,
-//     };
-//     return await axios.post('http://localhost:4000/market', body);
-// };
+function* typingUp() {
+    const result: { data: {} } = yield call(typingUpAPI);
+    console.log(result.data);
+}
 
-// function* asdf(action: { payload: {} }) {
-//     const result: resultType = yield call(asdfAPI, action.payload);
-//     console.log(result.data);
-// }
-
-// export default function* market() {}
+export default function* market() {
+    yield takeLatest('TYPING_UP_REQUEST', typingUp);
+}
