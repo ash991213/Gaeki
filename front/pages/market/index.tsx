@@ -9,6 +9,17 @@ interface marketType {
         ignoreexp: boolean;
     };
 }
+
+interface infoType {
+    info: {
+        userid: string;
+        nickname: string;
+        stage: number;
+        gold: number;
+        exp: number;
+    };
+}
+
 declare global {
     interface Window {
         MyNamespace: any;
@@ -17,6 +28,7 @@ declare global {
 const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
+    const info = useSelector((state: infoType) => state.info);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -305,9 +317,18 @@ const Market = () => {
         }
     };
 
+    const Gold_Click = () => {
+        dispatch({ type: 'GOLD_CLICK_REQUEST', payload: info });
+    };
+
     return (
         <Market1>
-            <div className="wrap">
+            <div
+                className="wrap"
+                onClick={() => {
+                    Gold_Click();
+                }}
+            >
                 <div className="item"></div>
                 <div className="content1">{sum()}</div>
                 <div className="footer">

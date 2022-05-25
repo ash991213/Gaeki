@@ -9,7 +9,7 @@ const infoRouter = require('./game/gameRouter');
 
 router.use('/setting', SettingRouter);
 router.use('/ranking', RankingRouter);
-router.use('/info', infoRouter);
+router.use('/game', infoRouter);
 // router.use('/game');
 // router.use('/market');
 

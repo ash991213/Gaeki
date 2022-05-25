@@ -9,6 +9,9 @@ const initialState = {
 const INFO_REQUEST = 'INFO_REQUEST';
 const INFO_SUCCESS = 'INFO_SUCCESS';
 const INFO_FAILURE = 'INFO_FAILURE';
+const GOLD_CLICK_REQUEST = 'GOLD_CLICK_REQUEST';
+const GOLD_CLICK_SUCCESS = 'GOLD_CLICK_SUCCESS';
+const GOLD_CLICK_FAILURE = 'GOLD_CLICK_FAILURE';
 
 interface actionType {
     type: string;
@@ -44,6 +47,18 @@ const info = (state = initialState, action: actionType) => {
             return {
                 ...state,
                 asdf: '실패~',
+            };
+        case GOLD_CLICK_REQUEST:
+            return {
+                ...state,
+            };
+        case GOLD_CLICK_SUCCESS:
+            return {
+                ...state,
+            };
+        case GOLD_CLICK_FAILURE:
+            return {
+                ...state,
             };
         default: {
             return state;
