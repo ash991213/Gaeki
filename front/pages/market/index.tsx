@@ -295,15 +295,15 @@ const Market = () => {
     }
 
     const sum = () => {
-        if (typeof window !== "undefined") {
-            // Client-side-only code
-            console.log(window)
-            window.scroll({
-                top: 0,
+        // if (typeof window !== "undefined") {
+        //     // Client-side-only code
+        //     console.log(window)
+        //     window.scroll({
+        //         top: 0,
                 
-                behavior: 'smooth'
-            })
-        }
+        //         behavior: 'smooth'
+        //     })
+        // }
 
         if (checkMarket.clickgold === true) {
             return clickHandle()
@@ -319,15 +319,15 @@ const Market = () => {
 
     }
     
-    if (typeof window !== "undefined") {
-        // Client-side-only code
-        // console.log(window)
-        window.scroll({
-            top: 100,
-            left: 100,
-            behavior: 'smooth'
-        })
-    }
+    // if (typeof window !== "undefined") {
+    //     // Client-side-only code
+    //     // console.log(window)
+    //     window.scroll({
+    //         top: 100,
+    //         left: 100,
+    //         behavior: 'smooth'
+    //     })
+    // }
    
     return (
 
