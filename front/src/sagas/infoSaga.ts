@@ -25,10 +25,10 @@ const Gold_ClickAPI: any = async (action: {}) => {
 function* Gold_Click(action: { payload: {} }) {
     try {
         const result: resultType = yield call(Gold_ClickAPI, action.payload);
-        console.log(result.data);
 
         yield put({
             type: 'GOLD_CLICK_SUCCESS',
+            payload: result.data,
         });
     } catch (e) {
         yield put({

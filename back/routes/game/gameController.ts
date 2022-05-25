@@ -24,5 +24,9 @@ exports.info = async (req: any, res: any) => {
 exports.click = async (req: any, res: any) => {
 	const { userid, gold } = req.body;
 
-	res.json({ a: '1' });
+	await User.update({ gold: gold + 1 }, { where: { userid } });
+
+	const a = await User.findOne({ where: { userid } });
+
+	res.json({ gold: a.dataValues.gold, exp: a.dataValues.exp });
 };

@@ -55,6 +55,7 @@ const info = (state = initialState, action: actionType) => {
         case GOLD_CLICK_SUCCESS:
             return {
                 ...state,
+                gold: action.payload.gold,
             };
         case GOLD_CLICK_FAILURE:
             return {

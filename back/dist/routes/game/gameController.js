@@ -29,5 +29,7 @@ exports.info = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.click = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userid, gold } = req.body;
-    res.json({ a: '1' });
+    yield User.update({ gold: gold + 1 }, { where: { userid } });
+    const a = yield User.findOne({ where: { userid } });
+    res.json({ gold: a.dataValues.gold, exp: a.dataValues.exp });
 });
