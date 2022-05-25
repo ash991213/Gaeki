@@ -305,7 +305,7 @@ const Market = () => {
                 null;
             }
         }
-    };
+    }; 
 
     return (
         <Market1>

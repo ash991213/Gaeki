@@ -25,7 +25,7 @@ const Market = styled.div`
 
     .content1 {
         overflow: auto;
-        display: flex;
+        display: flex; 
         flex-direction: column;
         width: 100%;
         height: 30%;

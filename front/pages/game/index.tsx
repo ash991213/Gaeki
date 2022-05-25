@@ -87,7 +87,7 @@ const Game = () => {
                             <img src="loading.gif" />
                         </div>
                         <div className="pet_bird">
-                            <img src="loading.gif" />
+                            <img src="무새.gif" />
                         </div>
                         <div className="pet_fish">
                             <img src="loading.gif" />
