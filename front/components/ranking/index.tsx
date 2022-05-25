@@ -15,11 +15,11 @@ const RankingTemplate = styled.div`
     }
 
     .content {
-        position: absolute;
+        max-width: 255px;
         width: 80%;
         height: 80%;
-        left: 10%;
-        top: 10%;
+        margin: 0 auto;
+        margin-top: 3rem;
     }
 
     .content > .header {
