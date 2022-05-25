@@ -6,8 +6,19 @@ import Ranking from '../ranking';
 import Setting from '../setting';
 import Market from '../market';
 
+interface infoType {
+    info: {
+        userid: string;
+        nickname: string;
+        stage: number;
+        gold: number;
+        exp: number;
+    };
+}
+
 const Game = () => {
     const dispatch = useDispatch();
+    const info = useSelector((state: infoType) => state.info);
 
     const [ranking, setRanking] = useState(false);
     const [setting, setSetting] = useState(false);
@@ -28,6 +39,10 @@ const Game = () => {
         setSetting(false);
     };
 
+    useEffect(() => {
+        dispatch({ type: 'INFO_REQUEST' });
+    }, []);
+
     return (
         <GameTemplate>
             <div className="header">
@@ -36,8 +51,8 @@ const Game = () => {
                         <div className="user_wrap">
                             <div className="user_image"></div>
                             <div className="user_info">
-                                <p className="user_name">닉네임 : 테스트 </p>
-                                <p className="user_gold">골드 : 123456789 </p>
+                                <p className="user_name">{info.userid} </p>
+                                <p className="user_gold">{info.gold}</p>
                             </div>
                         </div>
                         <div className="user_progress">
@@ -45,13 +60,16 @@ const Game = () => {
                                 <div>exp</div>
                                 <progress
                                     className="exp_progress"
-                                    value="50"
+                                    value={info.exp}
                                     max="100"
                                 ></progress>
                             </div>
                         </div>
                     </div>
-                    <div className="stage">stage</div>
+                    <div className="stage">
+                        stage
+                        <div>{info.stage}</div>
+                    </div>
                 </div>
                 <div className="header_right">
                     <div className="service">
