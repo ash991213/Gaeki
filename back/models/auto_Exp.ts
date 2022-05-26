@@ -22,6 +22,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
 				allowNull: false,
 				defaultValue: 0,
 			},
+			user_idx: {
+				type: DataTypes.INTEGER,
+				defaultValue: 0,
+				allowNull: false,
+			},
 		},
 		{
 			timestamps: false,

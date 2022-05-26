@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 sequelize
-	.sync({ force: false }) // Model에서 정의한 이름을 갖는 테이블이 없을때 동작하며 DB에 테이블이 없으면 생성
+	.sync({ force: false })
 	.then(() => {
 		console.log('Connect');
 	})
