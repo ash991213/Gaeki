@@ -76,6 +76,7 @@ const Market = styled.div`
         background-color: rgba(0, 0, 0, 0);
         color: indigo;
         padding: 5px;
+        font-size: 0.5rem;
     }
     .upbt:hover {
         color: white;
@@ -92,13 +93,13 @@ const Market = styled.div`
         }
 
         & > .stat {
-            background: orange;   
-        }  
+            background: orange;
+        }
 
         & > .gold {
             background: indigo;
         }
-        
+
         & > .exp {
             background: purple;
         }

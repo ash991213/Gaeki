@@ -2,9 +2,9 @@ var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
 
 exports.click = async (req: any, res: any) => {
-	const { user_idx, gold } = req.body;
+	const { user_idx, gold, typing } = req.body;
 
-	await User.update({ gold: gold + 1 }, { where: { id: user_idx } });
+	await User.update({ gold: gold + typing }, { where: { id: user_idx } });
 
 	const a = await User.findOne({ where: { id: user_idx } });
 

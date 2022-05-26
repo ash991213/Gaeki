@@ -31,8 +31,18 @@ function* user(action: actionType) {
     }
 }
 
-const gold_clickAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/game/click', action);
+const gold_clickAPI = async (action: any) => {
+    const {
+        typing,
+        user: { user_idx, gold },
+    } = action;
+
+    const body = {
+        typing,
+        user_idx,
+        gold,
+    };
+    return await axios.post('http://localhost:4000/game/click', body);
 };
 
 function* gold_click(action: any) {
