@@ -6,7 +6,6 @@ const gameRouter = require('./game/gameRouter');
 const marketRouter = require('./market/marketRouter');
 const LoginRouter = require('./login/loginRouter');
 
-
 router.use('/game', gameRouter);
 router.use('/setting', SettingRouter);
 router.use('/ranking', RankingRouter);

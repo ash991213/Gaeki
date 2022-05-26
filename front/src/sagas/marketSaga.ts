@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 const typingUpAPI = async () => {
-    return await axios.post('http://localhost:4000/market/stat');
+    return await axios.post('http://localhost:4000/market/status');
 };
 
 function* typingUp() {
@@ -20,6 +20,6 @@ function* asdf() {
 }
 
 export default function* market() {
-    yield takeLatest('TYPING_UP_REQUEST', typingUp);
-    yield takeLatest('asdf', asdf);
+    // yield takeLatest('TYPING_UP_REQUEST', typingUp);
+    // yield takeLatest('asdf', asdf);
 }

@@ -15,16 +15,6 @@ interface marketType {
     };
 }
 
-interface infoType {
-    info: {
-        userid: string;
-        nickname: string;
-        stage: number;
-        gold: number;
-        exp: number;
-    };
-}
-
 declare global {
     interface Window {
         MyNamespace: any;
@@ -33,7 +23,7 @@ declare global {
 const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
-    const info = useSelector((state: infoType) => state.info);
+    const user = useSelector((state: any) => state.user);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -51,7 +41,6 @@ const Market = () => {
         dispatch({ type: 'TYPING_UP_REQUEST' });
     };
 
-    // console.log(checkMarket.market.stat.typing);
     useEffect(() => {
         dispatch({ type: 'asdf' });
     }, []);
@@ -344,7 +333,7 @@ const Market = () => {
     };
 
     const Gold_Click = () => {
-        dispatch({ type: 'GOLD_CLICK_REQUEST', payload: info });
+        dispatch({ type: 'GOLD_CLICK_REQUEST', payload: user });
     };
 
     return (

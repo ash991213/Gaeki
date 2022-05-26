@@ -31,6 +31,25 @@ function* user(action: actionType) {
     }
 }
 
+const gold_clickAPI: any = async (action: any) => {
+    return await axios.post('http://localhost:4000/game/click', action);
+};
+
+function* gold_click(action: any) {
+    try {
+        const result: { data: {} } = yield call(gold_clickAPI, action.payload);
+        yield put({
+            type: 'GOLD_CLICK_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'GOLD_CLICK_FAILURE',
+        });
+    }
+}
+
 export default function* watchRanking() {
     yield takeLatest('USER_INFO_REQUEST', user);
+    yield takeLatest('GOLD_CLICK_REQUEST', gold_click);
 }

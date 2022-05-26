@@ -2,14 +2,14 @@ var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
 
 exports.click = async (req: any, res: any) => {
-	const { userid, gold } = req.body;
+	const { user_idx, gold } = req.body;
 
-	await User.update({ gold: gold + 1 }, { where: { userid } });
+	await User.update({ gold: gold + 1 }, { where: { id: user_idx } });
 
-	const a = await User.findOne({ where: { userid } });
+	const a = await User.findOne({ where: { id: user_idx } });
 
-	res.json({ gold: a.dataValues.gold, exp: a.dataValues.exp });
-}
+	res.json({ gold: a.dataValues.gold });
+};
 
 exports.user = async (req: any, res: any) => {
 	const { user_idx } = req.body;
