@@ -308,21 +308,21 @@ const Market = () => {
     };
     const marketClickMenu = () => {
         if (checkMarket.clickgold === true) {
-            return "stat alignCenter menuBackgroundYellow"
+            return "stat alignCenter menuOpacity"
         } else {
             return "stat alignCenter"
         }
     }
     const marketIgnoreMenu = () => {
         if (checkMarket.ignoregold === true) {
-            return "gold alignCenter menuBackgroundYellow"
+            return "gold alignCenter menuOpacity"
         } else {
             return "gold alignCenter"
         }
     }
     const marketIgnoreExpMenu = () => {
         if (checkMarket.ignoreexp === true) {
-            return "exp alignCenter menuBackgroundYellow"
+            return "exp alignCenter menuOpacity"
         } else {
             return "exp alignCenter"
         }

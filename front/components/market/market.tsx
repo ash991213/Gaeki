@@ -109,8 +109,8 @@ const Market = styled.div`
     .fontNoWrap {
         white-space:nowrap;
     }
-    .menuBackgroundYellow {
-        background-color: yellow;
+    .menuOpacity {
+        opacity: 0.5;
     }
 `;
 
