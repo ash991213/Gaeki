@@ -36,12 +36,9 @@ exports.redirectLogin = (req, res) => __awaiter(void 0, void 0, void 0, function
                 Authorization: `Bearer ${token}`,
             },
         });
-        const { nickname, profile_image, thumbnail_image } = user.data.properties;
+        const { nickname, thumbnail_image } = user.data.properties;
         const { email } = user.data.kakao_account;
-        console.log('닉네임:', nickname);
-        console.log('유저 프로필 사진:', profile_image);
-        console.log('유저 썸네일 사진:', thumbnail_image);
-        console.log('유저 이메일', email);
+        let id;
         const Info = yield User.findOne({
             where: {
                 userid: `${email}`,
@@ -62,8 +59,14 @@ exports.redirectLogin = (req, res) => __awaiter(void 0, void 0, void 0, function
             yield Auto_Exp.create({
                 user_idx: join.id,
             });
+            id = join.id;
+            console.log('신규 유저 아이디', id);
         }
-        res.redirect('http://localhost:3000/game');
+        else {
+            id = Info.id;
+            console.log('기존 유저 아이디', id);
+        }
+        res.redirect(`http://localhost:3000/game?id=${id}`);
     }
     catch (error) {
         console.log(error);
