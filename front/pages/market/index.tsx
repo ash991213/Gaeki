@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { createRoot } from 'react-dom/client';
 import { useDispatch, useSelector } from 'react-redux';
 import Market1 from '../../components/market/market';
 
@@ -9,6 +10,9 @@ interface marketType {
         ignoreexp: boolean;
     };
 }
+// copy
+let container: null | HTMLDivElement = null
+
 declare global {
     interface Window {
         MyNamespace: any;
@@ -327,9 +331,65 @@ const Market = () => {
             return "exp alignCenter"
         }
     }
+
+    
+    let count = 0;
+    // 클릭시 손가락 위치에 이미지 뜸
+    const notification = (e: any) => {
+        console.log('x축:',e.clientX,'-- y축:',e.clientY)
+        count++
+        const clickX = e.clientX
+        const clickY = e.clientY
+        container = document.createElement("span") as HTMLDivElement
+        const nodeName = `lay${count}`
+        container.className=nodeName
+        container.style.position = "absolute"
+        container.style.top=clickY-20+"px"
+        container.style.left=clickX-20+"px"
+        container.style.zIndex='6'
+
+        const collection = document.getElementsByClassName("background");
+        console.log(collection[0])
+        collection[0].prepend(container)
+
+        const div = document.createElement("span");
+        container.appendChild(div)
+        const removeNotication = () => {
+            root.unmount()
+            console.log(div.parentNode)
+            if (div?.parentNode) {
+                div.parentNode.removeChild(div)
+            }
+        }
+
+        const root = createRoot(div);
+        
+        function CallbackAfter () {
+            useEffect(() => {
+                setTimeout(removeNotication, 1000)
+            });
+            return <Notification></Notification>
+        }
+        root.render(<CallbackAfter />)
+        return removeNotication
+    } 
+      
+    interface NotificationProps {}
+    const Notification: React.FC<NotificationProps> = () => {
+        return (
+            <img
+            src='./movingPeng.gif'
+            style={{
+                position:"absolute",
+                display:"block",
+            }}
+            >
+            </img>
+        )
+    }
     return (
         <Market1>
-            <div className="wrap">
+            <div className="wrap" onClick={notification}>
                 <div className="item"></div>
                 <div className="content1">{sum()}</div>
                 <div className="footer">
