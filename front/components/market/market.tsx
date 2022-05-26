@@ -118,7 +118,7 @@ const Market = styled.div`
         padding: 1.1rem;
     }
     .fontNoWrap {
-        white-space:nowrap;
+        white-space: nowrap;
     }
     .menuOpacity {
         opacity: 0.5;
