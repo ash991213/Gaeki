@@ -1,11 +1,10 @@
 import type { NextPage } from 'next';
 import Loadding from '../components/game/loadding/';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loadding: NextPage = () => {
     return (
         <Loadding>
-            <div className="wrap">
+            <a className="wrap" href="http://localhost:4000/kakao/login">
                 <div className="header">
                     <h1 className="logo">개발자 키우기 Logo~</h1>
                 </div>
@@ -15,7 +14,7 @@ const loadding: NextPage = () => {
                 <div className="loading_bar">
                     <img src="./loading-bar.gif" />
                 </div>
-            </div>
+            </a>
         </Loadding>
     );
 };
