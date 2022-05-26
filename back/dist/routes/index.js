@@ -6,11 +6,9 @@ const RankingRouter = require('./ranking/rankingRouter');
 const gameRouter = require('./game/gameRouter');
 const marketRouter = require('./market/marketRouter');
 const LoginRouter = require('./login/loginRouter');
-
+router.use('/game', gameRouter);
 router.use('/setting', SettingRouter);
 router.use('/ranking', RankingRouter);
-router.use('/kakao', LoginRouter);
 router.use('/market', marketRouter);
-router.use('/game', gameRouter);
-
+router.use('/kakao', LoginRouter);
 module.exports = router;

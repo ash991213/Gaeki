@@ -3,22 +3,22 @@ module.exports = (sequelize, DataTypes) => {
     const Status = sequelize.define('Status', {
         coding: {
             type: DataTypes.INTEGER,
-            defaultValue: 0,
+            defaultValue: 1,
             allowNull: false,
         },
         hp: {
             type: DataTypes.INTEGER,
-            defaultValue: 0,
+            defaultValue: 1,
             allowNull: false,
         },
         typing: {
             type: DataTypes.INTEGER,
-            defaultValue: 0,
+            defaultValue: 1,
             allowNull: false,
         },
         luck: {
             type: DataTypes.INTEGER,
-            defaultValue: 0,
+            defaultValue: 1,
             allowNull: false,
         },
         patience: {

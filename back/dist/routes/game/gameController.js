@@ -10,13 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
-
 exports.click = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userid, gold } = req.body;
     yield User.update({ gold: gold + 1 }, { where: { userid } });
     const a = yield User.findOne({ where: { userid } });
     res.json({ gold: a.dataValues.gold, exp: a.dataValues.exp });
-  
+});
 exports.user = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_idx } = req.body;
     try {

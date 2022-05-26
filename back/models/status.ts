@@ -4,22 +4,22 @@ module.exports = (sequelize: any, DataTypes: any) => {
 		{
 			coding: {
 				type: DataTypes.INTEGER,
-				defaultValue: 0,
+				defaultValue: 1,
 				allowNull: false,
 			},
 			hp: {
 				type: DataTypes.INTEGER,
-				defaultValue: 0,
+				defaultValue: 1,
 				allowNull: false,
 			},
 			typing: {
 				type: DataTypes.INTEGER,
-				defaultValue: 0,
+				defaultValue: 1,
 				allowNull: false,
 			},
 			luck: {
 				type: DataTypes.INTEGER,
-				defaultValue: 0,
+				defaultValue: 1,
 				allowNull: false,
 			},
 			patience: {
