@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { createRoot } from 'react-dom/client';
 import { useDispatch, useSelector } from 'react-redux';
 import Market1 from '../../components/market/market';
 
@@ -13,6 +14,14 @@ interface marketType {
             };
         };
     };
+}
+
+let container: null | HTMLDivElement = null
+
+declare global {
+    interface Window {
+        MyNamespace: any;
+    }
 }
 
 const Market = () => {
@@ -255,7 +264,7 @@ const Market = () => {
         );
     };
 
-    const ignoreEx = () => {
+    const ignoreExHandle = () => {
         return (
             <div className="content_ignoreExp">
                 <div className="content_name">
@@ -348,13 +357,94 @@ const Market = () => {
         } else if (checkMarket.ignoregold === true) {
             return ignoreHandle();
         } else if (checkMarket.ignoreexp === true) {
-            return ignoreEx();
+            return ignoreExHandle();
         } else {
             {
                 null;
             }
         }
     };
+    const marketClickMenu = () => {
+        if (checkMarket.clickgold === true) {
+            return "stat alignCenter menuOpacity"
+        } else {
+            return "stat alignCenter"
+        }
+    }
+    const marketIgnoreMenu = () => {
+        if (checkMarket.ignoregold === true) {
+            return "gold alignCenter menuOpacity"
+        } else {
+            return "gold alignCenter"
+        }
+    }
+    const marketIgnoreExpMenu = () => {
+        if (checkMarket.ignoreexp === true) {
+            return "exp alignCenter menuOpacity"
+        } else {
+            return "exp alignCenter"
+        }
+    }
+
+    
+    let count = 0;
+    // 클릭시 손가락 위치에 이미지 뜸
+    const handleClick = (e: any) => {
+        console.log('x축:',e.clientX,'-- y축:',e.clientY)
+        count++
+        const clickX = e.clientX
+        const clickY = e.clientY
+        container = document.createElement("span") as HTMLDivElement
+        const nodeName = `lay${count}`
+        container.className=nodeName
+        container.style.position = "absolute"
+        container.style.top=clickY-20+"px"
+        container.style.left=clickX-20+"px"
+        container.style.zIndex='6'
+
+        const collection = document.getElementsByClassName("background");
+        console.log(collection[0])
+        collection[0].prepend(container)
+
+        const div = document.createElement("span");
+        container.appendChild(div)
+        const removeGif = () => {
+            root.unmount()
+            console.log(div.parentNode)
+            if (div?.parentNode) {
+                div.parentNode.removeChild(div)
+            }
+        }
+        
+        const root = createRoot(div);
+        
+        function CallbackAfter () {
+            useEffect(() => {
+                setTimeout(removeGif, 2000)
+            });
+            return <PopGifLayer></PopGifLayer>
+        }
+        root.render(<CallbackAfter />)
+        return removeGif
+    } 
+      
+    interface PopGifProps {}
+    const PopGifLayer: React.FC<PopGifProps> = () => {
+        return (
+
+            <img
+            src='./movingPeng.gif'
+            style={{
+                position:"absolute",
+                display:"block",
+            }}
+            >
+            </img>
+        )
+    }
+    return (
+        <Market1>
+            <div className="wrap" onClick={handleClick}>
 
     const Gold_Click = () => {
         dispatch({
@@ -375,28 +465,28 @@ const Market = () => {
                 <div className="content1">{sum()}</div>
                 <div className="footer">
                     <div
-                        className="stat"
+                        className={marketClickMenu()}
                         onClick={() => {
                             clickGold();
                         }}
                     >
-                        클릭골드
+                        <span>클릭골드</span>
                     </div>
                     <div
-                        className="gold"
+                        className={marketIgnoreMenu()}
                         onClick={() => {
                             ignoreGold();
                         }}
                     >
-                        방치골드
+                        <span>방치골드</span>
                     </div>
                     <div
-                        className="exp"
+                        className={marketIgnoreExpMenu()}
                         onClick={() => {
                             ignoreExp();
                         }}
                     >
-                        방치경험치
+                        <span className="fontNoWrap">방치경험치</span>
                     </div>
                 </div>
             </div>

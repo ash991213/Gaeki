@@ -135,13 +135,13 @@ const Game = () => {
             </div>
             <div className="footer">
                 <div className="stat">
-                    <img src="./설정.jpg" />
+                    {/* <img src="./설정.jpg" /> */}
                 </div>
                 <div className="auto_gold">
-                    <img src="./설정.jpg" />
+                    {/* <img src="./설정.jpg" /> */}
                 </div>
                 <div className="auto_exp">
-                    <img src="./설정.jpg" />
+                    {/* <img src="./설정.jpg" /> */}
                 </div>
             </div>
             {ranking ? <Ranking closeRanking={closeRanking} /> : null}

@@ -114,6 +114,15 @@ const Market = styled.div`
             background: purple;
         }
     }
+    .alignCenter {
+        padding: 1.1rem;
+    }
+    .fontNoWrap {
+        white-space:nowrap;
+    }
+    .menuOpacity {
+        opacity: 0.5;
+    }
 `;
 
 const Responsive = ({ children }: any) => {

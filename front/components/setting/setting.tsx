@@ -9,30 +9,34 @@ const Setting = styled.div`
     background: rgba(0, 0, 0, 0.4);
     z-index: 8;
 
+    .settingHead {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
     .closebt {
-        margin-top: -30px;
-        width: 10px;
-        float: right;
+        align-self: flex-end;
     }
 
     .wrap {
+        display: flex;
+        flex-direction: column;
+        alighn-items: center;
+        max-width: 255px;
         width: 80%;
-        height: 80%;
+        height: 65%;
         margin: 0 auto;
-        margin-top: 15%;
+        margin-top: 2.5rem;
         border: 1px solid black;
-        padding: 50px 60px;
+        padding: 1.5rem 2.2rem 2.2rem 2.2rem;
         box-shadow: 7px 7px 5px black;
         background: white;
-
-        & > .img {
-            & > img {
-                width: 50%;
-                object-fit: cover;
-            }
-        }
+        text-align:center;
     }
-
+    .imgwrap > img {
+        width: 100%;
+        object-fit: cover;
+    }
     .header {
         width: 100%;
         height: 20%;
@@ -58,17 +62,17 @@ const Setting = styled.div`
 
     .text1 {
         padding: 10px;
-        font-size: 3vw;
+        font-size: 1rem;
         font-weight: bold;
     }
 
     .button1 {
         display: inline-block;
+    }
 
-        & > img {
-            width: 100%;
-            object-fit: cover;
-        }
+    .button1 > img {
+        max-width: 180px;
+        width: 100%;
     }
 `;
 
