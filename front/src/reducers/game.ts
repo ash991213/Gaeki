@@ -15,6 +15,7 @@ const initialState = {
         patience: null,
         typing: null,
     },
+    error: null,
 };
 
 const USER_INFO_REQUEST = 'USER_INFO_REQUEST';
@@ -130,6 +131,7 @@ const user = (state = initialState, action: actionType) => {
         case TYPING_UP_FAILURE:
             return {
                 ...state,
+                error: action.payload.errno,
             };
         case STATUS_REQUEST:
             return {

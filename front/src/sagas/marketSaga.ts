@@ -6,9 +6,9 @@ const typingUpAPI = async (action: any) => {
 };
 
 function* typingUp(action: any) {
-    const result: { data: {} } = yield call(typingUpAPI, action.payload);
-
+    const result: { data: any } = yield call(typingUpAPI, action.payload);
     try {
+        if (result.data.errno === 0) throw new Error('골드가 부족합니다.');
         yield put({
             type: 'TYPING_UP_SUCCESS',
             payload: result.data,
@@ -16,6 +16,7 @@ function* typingUp(action: any) {
     } catch (e) {
         yield put({
             type: 'TYPING_UP_FAILURE',
+            payload: result.data,
         });
     }
     console.log(result.data);

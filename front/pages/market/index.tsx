@@ -19,7 +19,7 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const { user_idx } = useSelector((state: any) => state.user);
+    const { user_idx, gold } = useSelector((state: any) => state.user);
     const { status } = useSelector((state: any) => state.user);
 
     const clickGold = () => {
@@ -86,10 +86,17 @@ const Market = () => {
                         </div>
                         <div>
                             <button
-                                className="upbt"
+                                className={
+                                    gold >= status.typing * 100
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
                                 onClick={() => {
                                     typingUp();
                                 }}
+                                disabled={
+                                    gold >= status.typing * 100 ? false : true
+                                }
                             >
                                 강화버튼 <br />
                                 {status.typing * 100}

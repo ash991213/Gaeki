@@ -78,10 +78,20 @@ const Market = styled.div`
         padding: 5px;
         font-size: 0.5rem;
     }
-    .upbt:hover {
+
+    .closeBtn {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: 2px solid indigo;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 5px;
+        font-size: 0.5rem;
         color: white;
-        background-color: violet;
+        background-color: black;
     }
+
     .footer {
         width: 100%;
         height: 10%;
