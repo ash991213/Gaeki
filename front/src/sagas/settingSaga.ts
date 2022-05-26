@@ -7,10 +7,10 @@ interface actionType {
 }
 
 const EffectAPI = async (action: any) => {
-    const { userid, effectOn } = action;
+    const { user_idx, sound_effect } = action;
     const body = {
-        userid,
-        effectOn,
+        user_idx,
+        sound_effect,
     };
     return await axios.post('http://localhost:4000/setting/effect', body);
 };
@@ -30,10 +30,10 @@ function* effect(action: actionType) {
 }
 
 const BackAPI = async (action: any) => {
-    const { userid, backOn } = action;
+    const { user_idx, background_sound } = action;
     const body = {
-        userid,
-        backOn,
+        user_idx,
+        background_sound,
     };
     return await axios.post('http://localhost:4000/setting/back', body);
 };

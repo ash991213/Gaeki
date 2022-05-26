@@ -16,6 +16,12 @@ const USER_INFO_FAILURE = 'USER_INFO_FAILURE';
 const GOLD_CLICK_REQUEST = 'GOLD_CLICK_REQUEST';
 const GOLD_CLICK_SUCCESS = 'GOLD_CLICK_SUCCESS';
 const GOLD_CLICK_FAILURE = 'GOLD_CLICK_FAILURE';
+const EFFECT_BUTTON_REQUEST = 'EFFECT_BUTTON_REQUEST';
+const EFFECT_BUTTON_SUCCESS = 'EFFECT_BUTTON_SUCCESS';
+const EFFECT_BUTTON_FAILURE = 'EFFECT_BUTTON_FAILURE';
+const BACK_BUTTON_REQUEST = 'BACK_BUTTON_REQUEST';
+const BACK_BUTTON_SUCCESS = 'BACK_BUTTON_SUCCESS';
+const BACK_BUTTON_FAILURE = 'BACK_BUTTON_FAILURE';
 
 interface actionType {
     type: string;
@@ -66,6 +72,32 @@ const user = (state = initialState, action: actionType) => {
                 gold: action.payload.gold,
             };
         case GOLD_CLICK_FAILURE:
+            return {
+                ...state,
+            };
+        case EFFECT_BUTTON_REQUEST:
+            return {
+                ...state,
+            };
+        case EFFECT_BUTTON_SUCCESS:
+            return {
+                ...state,
+                sound_effect: !state.sound_effect,
+            };
+        case EFFECT_BUTTON_FAILURE:
+            return {
+                ...state,
+            };
+        case BACK_BUTTON_REQUEST:
+            return {
+                ...state,
+            };
+        case BACK_BUTTON_SUCCESS:
+            return {
+                ...state,
+                background_sound: !state.background_sound,
+            };
+        case BACK_BUTTON_FAILURE:
             return {
                 ...state,
             };
