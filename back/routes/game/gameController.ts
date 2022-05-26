@@ -1,26 +1,6 @@
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
 
-exports.info = async (req: any, res: any) => {
-	const [info] = await User.findAll({
-		attributes: ['userid', 'nickname', 'stage', 'gold', 'exp'],
-		where: {
-			userid: 'test3',
-		},
-	});
-
-	const { userid, nickname, stage, gold, exp } = info;
-	const result = {
-		userid,
-		nickname,
-		stage,
-		gold,
-		exp,
-	};
-
-	res.json(result);
-};
-
 exports.click = async (req: any, res: any) => {
 	const { userid, gold } = req.body;
 
@@ -29,4 +9,35 @@ exports.click = async (req: any, res: any) => {
 	const a = await User.findOne({ where: { userid } });
 
 	res.json({ gold: a.dataValues.gold, exp: a.dataValues.exp });
+}
+
+exports.user = async (req: any, res: any) => {
+	const { user_idx } = req.body;
+	try {
+		const user = await User.findOne({
+			where: {
+				id: user_idx,
+			},
+		});
+
+		const { id, nickname, image, stage, gauge, gold, exp, background_sound, sound_effect } = user;
+
+		const result = {
+			id,
+			nickname,
+			image,
+			stage,
+			gauge,
+			gold,
+			exp,
+			background_sound,
+			sound_effect,
+		};
+
+		res.json(result);
+	} catch (error) {
+		console.log(error);
+		const result = null;
+		res.json(result);
+	}
 };

@@ -27,11 +27,16 @@ module.exports = (sequelize: any, DataTypes: any) => {
 				defaultValue: 0,
 				allowNull: false,
 			},
+			user_idx: {
+				type: DataTypes.INTEGER,
+				defaultValue: 0,
+				allowNull: false,
+			},
 		},
 		{
 			timestamps: false,
 			paranoid: false,
-			tableName: 'Gauge',
+			tableName: 'Status',
 			charset: 'utf8mb4',
 			collate: 'utf8mb4_general_ci',
 		}

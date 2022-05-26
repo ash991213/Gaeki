@@ -12,10 +12,10 @@ const Loadding = styled.div`
         height: 100%;
         margin: 0 auto;
         padding: 40px;
-        background-color: gray;
         display: flex;
         justify-content: space-evenly;
         flex-direction: column;
+        z-index: 5;
     }
 
     .header {

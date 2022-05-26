@@ -2,9 +2,8 @@ import { combineReducers } from 'redux';
 import setting from './setting';
 import ranking from './ranking';
 import market from './market';
-import login from './login';
-import info from './info';
+import user from './game';
 
-const rootReducer = combineReducers({ ranking, setting, market, login, info });
+const rootReducer = combineReducers({ ranking, setting, market, user });
 
 export default rootReducer;

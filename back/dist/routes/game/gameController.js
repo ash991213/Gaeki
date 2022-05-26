@@ -10,26 +10,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
-exports.info = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const [info] = yield User.findAll({
-        attributes: ['userid', 'nickname', 'stage', 'gold', 'exp'],
-        where: {
-            userid: 'test3',
-        },
-    });
-    const { userid, nickname, stage, gold, exp } = info;
-    const result = {
-        userid,
-        nickname,
-        stage,
-        gold,
-        exp,
-    };
-    res.json(result);
-});
+
 exports.click = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userid, gold } = req.body;
     yield User.update({ gold: gold + 1 }, { where: { userid } });
     const a = yield User.findOne({ where: { userid } });
     res.json({ gold: a.dataValues.gold, exp: a.dataValues.exp });
+  
+exports.user = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx } = req.body;
+    try {
+        const user = yield User.findOne({
+            where: {
+                id: user_idx,
+            },
+        });
+        const { id, nickname, image, stage, gauge, gold, exp, background_sound, sound_effect } = user;
+        const result = {
+            id,
+            nickname,
+            image,
+            stage,
+            gauge,
+            gold,
+            exp,
+            background_sound,
+            sound_effect,
+        };
+        res.json(result);
+    }
+    catch (error) {
+        console.log(error);
+        const result = null;
+        res.json(result);
+    }
 });

@@ -20,6 +20,8 @@ const Game = () => {
     const dispatch = useDispatch();
     const info = useSelector((state: infoType) => state.info);
 
+    const user = useSelector((state: any) => state.user);
+    const user_idx = useSelector((state: any) => state.user.user_idx);
     const [ranking, setRanking] = useState(false);
     const [setting, setSetting] = useState(false);
 
@@ -40,8 +42,14 @@ const Game = () => {
     };
 
     useEffect(() => {
-        dispatch({ type: 'INFO_REQUEST' });
-    }, []);
+        if (user_idx === null)
+            dispatch({
+                type: 'USER_INFO_REQUEST',
+                payload: window.location.search.split('=')[1],
+            });
+    }, [user_idx]);
+
+    const { nickname, image, stage, gauge, gold, exp } = user;
 
     return (
         <GameTemplate>
@@ -49,10 +57,12 @@ const Game = () => {
                 <div className="header_left">
                     <div className="user">
                         <div className="user_wrap">
-                            <div className="user_image"></div>
+                            <div className="user_image">
+                                <img src={image} />
+                            </div>
                             <div className="user_info">
-                                <p className="user_name">{info.userid} </p>
-                                <p className="user_gold">{info.gold}</p>
+                                <p className="user_name">닉네임 : {nickname}</p>
+                                <p className="user_gold">골드 : {gold} </p>
                             </div>
                         </div>
                         <div className="user_progress">
@@ -60,7 +70,7 @@ const Game = () => {
                                 <div>exp</div>
                                 <progress
                                     className="exp_progress"
-                                    value={info.exp}
+                                    value={exp}
                                     max="100"
                                 ></progress>
                             </div>
@@ -68,7 +78,7 @@ const Game = () => {
                     </div>
                     <div className="stage">
                         stage
-                        <div>{info.stage}</div>
+                        <div>{stage}</div>
                     </div>
                 </div>
                 <div className="header_right">
@@ -89,7 +99,7 @@ const Game = () => {
                         <div>
                             <progress
                                 className="gauge_progress"
-                                value="50"
+                                value={gauge}
                                 max="100"
                             ></progress>
                         </div>
