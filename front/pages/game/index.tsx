@@ -6,8 +6,19 @@ import Ranking from '../ranking';
 import Setting from '../setting';
 import Market from '../market';
 
+interface infoType {
+    info: {
+        userid: string;
+        nickname: string;
+        stage: number;
+        gold: number;
+        exp: number;
+    };
+}
+
 const Game = () => {
     const dispatch = useDispatch();
+    const info = useSelector((state: infoType) => state.info);
 
     const user = useSelector((state: any) => state.user);
     const user_idx = useSelector((state: any) => state.user.user_idx);
@@ -65,7 +76,10 @@ const Game = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="stage">stage {stage}</div>
+                    <div className="stage">
+                        stage
+                        <div>{stage}</div>
+                    </div>
                 </div>
                 <div className="header_right">
                     <div className="service">

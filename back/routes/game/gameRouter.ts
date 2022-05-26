@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const userController = require('./gameController');
+const gameController = require('./gameController');
 
-router.post('/user', userController.user);
+router.post('/user', gameController.user);
+router.post('/click', gameController.click);
 
 module.exports = router;

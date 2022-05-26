@@ -7,8 +7,24 @@ interface marketType {
         clickgold: boolean;
         ignoregold: boolean;
         ignoreexp: boolean;
+        market: {
+            stat: {
+                typing: number;
+            };
+        };
     };
 }
+
+interface infoType {
+    info: {
+        userid: string;
+        nickname: string;
+        stage: number;
+        gold: number;
+        exp: number;
+    };
+}
+
 declare global {
     interface Window {
         MyNamespace: any;
@@ -17,6 +33,7 @@ declare global {
 const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
+    const info = useSelector((state: infoType) => state.info);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -29,6 +46,15 @@ const Market = () => {
     const ignoreExp = () => {
         dispatch({ type: 'IGNORE_EXP' });
     };
+
+    const typingUp = () => {
+        dispatch({ type: 'TYPING_UP_REQUEST' });
+    };
+
+    // console.log(checkMarket.market.stat.typing);
+    useEffect(() => {
+        dispatch({ type: 'asdf' });
+    }, []);
 
     const clickHandle = () => {
         return (
@@ -59,9 +85,21 @@ const Market = () => {
                         <div>
                             <img src="./type.png" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <div>클릭당골드증가</div>
+                            <div>
+                                <span>1</span> -&gt; <span>3</span>
+                            </div>
+                        </div>
+                        <div>
+                            <button
+                                className="upbt"
+                                onClick={() => {
+                                    typingUp();
+                                }}
+                            >
+                                강화버튼
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -307,9 +345,18 @@ const Market = () => {
         }
     };
 
+    const Gold_Click = () => {
+        dispatch({ type: 'GOLD_CLICK_REQUEST', payload: info });
+    };
+
     return (
         <Market1>
-            <div className="wrap">
+            <div
+                className="wrap"
+                onClick={() => {
+                    Gold_Click();
+                }}
+            >
                 <div className="item"></div>
                 <div className="content1">{sum()}</div>
                 <div className="footer">
