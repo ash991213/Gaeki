@@ -8,6 +8,13 @@ const initialState = {
     exp: null,
     background_sound: null,
     sound_effect: null,
+    status: {
+        coding: null,
+        hp: null,
+        luck: null,
+        patience: null,
+        typing: null,
+    },
 };
 
 const USER_INFO_REQUEST = 'USER_INFO_REQUEST';
@@ -16,6 +23,18 @@ const USER_INFO_FAILURE = 'USER_INFO_FAILURE';
 const GOLD_CLICK_REQUEST = 'GOLD_CLICK_REQUEST';
 const GOLD_CLICK_SUCCESS = 'GOLD_CLICK_SUCCESS';
 const GOLD_CLICK_FAILURE = 'GOLD_CLICK_FAILURE';
+const EFFECT_BUTTON_REQUEST = 'EFFECT_BUTTON_REQUEST';
+const EFFECT_BUTTON_SUCCESS = 'EFFECT_BUTTON_SUCCESS';
+const EFFECT_BUTTON_FAILURE = 'EFFECT_BUTTON_FAILURE';
+const BACK_BUTTON_REQUEST = 'BACK_BUTTON_REQUEST';
+const BACK_BUTTON_SUCCESS = 'BACK_BUTTON_SUCCESS';
+const BACK_BUTTON_FAILURE = 'BACK_BUTTON_FAILURE';
+const TYPING_UP_REQUEST = 'TYPING_UP_REQUEST';
+const TYPING_UP_SUCCESS = 'TYPING_UP_SUCCESS';
+const TYPING_UP_FAILURE = 'TYPING_UP_FAILURE';
+const STATUS_REQUEST = 'STATUS_REQUEST';
+const STATUS_SUCCESS = 'STATUS_SUCCESS';
+const STATUS_FAILURE = 'STATUS_FAILURE';
 
 interface actionType {
     type: string;
@@ -66,6 +85,69 @@ const user = (state = initialState, action: actionType) => {
                 gold: action.payload.gold,
             };
         case GOLD_CLICK_FAILURE:
+            return {
+                ...state,
+            };
+        case EFFECT_BUTTON_REQUEST:
+            return {
+                ...state,
+            };
+        case EFFECT_BUTTON_SUCCESS:
+            return {
+                ...state,
+                sound_effect: !state.sound_effect,
+            };
+        case EFFECT_BUTTON_FAILURE:
+            return {
+                ...state,
+            };
+        case BACK_BUTTON_REQUEST:
+            return {
+                ...state,
+            };
+        case BACK_BUTTON_SUCCESS:
+            return {
+                ...state,
+                background_sound: !state.background_sound,
+            };
+        case BACK_BUTTON_FAILURE:
+            return {
+                ...state,
+            };
+        case TYPING_UP_REQUEST:
+            return {
+                ...state,
+            };
+        case TYPING_UP_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                status: {
+                    ...state.status,
+                    typing: action.payload.typing,
+                },
+            };
+        case TYPING_UP_FAILURE:
+            return {
+                ...state,
+            };
+        case STATUS_REQUEST:
+            return {
+                ...state,
+            };
+        case STATUS_SUCCESS:
+            const { coding, hp, luck, patience, typing } = action.payload;
+            return {
+                ...state,
+                status: {
+                    coding,
+                    hp,
+                    luck,
+                    patience,
+                    typing,
+                },
+            };
+        case STATUS_FAILURE:
             return {
                 ...state,
             };
