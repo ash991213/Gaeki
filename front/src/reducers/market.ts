@@ -2,12 +2,22 @@ interface marketType {
     clickgold: boolean;
     ignoregold: boolean;
     ignoreexp: boolean;
+    market: {
+        stat: {
+            typing: number;
+        };
+    };
 }
 
 const initialState: marketType = {
     clickgold: false,
     ignoregold: false,
     ignoreexp: false,
+    market: {
+        stat: {
+            typing: 1,
+        },
+    },
 };
 
 const CLICK_GOLD = 'CLICK_GOLD';
@@ -49,6 +59,10 @@ const market = (state: marketType = initialState, action: any) => {
                 ...state,
             };
         case TYPING_UP_FAILURE:
+            return {
+                ...state,
+            };
+        case 'asdf':
             return {
                 ...state,
             };

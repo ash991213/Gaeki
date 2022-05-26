@@ -7,6 +7,11 @@ interface marketType {
         clickgold: boolean;
         ignoregold: boolean;
         ignoreexp: boolean;
+        market: {
+            stat: {
+                typing: number;
+            };
+        };
     };
 }
 
@@ -46,6 +51,11 @@ const Market = () => {
         dispatch({ type: 'TYPING_UP_REQUEST' });
     };
 
+    // console.log(checkMarket.market.stat.typing);
+    useEffect(() => {
+        dispatch({ type: 'asdf' });
+    }, []);
+
     const clickHandle = () => {
         return (
             <div className="content_clickGold">
@@ -75,7 +85,12 @@ const Market = () => {
                         <div>
                             <img src="./type.png" />
                         </div>
-                        <div>획득능력</div>
+                        <div>
+                            <div>클릭당골드증가</div>
+                            <div>
+                                <span>1</span> -&gt; <span>3</span>
+                            </div>
+                        </div>
                         <div>
                             <button
                                 className="upbt"
