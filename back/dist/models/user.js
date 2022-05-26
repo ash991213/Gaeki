@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(16),
             allowNull: true,
         },
+        image: {
+            type: DataTypes.STRING(128),
+            allowNull: true,
+        },
         stage: {
             type: DataTypes.INTEGER,
             allowNull: true,
@@ -126,9 +130,9 @@ module.exports = (sequelize, DataTypes) => {
     // 	gold: 12357,
     // });
     User.associate = (models) => {
-        User.hasOne(models.Status, { foreignKey: 'user_idx', sourceKey: 'id' });
-        User.hasOne(models.Auto_Gold, { foreignKey: 'user_idx', sourceKey: 'id' });
-        User.hasOne(models.Auto_Exp, { foreignKey: 'user_idx', sourceKey: 'id' });
+        User.hasMany(models.Status, { foreignKey: 'user_idx', sourceKey: 'id' });
+        User.hasMany(models.Auto_Gold, { foreignKey: 'user_idx', sourceKey: 'id' });
+        User.hasMany(models.Auto_Exp, { foreignKey: 'user_idx', sourceKey: 'id' });
     };
     return User;
 };
