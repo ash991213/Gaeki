@@ -335,7 +335,7 @@ const Market = () => {
     
     let count = 0;
     // 클릭시 손가락 위치에 이미지 뜸
-    const notification = (e: any) => {
+    const handleClick = (e: any) => {
         console.log('x축:',e.clientX,'-- y축:',e.clientY)
         count++
         const clickX = e.clientX
@@ -368,15 +368,16 @@ const Market = () => {
             useEffect(() => {
                 setTimeout(removeNotication, 1000)
             });
-            return <Notification></Notification>
+            return <PopGifLayer></PopGifLayer>
         }
         root.render(<CallbackAfter />)
         return removeNotication
     } 
       
-    interface NotificationProps {}
-    const Notification: React.FC<NotificationProps> = () => {
+    interface PopGifProps {}
+    const PopGifLayer: React.FC<PopGifProps> = () => {
         return (
+
             <img
             src='./movingPeng.gif'
             style={{
@@ -389,7 +390,7 @@ const Market = () => {
     }
     return (
         <Market1>
-            <div className="wrap" onClick={notification}>
+            <div className="wrap" onClick={handleClick}>
                 <div className="item"></div>
                 <div className="content1">{sum()}</div>
                 <div className="footer">
