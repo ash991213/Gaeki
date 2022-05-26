@@ -13,6 +13,9 @@ const initialState = {
 const USER_INFO_REQUEST = 'USER_INFO_REQUEST';
 const USER_INFO_SUCCESS = 'USER_INFO_SUCCESS';
 const USER_INFO_FAILURE = 'USER_INFO_FAILURE';
+const GOLD_CLICK_REQUEST = 'GOLD_CLICK_REQUEST';
+const GOLD_CLICK_SUCCESS = 'GOLD_CLICK_SUCCESS';
+const GOLD_CLICK_FAILURE = 'GOLD_CLICK_FAILURE';
 
 interface actionType {
     type: string;
@@ -50,6 +53,19 @@ const user = (state = initialState, action: actionType) => {
                 sound_effect,
             };
         case USER_INFO_FAILURE:
+            return {
+                ...state,
+            };
+        case GOLD_CLICK_REQUEST:
+            return {
+                ...state,
+            };
+        case GOLD_CLICK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+            };
+        case GOLD_CLICK_FAILURE:
             return {
                 ...state,
             };

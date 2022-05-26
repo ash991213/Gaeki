@@ -13,13 +13,16 @@ const Setting = ({ closeSetting }: any) => {
     const dispatch = useDispatch();
     const { effectOn } = useSelector((state: settingType) => state.setting);
     const { backOn } = useSelector((state: settingType) => state.setting);
+    const { user_idx, background_sound, sound_effect } = useSelector(
+        (state: any) => state.user
+    );
 
     const effectButton = () => {
-        dispatch({ type: 'EFFECT_BUTTON_REQUEST', userid: 'test', effectOn });
+        dispatch({ type: 'EFFECT_BUTTON_REQUEST', user_idx, effectOn });
     };
 
     const backButton = () => {
-        dispatch({ type: 'BACK_BUTTON_REQUEST', userid: 'test', backOn });
+        dispatch({ type: 'BACK_BUTTON_REQUEST', user_idx, backOn });
     };
 
     return (

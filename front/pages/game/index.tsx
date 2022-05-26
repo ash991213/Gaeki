@@ -18,8 +18,6 @@ interface infoType {
 
 const Game = () => {
     const dispatch = useDispatch();
-    const info = useSelector((state: infoType) => state.info);
-
     const user = useSelector((state: any) => state.user);
     const user_idx = useSelector((state: any) => state.user.user_idx);
     const [ranking, setRanking] = useState(false);
