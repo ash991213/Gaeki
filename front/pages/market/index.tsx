@@ -354,7 +354,7 @@ const Market = () => {
 
         const div = document.createElement("span");
         container.appendChild(div)
-        const removeNotication = () => {
+        const removeGif = () => {
             root.unmount()
             console.log(div.parentNode)
             if (div?.parentNode) {
@@ -366,12 +366,12 @@ const Market = () => {
         
         function CallbackAfter () {
             useEffect(() => {
-                setTimeout(removeNotication, 2000)
+                setTimeout(removeGif, 2000)
             });
             return <PopGifLayer></PopGifLayer>
         }
         root.render(<CallbackAfter />)
-        return removeNotication
+        return removeGif
     } 
       
     interface PopGifProps {}
