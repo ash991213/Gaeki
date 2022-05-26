@@ -366,7 +366,7 @@ const Market = () => {
         
         function CallbackAfter () {
             useEffect(() => {
-                setTimeout(removeNotication, 1000)
+                setTimeout(removeNotication, 2000)
             });
             return <PopGifLayer></PopGifLayer>
         }
