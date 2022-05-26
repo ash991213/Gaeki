@@ -90,6 +90,18 @@ const Market = styled.div`
         & > div {
             width: 33.33333%;
         }
+
+        & > .stat {
+            background: orange;   
+        }  
+
+        & > .gold {
+            background: indigo;
+        }
+        
+        & > .exp {
+            background: purple;
+        }
     }
 `;
 

@@ -294,8 +294,10 @@ const Market = () => {
     const sum = () => {
         if (checkMarket.clickgold === true) {
             return clickHandle();
+            
         } else if (checkMarket.ignoregold === true) {
             return ignoreHandle();
+            
         } else if (checkMarket.ignoreexp === true) {
             return ignoreEx();
         } else {
