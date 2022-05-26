@@ -1,9 +1,5 @@
-interface settingType {
-    effectOn: boolean;
-    backOn: boolean;
-}
-
-const initialState: settingType = {
+const initialState = {
+    user_idx: null,
     effectOn: true,
     backOn: true,
 };
@@ -15,7 +11,7 @@ const BACK_BUTTON_REQUEST = 'BACK_BUTTON_REQUEST';
 const BACK_BUTTON_SUCCESS = 'BACK_BUTTON_SUCCESS';
 const BACK_BUTTON_FAILURE = 'BACK_BUTTON_FAILURE';
 
-const setting = (state: settingType = initialState, action: any) => {
+const setting = (state = initialState, action: any) => {
     switch (action.type) {
         case EFFECT_BUTTON_REQUEST:
             return {
