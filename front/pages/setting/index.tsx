@@ -27,9 +27,9 @@ const Setting = ({ closeSetting }: any) => {
         <Responsive>
             <div className="wrap">
                 <button className="closebt" onClick={() => closeSetting()}>
-                            x
+                    x
                 </button>
-<!--                 <div>
+                <div>
                     <span className="settingHead">설정</span>
                     <div className="imgwrap">
                         <img src="./설정.jpg" />
@@ -38,7 +38,7 @@ const Setting = ({ closeSetting }: any) => {
                         <div className="effectbutton">
                             <div className="text1">효과음</div>
                             <div className="button1" onClick={effectButton}>
-                                {effectOn === true ? (
+                                {sound_effect === true ? (
                                     <img src="./effect.png" />
                                 ) : (
                                     <img src="./back.png" />
@@ -48,35 +48,12 @@ const Setting = ({ closeSetting }: any) => {
                         <div className="backbutton">
                             <div className="text1">배경음</div>
                             <div className="button1" onClick={backButton}>
-                                {backOn === true ? (
+                                {background_sound === true ? (
                                     <img src="./back.png" />
                                 ) : (
                                     <img src="./effect.png" />
                                 )}
-                            </div> -->
-                <div className="img">
-                    <img src="./설정.jpg" />
-                </div>
-                <div className="header">설정</div>
-                <div className="button">
-                    <div className="effectbutton">
-                        <div className="text1">효과음</div>
-                        <div className="button1" onClick={effectButton}>
-                            {sound_effect === true ? (
-                                <img src="./effect.png" />
-                            ) : (
-                                <img src="./back.png" />
-                            )}
-                        </div>
-                    </div>
-                    <div className="backbutton">
-                        <div className="text1">배경음</div>
-                        <div className="button1" onClick={backButton}>
-                            {background_sound === true ? (
-                                <img src="./back.png" />
-                            ) : (
-                                <img src="./effect.png" />
-                            )}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ interface marketType {
     };
 }
 
-let container: null | HTMLDivElement = null
+let container: null | HTMLDivElement = null;
 
 declare global {
     interface Window {
@@ -366,99 +366,91 @@ const Market = () => {
     };
     const marketClickMenu = () => {
         if (checkMarket.clickgold === true) {
-            return "stat alignCenter menuOpacity"
+            return 'stat alignCenter';
         } else {
-            return "stat alignCenter"
+            return 'stat alignCenter';
         }
-    }
+    };
     const marketIgnoreMenu = () => {
         if (checkMarket.ignoregold === true) {
-            return "gold alignCenter menuOpacity"
+            return 'gold alignCenter';
         } else {
-            return "gold alignCenter"
+            return 'gold alignCenter';
         }
-    }
+    };
     const marketIgnoreExpMenu = () => {
         if (checkMarket.ignoreexp === true) {
-            return "exp alignCenter menuOpacity"
+            return 'exp alignCenter';
         } else {
-            return "exp alignCenter"
+            return 'exp alignCenter';
         }
-    }
+    };
 
-    
     let count = 0;
     // 클릭시 손가락 위치에 이미지 뜸
     const handleClick = (e: any) => {
-        console.log('x축:',e.clientX,'-- y축:',e.clientY)
-        count++
-        const clickX = e.clientX
-        const clickY = e.clientY
-        container = document.createElement("span") as HTMLDivElement
-        const nodeName = `lay${count}`
-        container.className=nodeName
-        container.style.position = "absolute"
-        container.style.top=clickY-20+"px"
-        container.style.left=clickX-20+"px"
-        container.style.zIndex='6'
+        count++;
+        const clickX = e.clientX;
+        const clickY = e.clientY;
+        container = document.createElement('span') as HTMLDivElement;
+        const nodeName = `lay${count}`;
+        container.className = nodeName;
+        container.style.position = 'fixed';
+        container.style.top = clickY - 20 + 'px';
+        container.style.left = clickX - 20 + 'px';
+        container.style.zIndex = '5';
 
-        const collection = document.getElementsByClassName("background");
-        console.log(collection[0])
-        collection[0].prepend(container)
+        const collection = document.getElementsByClassName('background');
+        console.log(collection[0]);
+        collection[0].prepend(container);
 
-        const div = document.createElement("span");
-        container.appendChild(div)
+        const div = document.createElement('span');
+        container.appendChild(div);
         const removeGif = () => {
-            root.unmount()
-            console.log(div.parentNode)
+            root.unmount();
             if (div?.parentNode) {
-                div.parentNode.removeChild(div)
+                div.parentNode.removeChild(div);
             }
-        }
-        
+        };
+
         const root = createRoot(div);
-        
-        function CallbackAfter () {
+
+        function CallbackAfter() {
             useEffect(() => {
-                setTimeout(removeGif, 2000)
+                setTimeout(removeGif, 2000);
             });
-            return <PopGifLayer></PopGifLayer>
+            return <PopGifLayer></PopGifLayer>;
         }
-        root.render(<CallbackAfter />)
-        return removeGif
-    } 
-      
+        root.render(<CallbackAfter />);
+        return removeGif;
+    };
+
     interface PopGifProps {}
     const PopGifLayer: React.FC<PopGifProps> = () => {
         return (
-
             <img
-            src='./movingPeng.gif'
-            style={{
-                position:"absolute",
-                display:"block",
-            }}
-            >
-            </img>
-        )
-    }
-    return (
-        <Market1>
-            <div className="wrap" onClick={handleClick}>
-
-    const Gold_Click = () => {
+                src="./movingPeng.gif"
+                style={{
+                    position: 'absolute',
+                    display: 'block',
+                }}
+            ></img>
+        );
+    };
+    const Gold_Click = (e: any) => {
         dispatch({
             type: 'GOLD_CLICK_REQUEST',
             payload: { user, typing: status.typing },
         });
+        handleClick(e);
     };
 
     return (
         <Market1>
             <div
                 className="wrap"
-                onClick={() => {
-                    Gold_Click();
+                onClick={(e) => {
+                    Gold_Click(e);
                 }}
             >
                 <div className="item"></div>
