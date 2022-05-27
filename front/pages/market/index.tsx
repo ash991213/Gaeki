@@ -200,14 +200,17 @@ const Market = () => {
                         <div>
                             <div>초당골드 증가</div>
                             <span>{auto.desk}</span> -&gt;{' '}
-                            <span>{auto.desk * 2}</span>
+                            <span>{auto.desk + 1}</span>
                         </div>
                         <div>
                             <button
-                                className="upbt"
+                                className={
+                                    gold >= auto.desk * 30 ? 'upbt' : 'closeBtn'
+                                }
                                 onClick={() => {
                                     auto_desk();
                                 }}
+                                disabled={gold >= auto.desk * 20 ? false : true}
                             >
                                 강화버튼
                             </button>

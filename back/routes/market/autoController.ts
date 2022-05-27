@@ -11,5 +11,12 @@ exports.auto_Show = async (req: any, res: any) => {
 };
 
 exports.auto_Desk = async (req: any, res: any) => {
-	console.log(req.body, 'd나영?');
+	const { user_idx } = req.body.user;
+	const { desk } = req.body.auto;
+	await Auto_Gold.update({ desk: desk + 1 }, { where: { user_idx } });
+
+	const Desk = await Auto_Gold.findOne({ where: user_idx });
+
+	const result = { desk: Desk.desk };
+	res.json(result);
 };

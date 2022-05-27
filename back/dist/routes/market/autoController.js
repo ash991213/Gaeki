@@ -18,5 +18,10 @@ exports.auto_Show = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     res.json(result);
 });
 exports.auto_Desk = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body, 'd나영?');
+    const { user_idx } = req.body.user;
+    const { desk } = req.body.auto;
+    yield Auto_Gold.update({ desk: desk + 1 }, { where: { user_idx } });
+    const Desk = yield Auto_Gold.findOne({ where: user_idx });
+    const result = { desk: Desk.desk };
+    res.json(result);
 });
