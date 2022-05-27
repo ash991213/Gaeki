@@ -46,7 +46,7 @@ exports.hpDown = async (req: any, res: any) => {
 	const { user_idx, gauge } = req.body;
 	try {
 		if (gauge > 0) {
-			await User.update({ gauge: gauge - 1 }, { where: { id: user_idx } });
+			await User.update({ gauge: gauge - 2 }, { where: { id: user_idx } });
 
 			const user = await User.findOne({
 				where: { id: user_idx },

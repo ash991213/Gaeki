@@ -29,7 +29,7 @@ const Market = () => {
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
     const { user_idx, gold, stage } = useSelector((state: any) => state.user);
-    const { status,auto } = useSelector((state: any) => state.user);
+    const { status, auto } = useSelector((state: any) => state.user);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -53,6 +53,7 @@ const Market = () => {
 
     const auto_desk = () => {
         dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto } });
+    };
 
     const luckUp = () => {
         dispatch({ type: 'LUCK_UP_REQUEST', payload: { user, status } });
@@ -69,8 +70,6 @@ const Market = () => {
     useEffect(() => {
         if (user_idx !== null) {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
-        }
-        if (user_idx !== null) {
             dispatch({ type: 'AUTO_REQUEST', payload: user });
         }
     }, [user_idx]);

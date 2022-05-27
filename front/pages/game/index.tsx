@@ -46,7 +46,7 @@ const Game = () => {
                         gauge: gauge - count,
                     },
                 });
-            }, 1000);
+            }, 60000);
         }
     }, [user_idx]);
 

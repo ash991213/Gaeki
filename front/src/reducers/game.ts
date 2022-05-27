@@ -248,6 +248,7 @@ const user = (state = initialState, action: actionType) => {
                 ...state,
             };
         case AUTO_DESK_SUCCESS:
+            console.log(action.payload);
             return {
                 ...state,
                 auto: { ...state.auto, desk: action.payload.desk },

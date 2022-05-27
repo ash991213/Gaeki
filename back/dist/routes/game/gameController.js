@@ -48,7 +48,7 @@ exports.hpDown = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_idx, gauge } = req.body;
     try {
         if (gauge > 0) {
-            yield User.update({ gauge: gauge - 1 }, { where: { id: user_idx } });
+            yield User.update({ gauge: gauge - 2 }, { where: { id: user_idx } });
             const user = yield User.findOne({
                 where: { id: user_idx },
             });
