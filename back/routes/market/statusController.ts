@@ -1,7 +1,7 @@
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
 
-exports.show = async (req: any, res: any) => {
+exports.status_Show = async (req: any, res: any) => {
 	const { user_idx } = req.body;
 
 	try {
@@ -27,7 +27,10 @@ exports.typing = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ typing: typing + 1 }, { where: { user_idx } });
-		await User.update({ gold: gold - typing * 100 }, { where: { id: user_idx } });
+		await User.update(
+			{ gold: gold - typing * 100 },
+			{ where: { id: user_idx } }
+		);
 
 		const type = await Status.findOne({
 			where: { user_idx },

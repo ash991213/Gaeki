@@ -15,6 +15,15 @@ const initialState = {
         patience: null,
         typing: null,
     },
+    auto: {
+        pc: null,
+        desk: null,
+        chair: null,
+        cheer: null,
+        cook: null,
+        homekeeper: null,
+        vehicle: null,
+    },
 };
 
 const USER_INFO_REQUEST = 'USER_INFO_REQUEST';
@@ -32,6 +41,12 @@ const BACK_BUTTON_FAILURE = 'BACK_BUTTON_FAILURE';
 const STATUS_REQUEST = 'STATUS_REQUEST';
 const STATUS_SUCCESS = 'STATUS_SUCCESS';
 const STATUS_FAILURE = 'STATUS_FAILURE';
+const AUTO_REQUEST = 'AUTO_REQUEST';
+const AUTO_SUCCESS = 'AUTO_SUCCESS';
+const AUTO_FAILURE = 'AUTO_FAILURE';
+const AUTO_DESK_REQUEST = 'AUTO_DESK_REQUEST';
+const AUTO_DESK_SUCCESS = 'AUTO_DESK_SUCCESS';
+const AUTO_DESK_FAILURE = 'AUTO_DESK_FAILURE';
 const TYPING_UP_REQUEST = 'TYPING_UP_REQUEST';
 const TYPING_UP_SUCCESS = 'TYPING_UP_SUCCESS';
 const TYPING_UP_FAILURE = 'TYPING_UP_FAILURE';
@@ -213,6 +228,34 @@ const user = (state = initialState, action: actionType) => {
                     patience: action.payload.patience,
                 },
             };
+        case AUTO_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_SUCCESS:
+            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
+                action.payload;
+            return {
+                ...state,
+                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
+            };
+        case AUTO_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_SUCCESS:
+            return {
+                ...state,
+                auto: { ...state.auto, desk: action.payload.desk },
+            };
+        case AUTO_DESK_FAILURE:
+            return {
+                ...state,
+            };
         case PATIENCE_UP_FAILURE:
             return {
                 ...state,
@@ -248,7 +291,6 @@ const user = (state = initialState, action: actionType) => {
             return {
                 ...state,
             };
-
         default:
             return state;
     }

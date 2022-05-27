@@ -22,7 +22,7 @@ function* typingUp(action: any) {
 }
 
 const statusAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/show', action);
+    return await axios.post('http://localhost:4000/market/status_Show', action);
 };
 
 function* status(action: any) {
@@ -38,6 +38,16 @@ function* status(action: any) {
         });
     }
 }
+
+const autoAPI: any = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/auto_Show', action);
+};
+
+function* auto(action: any) {
+    const result: { data: {} } = yield call(autoAPI, action.payload);
+    try {
+        yield put({
+            type: 'AUTO_SUCCESS',
 
 const hpAPI = async (action: any) => {
     return await axios.post('http://localhost:4000/market/hp', action);
@@ -57,6 +67,16 @@ function* hpUp(action: any) {
     }
 }
 
+const autoDeskAPI: any = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/auto_Desk', action);
+};
+
+function* auto_desk(action: any) {
+    const result: { data: {} } = yield call(autoDeskAPI, action.payload);
+    try {
+        yield put({
+            type: 'AUTO_DESK_SUCCESS',
+
 const luckAPI = async (action: any) => {
     return await axios.post('http://localhost:4000/market/luck', action);
 };
@@ -74,6 +94,7 @@ function* lcukUp(action: any) {
         });
     }
 }
+
 
 const patienceAPI = async (action: any) => {
     return await axios.post('http://localhost:4000/market/patience', action);
@@ -112,10 +133,12 @@ function* codingUp(action: any) {
 }
 
 export default function* market() {
-    yield takeLatest('STATUS_REQUEST', status);
-    yield takeLatest('TYPING_UP_REQUEST', typingUp);
-    yield takeLatest('HP_UP_REQUEST', hpUp);
-    yield takeLatest('LUCK_UP_REQUEST', lcukUp);
-    yield takeLatest('PATIENCE_UP_REQUEST', patienceUp);
-    yield takeLatest('CODING_UP_REQUEST', codingUp);
+  yield takeLatest('STATUS_REQUEST', status);
+  yield takeLatest('TYPING_UP_REQUEST', typingUp);
+  yield takeLatest('AUTO_REQUEST', auto);
+  yield takeLatest('AUTO_DESK_REQUEST', auto_desk);
+  yield takeLatest('HP_UP_REQUEST', hpUp);
+  yield takeLatest('LUCK_UP_REQUEST', lcukUp);
+  yield takeLatest('PATIENCE_UP_REQUEST', patienceUp);
+  yield takeLatest('CODING_UP_REQUEST', codingUp);
 }
