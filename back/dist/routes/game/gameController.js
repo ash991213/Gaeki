@@ -44,3 +44,23 @@ exports.user = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json(result);
     }
 });
+exports.hpDown = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gauge } = req.body;
+    try {
+        if (gauge > 0) {
+            yield User.update({ gauge: gauge - 1 }, { where: { id: user_idx } });
+            const user = yield User.findOne({
+                where: { id: user_idx },
+            });
+            const result = {
+                gauge: user.gauge,
+            };
+            res.json(result);
+        }
+    }
+    catch (e) {
+        console.log(e);
+        const result = null;
+        res.json(result);
+    }
+});

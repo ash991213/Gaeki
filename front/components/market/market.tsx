@@ -44,6 +44,7 @@ const Market = styled.div`
     }
 
     .content_name {
+        height: 20%;
         border-bottom: 1px solid;
         padding: 2.5px 0;
     }

@@ -19,7 +19,6 @@ function* typingUp(action: any) {
             payload: result.data,
         });
     }
-    console.log(result.data);
 }
 
 const statusAPI: any = async (action: any) => {
@@ -40,7 +39,83 @@ function* status(action: any) {
     }
 }
 
+const hpAPI = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/hp', action);
+};
+
+function* hpUp(action: any) {
+    const result: { data: {} } = yield call(hpAPI, action.payload);
+    try {
+        yield put({
+            type: 'HP_UP_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'HP_UP_FAILURE',
+        });
+    }
+}
+
+const luckAPI = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/luck', action);
+};
+
+function* lcukUp(action: any) {
+    const result: { data: {} } = yield call(luckAPI, action.payload);
+    try {
+        yield put({
+            type: 'LUCK_UP_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'LUCK_UP_FAILURE',
+        });
+    }
+}
+
+const patienceAPI = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/patience', action);
+};
+
+function* patienceUp(action: any) {
+    const result: { data: {} } = yield call(patienceAPI, action.payload);
+    try {
+        yield put({
+            type: 'PATIENCE_UP_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'PATIENCE_UP_FAILURE',
+        });
+    }
+}
+
+const codingAPI = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/coding', action);
+};
+
+function* codingUp(action: any) {
+    const result: { data: {} } = yield call(codingAPI, action.payload);
+    try {
+        yield put({
+            type: 'CODING_UP_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'CODING_UP_FAILURE',
+        });
+    }
+}
+
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('TYPING_UP_REQUEST', typingUp);
+    yield takeLatest('HP_UP_REQUEST', hpUp);
+    yield takeLatest('LUCK_UP_REQUEST', lcukUp);
+    yield takeLatest('PATIENCE_UP_REQUEST', patienceUp);
+    yield takeLatest('CODING_UP_REQUEST', codingUp);
 }
