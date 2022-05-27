@@ -14,11 +14,14 @@ var kakaoData = require('../../kakao');
 const axios = require('axios');
 const qs = require('qs');
 exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('인증 시도')
     const kakaoAuthorize = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoData.client_id}&redirect_uri=${kakaoData.redirect_uri}&response_type=code`;
+    console.log('인증받았음?',kakaoAuthorize)
     res.redirect(kakaoAuthorize);
 });
 exports.redirectLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log('리다이렉트 시도')
         const uri = 'https://kauth.kakao.com/oauth/token';
         const body = qs.stringify({
             grant_type: 'authorization_code',
@@ -28,14 +31,18 @@ exports.redirectLogin = (req, res) => __awaiter(void 0, void 0, void 0, function
             code: req.query.code,
         });
         const header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+        console.log('auth 인증확인시도')
         const response = yield axios.post(uri, body, header);
+        console.log('auth 인증확인 결과',response)
         const token = response.data.access_token;
+        console.log('로그인 시도')
         const user = yield axios.get('https://kapi.kakao.com/v2/user/me', {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 Authorization: `Bearer ${token}`,
             },
         });
+        console.log('로그인 결과',user)
         const { nickname, thumbnail_image } = user.data.properties;
         const { email } = user.data.kakao_account;
         let id;
@@ -69,6 +76,6 @@ exports.redirectLogin = (req, res) => __awaiter(void 0, void 0, void 0, function
         res.redirect(`http://localhost:3000/game?id=${id}`);
     }
     catch (error) {
-        console.log(error);
+        console.log('리다이렉트 실패',error);
     }
 });
