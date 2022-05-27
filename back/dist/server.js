@@ -20,10 +20,8 @@ sequelize
     console.log(e);
     console.log('Disconect');
 });
-// app.use(router);
-app.get('/api', (req, res) => {
-    res.send('하이');
-});
+app.use(router);
+
 app.listen(4000, () => {
     console.log('Server ON');
 });
