@@ -69,7 +69,7 @@ exports.redirectLogin = async (req: any, res: any) => {
 			console.log('기존 유저 아이디', id);
 		}
 
-		res.redirect(`http://localhost:3000/game?id=${id}`);
+		res.redirect(`http://15.164.141.28/game?id=${id}`);
 	} catch (error) {
 		console.log(error);
 	}

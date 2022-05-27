@@ -10,5 +10,5 @@ router.use('/game', gameRouter);
 router.use('/setting', SettingRouter);
 router.use('/ranking', RankingRouter);
 router.use('/market', marketRouter);
-router.use('/kakao', LoginRouter);
+router.use('/kakao/', LoginRouter);
 module.exports = router;
