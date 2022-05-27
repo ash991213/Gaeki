@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 const typingUpAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/typing', action);
+    return await axios.post('http://15.164.141.28:81/market/typing', action);
 };
 
 function* typingUp(action: any) {

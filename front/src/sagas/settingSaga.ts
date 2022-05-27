@@ -12,7 +12,7 @@ const EffectAPI = async (action: any) => {
         user_idx,
         sound_effect,
     };
-    return await axios.post('http://localhost:4000/setting/effect', body);
+    return await axios.post('http://15.164.141.28:81/setting/effect', body);
 };
 
 function* effect(action: actionType) {
@@ -35,7 +35,7 @@ const BackAPI = async (action: any) => {
         user_idx,
         background_sound,
     };
-    return await axios.post('http://localhost:4000/setting/back', body);
+    return await axios.post('http://15.164.141.28:81/setting/back', body);
 };
 
 function* back(action: actionType) {

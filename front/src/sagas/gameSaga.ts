@@ -14,7 +14,7 @@ const userAPI = async (action: any) => {
     const body = {
         user_idx: action,
     };
-    return await axios.post('http://localhost:4000/game/user', body);
+    return await axios.post('http://15.164.141.28:81/game/user', body);
 };
 
 function* user(action: actionType) {
@@ -42,7 +42,7 @@ const gold_clickAPI = async (action: any) => {
         user_idx,
         gold,
     };
-    return await axios.post('http://localhost:4000/game/click', body);
+    return await axios.post('http://15.164.141.28:81/game/click', body);
 };
 
 function* gold_click(action: any) {

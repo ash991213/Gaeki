@@ -12,7 +12,7 @@ interface actionType {
 
 const rankAPI = async (action: number) => {
     const body = { num: action };
-    return await axios.post('http://localhost:4000/ranking/list', body);
+    return await axios.post('http://15.164.141.28:81/ranking/list', body);
 };
 
 function* ranking(action: actionType) {
