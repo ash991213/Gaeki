@@ -33,7 +33,10 @@ exports.typing = async (req: any, res: any) => {
 		console.log(gold <= typing * 100);
 		if (gold < typing * 100) throw new Error('골드가 부족합니다.');
 		await Status.update({ typing: typing + 1 }, { where: { user_idx } });
-		await User.update({ gold: gold - typing * 100 }, { where: { id: user_idx } });
+		await User.update(
+			{ gold: gold - typing * 100 },
+			{ where: { id: user_idx } }
+		);
 
 		const type = await Status.findOne({
 			where: { user_idx },
@@ -49,7 +52,7 @@ exports.typing = async (req: any, res: any) => {
 		};
 
 		res.json(result);
-	} catch (e: any) {
+	} catch (e) {
 		let response = {
 			errno: 1,
 		};
