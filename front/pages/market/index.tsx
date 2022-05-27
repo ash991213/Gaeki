@@ -28,8 +28,8 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const { user_idx, gold } = useSelector((state: any) => state.user);
-    const { status, auto } = useSelector((state: any) => state.user);
+    const { user_idx, gold, stage } = useSelector((state: any) => state.user);
+    const { status,auto } = useSelector((state: any) => state.user);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -43,12 +43,27 @@ const Market = () => {
         dispatch({ type: 'IGNORE_EXP' });
     };
 
+    const hpUp = () => {
+        dispatch({ type: 'HP_UP_REQUEST', payload: { user, status } });
+    };
+
     const typingUp = () => {
         dispatch({ type: 'TYPING_UP_REQUEST', payload: { user, status } });
     };
 
     const auto_desk = () => {
         dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto } });
+
+    const luckUp = () => {
+        dispatch({ type: 'LUCK_UP_REQUEST', payload: { user, status } });
+    };
+
+    const codingUp = () => {
+        dispatch({ type: 'CODING_UP_REQUEST', payload: { user, status } });
+    };
+
+    const patienceUp = () => {
+        dispatch({ type: 'PATIENCE_UP_REQUEST', payload: { user, status } });
     };
 
     useEffect(() => {
@@ -74,12 +89,27 @@ const Market = () => {
                             <img src="./hp.png" />
                         </div>
                         <div>
-                            <div>체력 증가</div>
+                            <div>피로도 맥스치 증가</div>
                             <span>{status.hp}</span> -&gt;{' '}
-                            <span>{status.hp * 3}</span>
+                            <span>{status.hp + 0.1}</span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={
+                                    gold >= status.hp * 100
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    hpUp();
+                                }}
+                                disabled={
+                                    gold >= status.hp * 100 ? false : true
+                                }
+                            >
+                                강화버튼 <br />
+                                {status.hp * 100}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -133,30 +163,25 @@ const Market = () => {
                         <div>
                             <div>행운 증가</div>
                             <span>{status.luck}</span> -&gt;{' '}
-                            <span>{status.luck * 3}</span>
+                            <span>{status.luck + 1}</span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="content_name">
-                    <div className="content_up">
-                        <div>인내력</div>
-                        <div>레벨</div>
-                        <div>추가</div>
-                    </div>
-                    <div className="content_down">
-                        <div>
-                            <img src="./patience.png" />
-                        </div>
-                        <div>
-                            <div>획득 경험치 증가</div>
-                            <span>{status.patience}</span> -&gt;{' '}
-                            <span>{status.patience * 3}</span>
-                        </div>
-                        <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={
+                                    gold >= status.luck * 100
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    luckUp();
+                                }}
+                                disabled={
+                                    gold >= status.luck * 100 ? false : true
+                                }
+                            >
+                                강화버튼 <br />
+                                {status.luck * 100}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -173,10 +198,69 @@ const Market = () => {
                         <div>
                             <div>버그 수정률 증가</div>
                             <span>{status.coding}</span> -&gt;{' '}
-                            <span>{status.coding * 3}</span>
+                            <span>{status.coding + 1}</span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={
+                                    gold >= status.coding * 100
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    codingUp();
+                                }}
+                                disabled={
+                                    gold >= status.coding * 100 ? false : true
+                                }
+                            >
+                                강화버튼 <br />
+                                {status.coding * 100}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="content_name">
+                    <div className="content_up">
+                        <div>인내력</div>
+                        <div>레벨</div>
+                        <div>추가</div>
+                    </div>
+                    <div className="content_down">
+                        <div>
+                            <img src="./patience.png" />
+                        </div>
+                        <div>
+                            <div>획득 경험치 증가</div>
+                            <span>{status.patience}</span> -&gt;{' '}
+                            <span>{status.patience + 1}</span>
+                        </div>
+                        <div>
+                            {stage >= 3 ? (
+                                <button
+                                    className={
+                                        gold >= status.patience * 100
+                                            ? 'upbt'
+                                            : 'closeBtn'
+                                    }
+                                    onClick={() => {
+                                        patienceUp();
+                                    }}
+                                    disabled={
+                                        gold >= status.patience * 100
+                                            ? false
+                                            : true
+                                    }
+                                >
+                                    강화버튼 <br />
+                                    {status.patience * 100}
+                                </button>
+                            ) : (
+                                <button className="closeBtn" disabled={true}>
+                                    3 스테이지 <br />
+                                    오픈
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -444,7 +528,6 @@ const Market = () => {
     };
 
     let count = 0;
-    // 클릭시 손가락 위치에 이미지 뜸
     const handleClick = (e: any) => {
         count++;
         const clickX = e.clientX;
@@ -458,7 +541,6 @@ const Market = () => {
         container.style.zIndex = '5';
 
         const collection = document.getElementsByClassName('background');
-        // console.log(collection[0]);
         collection[0].prepend(container);
 
         const div = document.createElement('span');

@@ -59,7 +59,29 @@ function* gold_click(action: any) {
     }
 }
 
+const hpDownAPI = async (action: any) => {
+    return await axios.post(
+        'http://localhost:4000/game/hpDown',
+        action.payload
+    );
+};
+
+function* hpDown(action: any) {
+    const result: { data: {} } = yield call(hpDownAPI, action);
+    try {
+        yield put({
+            type: 'HP_DOWN_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'HP_DOWN_FAILURE',
+        });
+    }
+}
+
 export default function* watchRanking() {
     yield takeLatest('USER_INFO_REQUEST', user);
     yield takeLatest('GOLD_CLICK_REQUEST', gold_click);
+    yield takeLatest('HP_DOWN_REQUEST', hpDown);
 }

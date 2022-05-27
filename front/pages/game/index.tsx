@@ -6,16 +6,6 @@ import Ranking from '../ranking';
 import Setting from '../setting';
 import Market from '../market';
 
-interface infoType {
-    info: {
-        userid: string;
-        nickname: string;
-        stage: number;
-        gold: number;
-        exp: number;
-    };
-}
-
 const Game = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user);
@@ -40,11 +30,24 @@ const Game = () => {
     };
 
     useEffect(() => {
-        if (user_idx === null)
+        if (user_idx === null) {
             dispatch({
                 type: 'USER_INFO_REQUEST',
                 payload: window.location.search.split('=')[1],
             });
+        } else {
+            let count = 0;
+            setInterval(() => {
+                count++;
+                dispatch({
+                    type: 'HP_DOWN_REQUEST',
+                    payload: {
+                        user_idx,
+                        gauge: gauge - count,
+                    },
+                });
+            }, 1000);
+        }
     }, [user_idx]);
 
     const { nickname, image, stage, gauge, gold, exp } = user;
@@ -134,15 +137,11 @@ const Game = () => {
                 </div>
             </div>
             <div className="footer">
-                <div className="stat">
-                    {/* <img src="./설정.jpg" /> */}
-                </div>
+                <div className="stat">{/* <img src="./설정.jpg" /> */}</div>
                 <div className="auto_gold">
                     {/* <img src="./설정.jpg" /> */}
                 </div>
-                <div className="auto_exp">
-                    {/* <img src="./설정.jpg" /> */}
-                </div>
+                <div className="auto_exp">{/* <img src="./설정.jpg" /> */}</div>
             </div>
             {ranking ? <Ranking closeRanking={closeRanking} /> : null}
             {setting ? <Setting closeSetting={closeSetting} /> : null}
