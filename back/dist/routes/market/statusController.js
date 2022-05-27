@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
-exports.show = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.status_Show = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_idx } = req.body;
     try {
         const status = yield Status.findOne({

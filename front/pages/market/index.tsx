@@ -29,7 +29,7 @@ const Market = () => {
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
     const { user_idx, gold } = useSelector((state: any) => state.user);
-    const { status } = useSelector((state: any) => state.user);
+    const { status, auto } = useSelector((state: any) => state.user);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -50,6 +50,9 @@ const Market = () => {
     useEffect(() => {
         if (user_idx !== null) {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
+        }
+        if (user_idx !== null) {
+            dispatch({ type: 'AUTO_REQUEST', payload: user });
         }
     }, [user_idx]);
 
@@ -190,7 +193,11 @@ const Market = () => {
                         <div>
                             <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
+                        <div>
+                            <div>초당골드 증가</div>
+                            <span>{auto.desk}</span> -&gt;{' '}
+                            <span>{auto.desk * 2}</span>
+                        </div>
                         <div>
                             <button className="upbt">강화버튼</button>
                         </div>
@@ -206,7 +213,11 @@ const Market = () => {
                         <div>
                             <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
+                        <div>
+                            <div>초당골드 증가</div>
+                            <span>{auto.chair}</span> -&gt;{' '}
+                            <span>{auto.chair * 2}</span>
+                        </div>
                         <div>
                             <button className="upbt">강화버튼</button>
                         </div>
@@ -222,7 +233,11 @@ const Market = () => {
                         <div>
                             <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
+                        <div>
+                            <div>초당골드 증가</div>
+                            <span>{auto.pc}</span> -&gt;{' '}
+                            <span>{auto.pc * 2}</span>
+                        </div>
                         <div>
                             <button className="upbt">강화버튼</button>
                         </div>
@@ -230,7 +245,7 @@ const Market = () => {
                 </div>
                 <div className="content_name">
                     <div className="content_up">
-                        <div>펫</div>
+                        <div>요리사</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
@@ -238,7 +253,11 @@ const Market = () => {
                         <div>
                             <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
+                        <div>
+                            <div>초당골드 증가</div>
+                            <span>{auto.cook}</span> -&gt;{' '}
+                            <span>{auto.cook * 2}</span>
+                        </div>
                         <div>
                             <button className="upbt">강화버튼</button>
                         </div>
@@ -246,7 +265,7 @@ const Market = () => {
                 </div>
                 <div className="content_name">
                     <div className="content_up">
-                        <div>알바생</div>
+                        <div>홈키퍼</div>
                         <div>레벨</div>
                         <div>추가</div>
                     </div>
@@ -254,7 +273,31 @@ const Market = () => {
                         <div>
                             <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
+                        <div>
+                            <div>초당골드 증가</div>
+                            <span>{auto.homekeeper}</span> -&gt;{' '}
+                            <span>{auto.homekeeper * 2}</span>
+                        </div>
+                        <div>
+                            <button className="upbt">강화버튼</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="content_name">
+                    <div className="content_up">
+                        <div>탈것</div>
+                        <div>레벨</div>
+                        <div>추가</div>
+                    </div>
+                    <div className="content_down">
+                        <div>
+                            <img src="./loading.gif" />
+                        </div>
+                        <div>
+                            <div>초당골드 증가</div>
+                            <span>{auto.vehicle}</span> -&gt;{' '}
+                            <span>{auto.vehicle * 2}</span>
+                        </div>
                         <div>
                             <button className="upbt">강화버튼</button>
                         </div>
@@ -401,7 +444,7 @@ const Market = () => {
         container.style.zIndex = '5';
 
         const collection = document.getElementsByClassName('background');
-        console.log(collection[0]);
+        // console.log(collection[0]);
         collection[0].prepend(container);
 
         const div = document.createElement('span');

@@ -1,7 +1,7 @@
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
 
-exports.show = async (req: any, res: any) => {
+exports.status_Show = async (req: any, res: any) => {
 	const { user_idx } = req.body;
 
 	try {
@@ -52,7 +52,7 @@ exports.typing = async (req: any, res: any) => {
 		};
 
 		res.json(result);
-	} catch (e) {
+	} catch (e: any) {
 		let response = {
 			errno: 1,
 		};
