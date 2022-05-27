@@ -48,6 +48,9 @@ const STATUS_FAILURE = 'STATUS_FAILURE';
 const AUTO_REQUEST = 'AUTO_REQUEST';
 const AUTO_SUCCESS = 'AUTO_SUCCESS';
 const AUTO_FAILURE = 'AUTO_FAILURE';
+const AUTO_DESK_REQUEST = 'AUTO_DESK_REQUEST';
+const AUTO_DESK_SUCCESS = 'AUTO_DESK_SUCCESS';
+const AUTO_DESK_FAILURE = 'AUTO_DESK_FAILURE';
 
 interface actionType {
     type: string;
@@ -177,6 +180,18 @@ const user = (state = initialState, action: actionType) => {
                 auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
             };
         case AUTO_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_SUCCESS:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_FAILURE:
             return {
                 ...state,
             };

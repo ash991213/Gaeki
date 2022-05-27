@@ -9,3 +9,7 @@ exports.auto_Show = async (req: any, res: any) => {
 	const result = { pc, desk, chair, cheer, cook, homekeeper, vehicle };
 	res.json(result);
 };
+
+exports.auto_Desk = async (req: any, res: any) => {
+	console.log(req.body, 'd나영?');
+};

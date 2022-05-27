@@ -7,5 +7,6 @@ router.post('/status_Show', statusController.status_Show); // 클릭당 골드 1
 router.post('/typing', statusController.typing); // 강화버튼 클릭
 
 router.post('/auto_Show', autoController.auto_Show);
+router.post('/auto_Desk', autoController.auto_Desk);
 
 module.exports = router;

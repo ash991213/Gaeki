@@ -47,6 +47,10 @@ const Market = () => {
         dispatch({ type: 'TYPING_UP_REQUEST', payload: { user, status } });
     };
 
+    const auto_desk = () => {
+        dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto } });
+    };
+
     useEffect(() => {
         if (user_idx !== null) {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
@@ -199,7 +203,14 @@ const Market = () => {
                             <span>{auto.desk * 2}</span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className="upbt"
+                                onClick={() => {
+                                    auto_desk();
+                                }}
+                            >
+                                강화버튼
+                            </button>
                         </div>
                     </div>
                 </div>

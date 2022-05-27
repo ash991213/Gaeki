@@ -17,3 +17,6 @@ exports.auto_Show = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const result = { pc, desk, chair, cheer, cook, homekeeper, vehicle };
     res.json(result);
 });
+exports.auto_Desk = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.body, 'd나영?');
+});

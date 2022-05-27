@@ -58,9 +58,27 @@ function* auto(action: any) {
     }
 }
 
+const autoDeskAPI: any = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/auto_Desk', action);
+};
+
+function* auto_desk(action: any) {
+    const result: { data: {} } = yield call(autoDeskAPI, action.payload);
+    try {
+        yield put({
+            type: 'AUTO_DESK_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'AUTO_DESK_FAILURE',
+        });
+    }
+}
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('TYPING_UP_REQUEST', typingUp);
 
     yield takeLatest('AUTO_REQUEST', auto);
+    yield takeLatest('AUTO_DESK_REQUEST', auto_desk);
 }
