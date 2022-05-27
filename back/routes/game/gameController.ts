@@ -41,3 +41,26 @@ exports.user = async (req: any, res: any) => {
 		res.json(result);
 	}
 };
+
+exports.hpDown = async (req: any, res: any) => {
+	const { user_idx, gauge } = req.body;
+	try {
+		if (gauge > 0) {
+			await User.update({ gauge: gauge - 1 }, { where: { id: user_idx } });
+
+			const user = await User.findOne({
+				where: { id: user_idx },
+			});
+
+			const result = {
+				gauge: user.gauge,
+			};
+
+			res.json(result);
+		}
+	} catch (e) {
+		console.log(e);
+		const result = null;
+		res.json(result);
+	}
+};

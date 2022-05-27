@@ -2,7 +2,11 @@ var express = require('express');
 var router = express.Router();
 const statusController = require('./statusController');
 
-router.post('/show', statusController.show); // 클릭당 골드 1 -> 3
-router.post('/typing', statusController.typing); // 강화버튼 클릭
+router.post('/show', statusController.show);
+router.post('/typing', statusController.typing);
+router.post('/hp', statusController.hp);
+router.post('/luck', statusController.luck);
+router.post('/patience', statusController.patience);
+router.post('/coding', statusController.coding);
 
 module.exports = router;
