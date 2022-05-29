@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         patience: {
             type: DataTypes.INTEGER,
-            defaultValue: 0,
+            defaultValue: 100,
             allowNull: false,
         },
         user_idx: {
