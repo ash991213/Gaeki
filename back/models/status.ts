@@ -24,7 +24,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 			},
 			patience: {
 				type: DataTypes.INTEGER,
-				defaultValue: 0,
+				defaultValue: 100,
 				allowNull: false,
 			},
 			user_idx: {

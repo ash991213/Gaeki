@@ -87,34 +87,48 @@ const GameTemplate = styled.div`
                         height: 90%;
                         background: white;
                         position: relative;
-                        font-size: 12px;
+                        font-size: 10px;
                         padding-left: 5%;
                         padding-top: 1%;
                         display: flex;
-                        & > .exp_progress {
+                        & > .progress_gauge {
                             width: 80%;
                             height: 80%;
                             position: relative;
-                            left: 7.5%;
-                            top: 7.5%;
-                        }
-                        & > .exp_progress::-webkit-progress-bar {
-                            background: rgba(0, 0, 0, 0);
-                            border-radius: 10px;
-                        }
-                        & > .exp_progress::-webkit-progress-value {
-                            border-radius: 10px;
-                            background: #1d976c;
-                            background: -webkit-linear-gradient(
-                                to right,
-                                #93f9b9,
-                                #1d976c
-                            );
-                            background: linear-gradient(
-                                to right,
-                                #93f9b9,
-                                #1d976c
-                            );
+                            top: 10%;
+                            right: 3%;
+                            text-align: right;
+                            & > .exp_progress {
+                                width: 90%;
+                                height: 100%;
+                                position: absolute;
+                                left: 7.5%;
+                            }
+                            & > .exp_progress::-webkit-progress-bar {
+                                background: rgba(0, 0, 0, 0);
+                                border-radius: 10px;
+                            }
+                            & > .exp_progress::-webkit-progress-value {
+                                border-radius: 10px;
+                                background: #1d976c;
+                                background: -webkit-linear-gradient(
+                                    to right,
+                                    #93f9b9,
+                                    #1d976c
+                                );
+                                background: linear-gradient(
+                                    to right,
+                                    #93f9b9,
+                                    #1d976c
+                                );
+                            }
+                            & > div {
+                                width: 110%;
+                                height: 100%;
+                                position: absolute;
+                                left: 7.5%;
+                                margin-left: -3%;
+                            }
                         }
                     }
                 }
