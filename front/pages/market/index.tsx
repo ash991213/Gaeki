@@ -315,7 +315,7 @@ const Market = () => {
 
         return (
             <div className="content_ignoreGold">
-                <div className="content_name">
+                <div className="content_name2">
                     <div className="content_up">
                         <div>책상</div>
                         <div>레벨</div>
@@ -353,7 +353,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div className="content_name2">
                     <div className="content_up">
                         <div>의자</div>
                         <div>레벨</div>
@@ -391,7 +391,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div className="content_name2">
                     <div className="content_up">
                         <div>노트북</div>
                         <div>레벨</div>
@@ -425,7 +425,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div className="content_name2">
                     <div className="content_up">
                         <div>요리사</div>
                         <div>레벨</div>
@@ -463,7 +463,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div className="content_name2">
                     <div className="content_up">
                         <div>홈키퍼</div>
                         <div>레벨</div>
@@ -505,7 +505,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div className="content_name2">
                     <div className="content_up">
                         <div>탈것</div>
                         <div>레벨</div>
