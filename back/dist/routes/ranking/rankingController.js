@@ -35,3 +35,35 @@ exports.list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json(result);
     }
 });
+exports.myrank = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, stage } = req.body;
+    try {
+        const user = yield User.findAll({
+            order: [['gold', 'DESC']],
+            where: {
+                stage,
+            },
+        });
+        let rank;
+        for (let i = 0; i < user.length; i++) {
+            if (user[i].id === user_idx) {
+                rank = i + 1;
+            }
+        }
+        const myrank = yield User.findOne({
+            where: {
+                id: user_idx,
+            },
+        });
+        const result = {
+            myrank,
+            rank,
+        };
+        res.json(result);
+    }
+    catch (e) {
+        console.log(e);
+        const result = null;
+        res.json(result);
+    }
+});

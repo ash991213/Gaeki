@@ -48,7 +48,6 @@ const Game = () => {
         if (bug === false && coding !== null) {
             setTimeout(() => {
                 openbug();
-                console.log(coding);
             }, coding);
         }
         if (user_idx === null) {
