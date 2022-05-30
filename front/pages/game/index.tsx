@@ -5,23 +5,16 @@ import GameTemplate from '../../components/game/main/gameMain';
 import Ranking from '../ranking';
 import Setting from '../setting';
 import Market from '../market';
-
-interface infoType {
-    info: {
-        userid: string;
-        nickname: string;
-        stage: number;
-        gold: number;
-        exp: number;
-    };
-}
+import Bug from '../bug';
 
 const Game = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user);
     const user_idx = useSelector((state: any) => state.user.user_idx);
+    const { hp, coding } = useSelector((state: any) => state.user.status);
     const [ranking, setRanking] = useState(false);
     const [setting, setSetting] = useState(false);
+    const [bug, bugSetting] = useState(false);
 
     const openRanking = () => {
         setRanking(true);
@@ -39,13 +32,44 @@ const Game = () => {
         setSetting(false);
     };
 
+    const openbug = () => {
+        bugSetting(true);
+    };
+
+    const closebug = () => {
+        dispatch({
+            type: 'BUG_REQUEST',
+            payload: user,
+        });
+        bugSetting(false);
+    };
+
     useEffect(() => {
-        if (user_idx === null)
+        if (bug === false && coding !== null) {
+            setTimeout(() => {
+                openbug();
+                console.log(coding);
+            }, coding);
+        }
+        if (user_idx === null) {
             dispatch({
                 type: 'USER_INFO_REQUEST',
                 payload: window.location.search.split('=')[1],
             });
-    }, [user_idx]);
+        } else {
+            let count = 0;
+            setInterval(() => {
+                count++;
+                dispatch({
+                    type: 'HP_DOWN_REQUEST',
+                    payload: {
+                        user_idx,
+                        gauge: gauge - count,
+                    },
+                });
+            }, 60000);
+        }
+    }, [user_idx, bug, coding]);
 
     const { nickname, image, stage, gauge, gold, exp } = user;
 
@@ -66,11 +90,14 @@ const Game = () => {
                         <div className="user_progress">
                             <div className="user_exp">
                                 <div>exp</div>
-                                <progress
-                                    className="exp_progress"
-                                    value={exp}
-                                    max="100"
-                                ></progress>
+                                <div className="progress_gauge">
+                                    <div>{(exp / 1000).toFixed(2)}%</div>
+                                    <progress
+                                        className="exp_progress"
+                                        value={exp}
+                                        max="100000"
+                                    ></progress>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,12 +120,12 @@ const Game = () => {
             <div className="content">
                 <div className="background">
                     <div className="user_gauge">
-                        <div>피로도</div>
+                        <div>피로도 : {gauge}</div>
                         <div>
                             <progress
                                 className="gauge_progress"
-                                value={gauge}
-                                max="100"
+                                value={gauge + hp}
+                                max={100 + hp}
                             ></progress>
                         </div>
                     </div>
@@ -134,18 +161,15 @@ const Game = () => {
                 </div>
             </div>
             <div className="footer">
-                <div className="stat">
-                    {/* <img src="./설정.jpg" /> */}
-                </div>
+                <div className="stat">{/* <img src="./설정.jpg" /> */}</div>
                 <div className="auto_gold">
                     {/* <img src="./설정.jpg" /> */}
                 </div>
-                <div className="auto_exp">
-                    {/* <img src="./설정.jpg" /> */}
-                </div>
+                <div className="auto_exp">{/* <img src="./설정.jpg" /> */}</div>
             </div>
             {ranking ? <Ranking closeRanking={closeRanking} /> : null}
             {setting ? <Setting closeSetting={closeSetting} /> : null}
+            {bug ? <Bug closebug={closebug} /> : null}
             <Market />
         </GameTemplate>
     );
