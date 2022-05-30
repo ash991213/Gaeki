@@ -747,6 +747,11 @@ const Market = () => {
                     user,
                 },
             });
+            const audio = new Audio('클릭.mp3');
+            if (sound_effect === true) {
+                audio.volume = 0.5;
+                audio.play();
+            }
         }
         handleClick(e);
     };
