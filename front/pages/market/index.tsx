@@ -28,8 +28,11 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
+    const [Auto, setAuto] = useState(false);
 
-    const { user_idx, gold, stage, status, auto } = useSelector((state: any) => state.user);
+    const { user_idx, gold, stage, status, auto } = useSelector(
+        (state: any) => state.user
+    );
     const { desk } = useSelector((state: any) => state.user.auto);
 
     const clickGold = () => {
@@ -74,14 +77,18 @@ const Market = () => {
             dispatch({ type: 'AUTO_REQUEST', payload: user });
         }
         if (desk !== null) {
-            setTimeout(() => {
+            if (Auto === false) {
+                setAuto(true);
                 dispatch({
                     type: 'AUTO_GOLD_REQUEST',
                     payload: { auto, user },
                 });
-            }, 5000);
+                setTimeout(() => {
+                    setAuto(false);
+                }, 10000);
+            }
         }
-    }, [user_idx, desk, gold]);
+    }, [user_idx, desk, Auto]);
 
     const clickHandle = () => {
         return (

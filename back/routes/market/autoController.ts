@@ -5,9 +5,19 @@ exports.auto_Gold = async (req: any, res: any) => {
 	const { user_idx, gold, auto } = req.body.user;
 	const { chair, cheer, cook, desk, homekeeper, pc, vehicle } = auto;
 
-	// setInterval(async () => {
-	await User.update({ gold: gold + 1 }, { where: { id: user_idx } });
-	// }, 1000);
+	await User.update(
+		{
+			gold:
+				gold +
+				desk * 10 +
+				chair * 50 +
+				pc * 250 +
+				cook * 1250 +
+				homekeeper * 6250 +
+				vehicle * 31250,
+		},
+		{ where: { id: user_idx } }
+	);
 
 	const now = await User.findOne({ where: { id: user_idx } });
 	const currentGold = now.gold;
