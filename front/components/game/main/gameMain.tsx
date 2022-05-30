@@ -204,35 +204,35 @@ const GameTemplate = styled.div`
                 & > .pet_cat {
                     width: 10%;
                     height: 10%;
-                    background: blue;
                     position: relative;
                     left: 60%;
                     z-index: 2;
+                    object-fit: scale-down;
                 }
                 & > .pet_dog {
                     width: 10%;
                     height: 10%;
-                    background: gray;
                     position: relative;
                     top: -10%;
                     left: 30%;
                     z-index: 2;
+                    object-fit: cover;
                 }
                 & > .pet_bird {
                     width: 10%;
                     height: 10%;
-                    background: purple;
                     position: relative;
                     top: 5%;
                     left: 20%;
+                    object-fit: cover;
                 }
                 & > .pet_fish {
                     width: 10%;
                     height: 10%;
-                    background: green;
                     position: relative;
                     top: 10%;
                     left: 10%;
+                    object-fit: fill;
                 }
                 & > .cheer {
                     width: 30%;
