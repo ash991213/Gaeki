@@ -76,6 +76,21 @@ const AUTO_FAILURE = 'AUTO_FAILURE';
 const AUTO_DESK_REQUEST = 'AUTO_DESK_REQUEST';
 const AUTO_DESK_SUCCESS = 'AUTO_DESK_SUCCESS';
 const AUTO_DESK_FAILURE = 'AUTO_DESK_FAILURE';
+const AUTO_CHAIR_REQUEST = 'AUTO_CHAIR_REQUEST';
+const AUTO_CHAIR_SUCCESS = 'AUTO_CHAIR_SUCCESS';
+const AUTO_CHAIR_FAILURE = 'AUTO_CHAIR_FAILURE';
+const AUTO_PC_REQUEST = 'AUTO_PC_REQUEST';
+const AUTO_PC_SUCCESS = 'AUTO_PC_SUCCESS';
+const AUTO_PC_FAILURE = 'AUTO_PC_FAILURE';
+const AUTO_COOK_REQUEST = 'AUTO_COOK_REQUEST';
+const AUTO_COOK_SUCCESS = 'AUTO_COOK_SUCCESS';
+const AUTO_COOK_FAILURE = 'AUTO_COOK_FAILURE';
+const AUTO_HOMEKEEPER_REQUEST = 'AUTO_HOMEKEEPER_REQUEST';
+const AUTO_HOMEKEEPER_SUCCESS = 'AUTO_HOMEKEEPER_SUCCESS';
+const AUTO_HOMEKEEPER_FAILURE = 'AUTO_HOMEKEEPER_FAILURE';
+const AUTO_VEHICLE_REQUEST = 'AUTO_VEHICLE_REQUEST';
+const AUTO_VEHICLE_SUCCESS = 'AUTO_VEHICLE_SUCCESS';
+const AUTO_VEHICLE_FAILURE = 'AUTO_VEHICLE_FAILURE';
 
 interface actionType {
     type: string;
@@ -274,48 +289,6 @@ const user = (state = initialState, action: actionType) => {
             return {
                 ...state,
             };
-        case AUTO_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_SUCCESS:
-            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
-                action.payload;
-            return {
-                ...state,
-                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
-            };
-        case AUTO_FAILURE:
-            return {
-                ...state,
-            };
-        case AUTO_DESK_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_DESK_SUCCESS:
-            return {
-                ...state,
-                gold: action.payload.gold,
-                auto: { ...state.auto, desk: action.payload.desk },
-            };
-        case AUTO_DESK_FAILURE:
-            return {
-                ...state,
-            };
-        case AUTO_GOLD_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_GOLD_SUCCESS:
-            return {
-                ...state,
-                gold: action.payload.gold,
-            };
-        case AUTO_GOLD_FAILURE:
-            return {
-                ...state,
-            };
         case GOLDEXP_CLICK_REQUEST:
             return {
                 ...state,
@@ -342,6 +315,118 @@ const user = (state = initialState, action: actionType) => {
                 gauge: action.payload.gauge,
             };
         case BUG_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_SUCCESS:
+            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
+                action.payload;
+            return {
+                ...state,
+                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
+            };
+        case AUTO_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_GOLD_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_GOLD_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+            };
+        case AUTO_GOLD_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, desk: action.payload.desk },
+            };
+        case AUTO_DESK_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_CHAIR_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_CHAIR_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, chair: action.payload.chair },
+            };
+        case AUTO_CHAIR_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_PC_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_PC_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, pc: action.payload.pc },
+            };
+        case AUTO_PC_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_COOK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_COOK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, cook: action.payload.cook },
+            };
+        case AUTO_COOK_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_HOMEKEEPER_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_HOMEKEEPER_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, homekeeper: action.payload.homekeeper },
+            };
+        case AUTO_HOMEKEEPER_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_VEHICLE_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_VEHICLE_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, vehicle: action.payload.vehicle },
+            };
+        case AUTO_VEHICLE_FAILURE:
             return {
                 ...state,
             };

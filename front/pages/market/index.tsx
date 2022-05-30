@@ -55,10 +55,6 @@ const Market = () => {
         dispatch({ type: 'TYPING_UP_REQUEST', payload: { user, status } });
     };
 
-    const auto_desk = () => {
-        dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto, gold } });
-    };
-
     const luckUp = () => {
         dispatch({ type: 'LUCK_UP_REQUEST', payload: { user, status } });
     };
@@ -69,6 +65,31 @@ const Market = () => {
 
     const patienceUp = () => {
         dispatch({ type: 'PATIENCE_UP_REQUEST', payload: { user, status } });
+    };
+
+    const auto_desk = () => {
+        dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto, gold } });
+    };
+    const auto_chair = () => {
+        dispatch({ type: 'AUTO_CHAIR_REQUEST', payload: { user, auto, gold } });
+    };
+    const auto_pc = () => {
+        dispatch({ type: 'AUTO_PC_REQUEST', payload: { user, auto, gold } });
+    };
+    const auto_cook = () => {
+        dispatch({ type: 'AUTO_COOK_REQUEST', payload: { user, auto, gold } });
+    };
+    const auto_homekeeper = () => {
+        dispatch({
+            type: 'AUTO_HOMEKEEPER_REQUEST',
+            payload: { user, auto, gold },
+        });
+    };
+    const auto_vehicle = () => {
+        dispatch({
+            type: 'AUTO_VEHICLE_REQUEST',
+            payload: { user, auto, gold },
+        });
     };
 
     useEffect(() => {
@@ -285,6 +306,13 @@ const Market = () => {
         );
     };
     const ignoreHandle = () => {
+        const classNameOn = (asdf: any, qwer: any) => {
+            let Btn;
+            if (gold >= (asdf + 1) * qwer) Btn = 'upbt';
+            else Btn = 'closeBtn';
+            return Btn;
+        };
+
         return (
             <div className="content_ignoreGold">
                 <div className="content_name">
@@ -311,11 +339,7 @@ const Market = () => {
                         </div>
                         <div>
                             <button
-                                className={
-                                    gold >= auto.desk * 300
-                                        ? 'upbt'
-                                        : 'closeBtn'
-                                }
+                                className={classNameOn(auto.desk, 300)}
                                 onClick={() => {
                                     auto_desk();
                                 }}
@@ -340,12 +364,30 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>초당골드 증가</div>
-                            <span>{auto.chair}</span> -&gt;{' '}
-                            <span>{auto.chair * 2}</span>
+                            <div>10초당골드 증가</div>
+                            <span>
+                                {auto.chair == 0 ? 0 : auto.chair * 50}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.chair == 0
+                                    ? auto.chair + 50
+                                    : auto.chair * 50 + 50}
+                            </span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={classNameOn(auto.chair, 1500)}
+                                onClick={() => {
+                                    auto_chair();
+                                }}
+                                disabled={
+                                    gold >= auto.chair * 1500 ? false : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto.chair + 1) * 1500}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -360,12 +402,26 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>초당골드 증가</div>
-                            <span>{auto.pc}</span> -&gt;{' '}
-                            <span>{auto.pc * 2}</span>
+                            <div>10초당골드 증가</div>
+                            <span>{auto.pc == 0 ? 0 : auto.pc * 250}</span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.pc == 0
+                                    ? auto.pc + 250
+                                    : auto.pc * 250 + 250}
+                            </span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={classNameOn(auto.pc, 7500)}
+                                onClick={() => {
+                                    auto_pc();
+                                }}
+                                disabled={gold >= auto.pc * 7500 ? false : true}
+                            >
+                                강화버튼
+                                <div>{(auto.pc + 1) * 7500}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -380,12 +436,30 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>초당골드 증가</div>
-                            <span>{auto.cook}</span> -&gt;{' '}
-                            <span>{auto.cook * 2}</span>
+                            <div>10초당골드 증가</div>
+                            <span>
+                                {auto.cook == 0 ? 0 : auto.cook * 1250}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.cook == 0
+                                    ? auto.cook + 1250
+                                    : auto.cook * 1250 + 1250}
+                            </span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={classNameOn(auto.cook, 37500)}
+                                onClick={() => {
+                                    auto_cook();
+                                }}
+                                disabled={
+                                    gold >= auto.cook * 37500 ? false : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto.cook + 1) * 37500}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -400,12 +474,34 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>초당골드 증가</div>
-                            <span>{auto.homekeeper}</span> -&gt;{' '}
-                            <span>{auto.homekeeper * 2}</span>
+                            <div>10초당골드 증가</div>
+                            <span>
+                                {auto.homekeeper == 0
+                                    ? 0
+                                    : auto.homekeeper * 6250}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.homekeeper == 0
+                                    ? auto.homekeeper + 6250
+                                    : auto.homekeeper * 6250 + 6250}
+                            </span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={classNameOn(auto.homekeeper, 187500)}
+                                onClick={() => {
+                                    auto_homekeeper();
+                                }}
+                                disabled={
+                                    gold >= auto.homekeeper * 187500
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto.homekeeper + 1) * 187500}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -420,12 +516,30 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>초당골드 증가</div>
-                            <span>{auto.vehicle}</span> -&gt;{' '}
-                            <span>{auto.vehicle * 2}</span>
+                            <div>10초당골드 증가</div>
+                            <span>
+                                {auto.vehicle == 0 ? 0 : auto.vehicle * 31250}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.vehicle == 0
+                                    ? auto.vehicle + 31250
+                                    : auto.vehicle * 31250 + 31250}
+                            </span>
                         </div>
                         <div>
-                            <button className="upbt">강화버튼</button>
+                            <button
+                                className={classNameOn(auto.vehicle, 937500)}
+                                onClick={() => {
+                                    auto_vehicle();
+                                }}
+                                disabled={
+                                    gold >= auto.vehicle * 937500 ? false : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto.vehicle + 1) * 937500}</div>
+                            </button>
                         </div>
                     </div>
                 </div>

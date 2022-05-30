@@ -10,6 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var models = require('../../models');
 var { User, Auto_Gold, Auto_Exp, Status } = models;
+exports.auto_Show = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx } = req.body;
+    const auto = yield Auto_Gold.findOne({ where: { user_idx } });
+    const { pc, desk, chair, cheer, cook, homekeeper, vehicle } = auto;
+    const result = { pc, desk, chair, cheer, cook, homekeeper, vehicle };
+    res.json(result);
+});
 exports.auto_Gold = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_idx, gold, auto } = req.body.user;
     const { chair, cheer, cook, desk, homekeeper, pc, vehicle } = auto;
@@ -26,13 +33,6 @@ exports.auto_Gold = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const currentGold = now.gold;
     res.json({ gold: currentGold });
 });
-exports.auto_Show = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { user_idx } = req.body;
-    const auto = yield Auto_Gold.findOne({ where: { user_idx } });
-    const { pc, desk, chair, cheer, cook, homekeeper, vehicle } = auto;
-    const result = { pc, desk, chair, cheer, cook, homekeeper, vehicle };
-    res.json(result);
-});
 exports.auto_Desk = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_idx, gold } = req.body.user;
     const { desk } = req.body.auto;
@@ -41,5 +41,55 @@ exports.auto_Desk = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const Desk = yield Auto_Gold.findOne({ where: user_idx });
     const currentGold = yield User.findOne({ where: { id: user_idx } });
     const result = { desk: Desk.desk, gold: currentGold.gold };
+    res.json(result);
+});
+exports.auto_Chair = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gold } = req.body.user;
+    const { chair } = req.body.auto;
+    yield Auto_Gold.update({ chair: chair + 1 }, { where: { user_idx } });
+    yield User.update({ gold: gold - chair * 1500 }, { where: { id: user_idx } });
+    const Chair = yield Auto_Gold.findOne({ where: user_idx });
+    const currentGold = yield User.findOne({ where: { id: user_idx } });
+    const result = { chair: Chair.chair, gold: currentGold.gold };
+    res.json(result);
+});
+exports.auto_Pc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gold } = req.body.user;
+    const { pc } = req.body.auto;
+    yield Auto_Gold.update({ pc: pc + 1 }, { where: { user_idx } });
+    yield User.update({ gold: gold - pc * 7500 }, { where: { id: user_idx } });
+    const Pc = yield Auto_Gold.findOne({ where: user_idx });
+    const currentGold = yield User.findOne({ where: { id: user_idx } });
+    const result = { pc: Pc.pc, gold: currentGold.gold };
+    res.json(result);
+});
+exports.auto_Cook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gold } = req.body.user;
+    const { cook } = req.body.auto;
+    yield Auto_Gold.update({ cook: cook + 1 }, { where: { user_idx } });
+    yield User.update({ gold: gold - cook * 37500 }, { where: { id: user_idx } });
+    const Cook = yield Auto_Gold.findOne({ where: user_idx });
+    const currentGold = yield User.findOne({ where: { id: user_idx } });
+    const result = { cook: Cook.cook, gold: currentGold.gold };
+    res.json(result);
+});
+exports.auto_Homekeeper = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gold } = req.body.user;
+    const { homekeeper } = req.body.auto;
+    yield Auto_Gold.update({ homekeeper: homekeeper + 1 }, { where: { user_idx } });
+    yield User.update({ gold: gold - homekeeper * 187500 }, { where: { id: user_idx } });
+    const Homekeeper = yield Auto_Gold.findOne({ where: user_idx });
+    const currentGold = yield User.findOne({ where: { id: user_idx } });
+    const result = { homekeeper: Homekeeper.homekeeper, gold: currentGold.gold };
+    res.json(result);
+});
+exports.auto_Vehicle = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gold } = req.body.user;
+    const { vehicle } = req.body.auto;
+    yield Auto_Gold.update({ vehicle: vehicle + 1 }, { where: { user_idx } });
+    yield User.update({ gold: gold - vehicle * 937500 }, { where: { id: user_idx } });
+    const Vehicle = yield Auto_Gold.findOne({ where: user_idx });
+    const currentGold = yield User.findOne({ where: { id: user_idx } });
+    const result = { vehicle: Vehicle.vehicle, gold: currentGold.gold };
     res.json(result);
 });
