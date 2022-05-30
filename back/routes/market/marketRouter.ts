@@ -11,5 +11,6 @@ router.post('/patience', statusController.patience);
 router.post('/coding', statusController.coding);
 router.post('/auto_Show', autoController.auto_Show);
 router.post('/auto_Desk', autoController.auto_Desk);
+router.post('/auto_Gold', autoController.auto_Gold);
 
 module.exports = router;

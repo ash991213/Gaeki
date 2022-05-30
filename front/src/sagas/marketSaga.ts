@@ -147,6 +147,27 @@ function* codingUp(action: any) {
     }
 }
 
+const autoGoldAPI: any = async (action: any) => {
+    return await axios.post(
+        'http://localhost:4000/market/auto_Gold',
+        action.payload
+    );
+};
+
+function* auto_Gold(action: any) {
+    const result: { data: {} } = yield call(autoGoldAPI, action);
+    try {
+        yield put({
+            type: 'AUTO_GOLD_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'AUTO_GOLD_FAILURE',
+        });
+    }
+}
+
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('TYPING_UP_REQUEST', typingUp);
@@ -156,4 +177,5 @@ export default function* market() {
     yield takeLatest('LUCK_UP_REQUEST', lcukUp);
     yield takeLatest('PATIENCE_UP_REQUEST', patienceUp);
     yield takeLatest('CODING_UP_REQUEST', codingUp);
+    yield takeLatest('AUTO_GOLD_REQUEST', auto_Gold);
 }

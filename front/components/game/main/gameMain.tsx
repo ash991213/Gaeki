@@ -96,10 +96,12 @@ const GameTemplate = styled.div`
                             height: 80%;
                             position: relative;
                             top: 10%;
-                            right: 3%;
+                            right: 2%;
                             text-align: right;
+                            & > div {
+                            }
                             & > .exp_progress {
-                                width: 90%;
+                                width: 75%;
                                 height: 100%;
                                 position: absolute;
                                 left: 7.5%;
@@ -127,7 +129,7 @@ const GameTemplate = styled.div`
                                 height: 100%;
                                 position: absolute;
                                 left: 7.5%;
-                                margin-left: -3%;
+                                margin-left: -2%;
                             }
                         }
                     }
