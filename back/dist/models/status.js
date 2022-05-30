@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     const Status = sequelize.define('Status', {
         coding: {
             type: DataTypes.INTEGER,
-            defaultValue: 1,
+            defaultValue: 120000,
             allowNull: false,
         },
         hp: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         patience: {
             type: DataTypes.INTEGER,
-            defaultValue: 100,
+            defaultValue: 0,
             allowNull: false,
         },
         user_idx: {
