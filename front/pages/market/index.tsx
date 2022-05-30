@@ -326,7 +326,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
+                            <div>10초당골드 증가 [{auto.desk}]</div>
                             <span>
                                 {auto.desk == 0 ? 0 : auto.desk * 10}
                             </span>{' '}
@@ -364,7 +364,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
+                            <div>10초당골드 증가[{auto.chair}]</div>
                             <span>
                                 {auto.chair == 0 ? 0 : auto.chair * 50}
                             </span>{' '}
@@ -402,7 +402,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
+                            <div>10초당골드 증가[{auto.pc}]</div>
                             <span>{auto.pc == 0 ? 0 : auto.pc * 250}</span>{' '}
                             -&gt;{' '}
                             <span>
@@ -436,7 +436,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
+                            <div>10초당골드 증가[{auto.cook}]</div>
                             <span>
                                 {auto.cook == 0 ? 0 : auto.cook * 1250}
                             </span>{' '}
@@ -474,7 +474,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
+                            <div>10초당골드 증가[{auto.homekeeper}]</div>
                             <span>
                                 {auto.homekeeper == 0
                                     ? 0
@@ -516,7 +516,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
+                            <div>10초당골드 증가[{auto.vehicle}]</div>
                             <span>
                                 {auto.vehicle == 0 ? 0 : auto.vehicle * 31250}
                             </span>{' '}
