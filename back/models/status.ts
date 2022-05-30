@@ -4,7 +4,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 		{
 			coding: {
 				type: DataTypes.INTEGER,
-				defaultValue: 1,
+				defaultValue: 120000,
 				allowNull: false,
 			},
 			hp: {
@@ -24,7 +24,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 			},
 			patience: {
 				type: DataTypes.INTEGER,
-				defaultValue: 100,
+				defaultValue: 0,
 				allowNull: false,
 			},
 			user_idx: {

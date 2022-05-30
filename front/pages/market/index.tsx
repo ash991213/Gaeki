@@ -28,11 +28,15 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const [Auto, setAuto] = useState(false);
-
-    const { user_idx, gold, stage, status, auto } = useSelector(
-        (state: any) => state.user
-    );
+    const {
+        user_idx,
+        gold,
+        stage,
+        status,
+        auto,
+        sound_effect,
+    } = useSelector((state: any) => state.user);
+    const [Auto, setAuto] = useState(false);  
     const { desk } = useSelector((state: any) => state.user.auto);
 
     const clickGold = () => {
@@ -127,7 +131,7 @@ const Market = () => {
                         <div>
                             <div>피로도 맥스치 증가</div>
                             <span>{status.hp}</span> -&gt;{' '}
-                            <span>{status.hp + 0.1}</span>
+                            <span>{status.hp + 1}</span>
                         </div>
                         <div>
                             <button
@@ -724,6 +728,11 @@ const Market = () => {
                 type: 'GOLD_CLICK_REQUEST',
                 payload: { user, typing: status.typing, luck: status.luck },
             });
+            const audio = new Audio('클릭.mp3');
+            if (sound_effect === true) {
+                audio.volume = 0.5;
+                audio.play();
+            }
         } else {
             dispatch({
                 type: 'GOLDEXP_CLICK_REQUEST',

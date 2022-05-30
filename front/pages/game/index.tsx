@@ -10,11 +10,19 @@ import Bug from '../bug';
 const Game = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user);
-    const user_idx = useSelector((state: any) => state.user.user_idx);
+    const { user_idx } = useSelector((state: any) => state.user);
+    const { nickname, image, stage, gauge, gold, exp } = user;
     const { hp, coding } = useSelector((state: any) => state.user.status);
+    const { background_sound } = useSelector((state: any) => state.user);
     const [ranking, setRanking] = useState(false);
     const [setting, setSetting] = useState(false);
     const [bug, bugSetting] = useState(false);
+    const [hpdown, setHpdown] = useState(false);
+    const [openBug, setOpenBug] = useState(false);
+    const [musicOn, setMusicOn] = useState(false);
+    const [music]: any = useState(
+        typeof Audio !== 'undefined' && new Audio('배경소리.mp3')
+    );
 
     const openRanking = () => {
         setRanking(true);
@@ -44,33 +52,59 @@ const Game = () => {
         bugSetting(false);
     };
 
-    useEffect(() => {
-        if (bug === false && coding !== null) {
-            setTimeout(() => {
-                openbug();
-            }, coding);
+    const backMusic = () => {
+        if (background_sound === true) {
+            if (musicOn === false) {
+                music.play();
+                music.loop = true;
+                music.volume = 0.5;
+                console.log('노래 on');
+                setMusicOn(true);
+            }
+        } else {
+            if (musicOn === true) {
+                console.log('노래 off');
+                console.log(music);
+                music.volume = 0;
+                setMusicOn(false);
+            }
         }
+    };
+
+    useEffect(() => {
         if (user_idx === null) {
             dispatch({
                 type: 'USER_INFO_REQUEST',
                 payload: window.location.search.split('=')[1],
             });
         } else {
-            let count = 0;
-            setInterval(() => {
-                count++;
-                dispatch({
-                    type: 'HP_DOWN_REQUEST',
-                    payload: {
-                        user_idx,
-                        gauge: gauge - count,
-                    },
-                });
-            }, 60000);
+            if (gauge !== 0) {
+                if (hpdown === false) {
+                    setHpdown(true);
+                    dispatch({
+                        type: 'HP_DOWN_REQUEST',
+                        payload: {
+                            user_idx,
+                            gauge,
+                        },
+                    });
+                    setTimeout(() => {
+                        setHpdown(false);
+                    }, 5000);
+                }
+            }
         }
-    }, [user_idx, bug, coding]);
-
-    const { nickname, image, stage, gauge, gold, exp } = user;
+        if (openBug === false) {
+            if (bug === false && coding !== null) {
+                setOpenBug(true);
+                setTimeout(() => {
+                    openbug();
+                    setOpenBug(false);
+                }, coding);
+            }
+        }
+        backMusic();
+    }, [user_idx, bug, coding, hpdown, openBug, background_sound]);
 
     return (
         <GameTemplate>
@@ -101,7 +135,7 @@ const Game = () => {
                         </div>
                     </div>
                     <div className="stage">
-                        stage
+                        STAGE
                         <div>{stage}</div>
                     </div>
                 </div>
@@ -119,11 +153,13 @@ const Game = () => {
             <div className="content">
                 <div className="background">
                     <div className="user_gauge">
-                        <div>피로도 : {gauge}</div>
+                        <div>
+                            피로도 : {((gauge / (100 + hp)) * 100).toFixed(2)}%
+                        </div>
                         <div>
                             <progress
                                 className="gauge_progress"
-                                value={gauge + hp}
+                                value={gauge}
                                 max={100 + hp}
                             ></progress>
                         </div>
