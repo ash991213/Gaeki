@@ -90,6 +90,32 @@ const Game = () => {
         );
     };
 
+    const part = () => {
+        return (
+            <>
+                <div className="cheer">
+                    <img src={`/알바생/${stage} 스테이지 알바생.gif`} />
+                </div>
+                <div className="cook">
+                    <img src={`/요리사/${stage} 스테이지 요리사.gif`} />
+                </div>
+                <div className="homekeeper">
+                    <img src={`/집사/${stage} 스테이지 집사.gif`} />
+                </div>
+            </>
+        );
+    };
+
+    const vehicle = () => {
+        return (
+            <>
+                <div className="vehicle">
+                    <img src={`/탈것/${stage} 스테이지 탈것.gif`} />
+                </div>
+            </>
+        );
+    };
+
     useEffect(() => {
         if (user_idx === null) {
             dispatch({
@@ -188,18 +214,8 @@ const Game = () => {
                             <img src="loading.gif" />
                         </div>
                         {pet()}
-                        <div className="cheer">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="cook">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="homekeeper">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="vehicle">
-                            <img src="loading.gif" />
-                        </div>
+                        {part()}
+                        {vehicle()}
                     </div>
                 </div>
             </div>

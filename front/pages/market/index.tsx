@@ -28,15 +28,10 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const {
-        user_idx,
-        gold,
-        stage,
-        status,
-        auto,
-        sound_effect,
-    } = useSelector((state: any) => state.user);
-    const [Auto, setAuto] = useState(false);  
+    const { user_idx, gold, stage, status, auto, sound_effect } = useSelector(
+        (state: any) => state.user
+    );
+    const [Auto, setAuto] = useState(false);
     const { desk } = useSelector((state: any) => state.user.auto);
 
     const clickGold = () => {
@@ -110,7 +105,7 @@ const Market = () => {
                 });
                 setTimeout(() => {
                     setAuto(false);
-                }, 10000);
+                }, 3000);
             }
         }
     }, [user_idx, desk, Auto]);
@@ -206,22 +201,28 @@ const Market = () => {
                             <span>{(status.luck / 10 + 0.1).toFixed(1)}%</span>
                         </div>
                         <div>
-                            <button
-                                className={
-                                    gold >= status.luck * 100
-                                        ? 'upbt'
-                                        : 'closeBtn'
-                                }
-                                onClick={() => {
-                                    luckUp();
-                                }}
-                                disabled={
-                                    gold >= status.luck * 100 ? false : true
-                                }
-                            >
-                                강화버튼 <br />
-                                {status.luck * 100}
-                            </button>
+                            {status.luck !== 1000 ? (
+                                <button
+                                    className={
+                                        gold >= status.luck * 100
+                                            ? 'upbt'
+                                            : 'closeBtn'
+                                    }
+                                    onClick={() => {
+                                        luckUp();
+                                    }}
+                                    disabled={
+                                        gold >= status.luck * 100 ? false : true
+                                    }
+                                >
+                                    강화버튼 <br />
+                                    {status.luck * 100}
+                                </button>
+                            ) : (
+                                <button className="closeBtn" disabled={true}>
+                                    Max <br /> Level
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -241,24 +242,30 @@ const Market = () => {
                             <span>{status.coding / 1000 - 1}초</span>
                         </div>
                         <div>
-                            <button
-                                className={
-                                    gold >= (status.coding * 100) / 1000
-                                        ? 'upbt'
-                                        : 'closeBtn'
-                                }
-                                onClick={() => {
-                                    codingUp();
-                                }}
-                                disabled={
-                                    gold >= (status.coding * 100) / 1000
-                                        ? false
-                                        : true
-                                }
-                            >
-                                강화버튼 <br />
-                                {(status.coding * 100) / 1000}
-                            </button>
+                            {status.coding !== 60000 ? (
+                                <button
+                                    className={
+                                        gold >= (120000 - status.coding) * 2.5
+                                            ? 'upbt'
+                                            : 'closeBtn'
+                                    }
+                                    onClick={() => {
+                                        codingUp();
+                                    }}
+                                    disabled={
+                                        gold >= (120000 - status.coding) * 2.5
+                                            ? false
+                                            : true
+                                    }
+                                >
+                                    강화버튼 <br />
+                                    {(120000 - status.coding) * 2.5}
+                                </button>
+                            ) : (
+                                <button className="closeBtn" disabled={true}>
+                                    Max <br /> Level
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>

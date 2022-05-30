@@ -263,7 +263,6 @@ const user = (state = initialState, action: actionType) => {
                 ...state,
             };
         case CODING_UP_SUCCESS:
-            console.log(action.payload);
             return {
                 ...state,
                 gold: action.payload.gold,
