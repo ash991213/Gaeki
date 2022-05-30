@@ -28,8 +28,8 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const { user_idx, gold, stage } = useSelector((state: any) => state.user);
-    const { status, auto } = useSelector((state: any) => state.user);
+
+    const { user_idx, gold, stage, status, auto } = useSelector((state: any) => state.user);
     const { desk } = useSelector((state: any) => state.user.auto);
 
     const clickGold = () => {
@@ -135,7 +135,7 @@ const Market = () => {
                             <div>클릭당 골드증가</div>
                             <div>
                                 <span>{status.typing}</span> -&gt;{' '}
-                                <span>{status.typing * 2}</span>
+                                <span>{status.typing + 1}</span>
                             </div>
                         </div>
                         <div>
@@ -170,8 +170,8 @@ const Market = () => {
                         </div>
                         <div>
                             <div>행운 증가</div>
-                            <span>{status.luck}</span> -&gt;{' '}
-                            <span>{status.luck + 1}</span>
+                            <span>{status.luck / 10}%</span> -&gt;{' '}
+                            <span>{(status.luck / 10 + 0.1).toFixed(1)}%</span>
                         </div>
                         <div>
                             <button
@@ -204,14 +204,14 @@ const Market = () => {
                             <img src="./coding.png" />
                         </div>
                         <div>
-                            <div>버그 수정률 증가</div>
-                            <span>{status.coding}</span> -&gt;{' '}
-                            <span>{status.coding + 1}</span>
+                            <div>버그 발생 시간 감소</div>
+                            <span>{status.coding / 1000}초</span> -&gt;{' '}
+                            <span>{status.coding / 1000 - 1}초</span>
                         </div>
                         <div>
                             <button
                                 className={
-                                    gold >= status.coding * 100
+                                    gold >= (status.coding * 100) / 1000
                                         ? 'upbt'
                                         : 'closeBtn'
                                 }
@@ -219,11 +219,13 @@ const Market = () => {
                                     codingUp();
                                 }}
                                 disabled={
-                                    gold >= status.coding * 100 ? false : true
+                                    gold >= (status.coding * 100) / 1000
+                                        ? false
+                                        : true
                                 }
                             >
                                 강화버튼 <br />
-                                {status.coding * 100}
+                                {(status.coding * 100) / 1000}
                             </button>
                         </div>
                     </div>
@@ -596,10 +598,19 @@ const Market = () => {
         );
     };
     const Gold_Click = (e: any) => {
-        dispatch({
-            type: 'GOLD_CLICK_REQUEST',
-            payload: { user, typing: status.typing },
-        });
+        if (stage < 3) {
+            dispatch({
+                type: 'GOLD_CLICK_REQUEST',
+                payload: { user, typing: status.typing, luck: status.luck },
+            });
+        } else {
+            dispatch({
+                type: 'GOLDEXP_CLICK_REQUEST',
+                payload: {
+                    user,
+                },
+            });
+        }
         handleClick(e);
     };
 

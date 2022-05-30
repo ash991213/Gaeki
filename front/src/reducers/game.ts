@@ -60,6 +60,12 @@ const CODING_UP_FAILURE = 'CODING_UP_SUCCESS';
 const HP_DOWN_REQUEST = 'HP_DOWN_REQUEST';
 const HP_DOWN_SUCCESS = 'HP_DOWN_SUCCESS';
 const HP_DOWN_FAILURE = 'HP_DOWN_FAILURE';
+const GOLDEXP_CLICK_REQUEST = 'GOLDEXP_CLICK_REQUEST';
+const GOLDEXP_CLICK_SUCCESS = 'GOLDEXP_CLICK_SUCCESS';
+const GOLDEXP_CLICK_FAILURE = 'GOLDEXP_CLICK_SUCCESS';
+const BUG_REQUEST = 'BUG_REQUEST';
+const BUG_SUCCESS = 'BUG_SUCCESS';
+const BUG_FAILURE = 'BUG_FAILURE';
 
 const AUTO_GOLD_REQUEST = 'AUTO_GOLD_REQUEST';
 const AUTO_GOLD_SUCCESS = 'AUTO_GOLD_SUCCESS';
@@ -307,6 +313,35 @@ const user = (state = initialState, action: actionType) => {
                 gold: action.payload.gold,
             };
         case AUTO_GOLD_FAILURE:
+            return {
+                ...state,
+            };
+        case GOLDEXP_CLICK_REQUEST:
+            return {
+                ...state,
+            };
+        case GOLDEXP_CLICK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                exp: action.payload.exp,
+                stage: action.payload.stage,
+            };
+        case GOLDEXP_CLICK_FAILURE:
+            return {
+                ...state,
+            };
+        case BUG_REQUEST:
+            return {
+                ...state,
+            };
+        case BUG_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                gauge: action.payload.gauge,
+            };
+        case BUG_FAILURE:
             return {
                 ...state,
             };

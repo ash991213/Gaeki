@@ -34,13 +34,16 @@ function* user(action: actionType) {
 const gold_clickAPI = async (action: any) => {
     const {
         typing,
-        user: { user_idx, gold },
+        luck,
+        user: { user_idx, gold, gauge },
     } = action;
 
     const body = {
         typing,
         user_idx,
         gold,
+        luck,
+        gauge,
     };
     return await axios.post('http://localhost:4000/game/click', body);
 };
@@ -80,8 +83,51 @@ function* hpDown(action: any) {
     }
 }
 
+const gold_exp_clickAPI = async (action: any) => {
+    return await axios.post(
+        'http://localhost:4000/game/gold_exp',
+        action.payload
+    );
+};
+
+function* gold_exp_click(action: any) {
+    const result: { data: {} } = yield call(gold_exp_clickAPI, action);
+    try {
+        yield put({
+            type: 'GOLDEXP_CLICK_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'GOLDEXP_CLICK_FAILURE',
+            payload: result.data,
+        });
+    }
+}
+
+const bugAPI = async (action: any) => {
+    return await axios.post('http://localhost:4000/game/bug', action.payload);
+};
+
+function* bug(action: any) {
+    const result: { data: {} } = yield call(bugAPI, action);
+    try {
+        yield put({
+            type: 'BUG_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'BUG_FAILURE',
+            payload: result.data,
+        });
+    }
+}
+
 export default function* watchRanking() {
     yield takeLatest('USER_INFO_REQUEST', user);
     yield takeLatest('GOLD_CLICK_REQUEST', gold_click);
+    yield takeLatest('GOLDEXP_CLICK_REQUEST', gold_exp_click);
     yield takeLatest('HP_DOWN_REQUEST', hpDown);
+    yield takeLatest('BUG_REQUEST', bug);
 }
