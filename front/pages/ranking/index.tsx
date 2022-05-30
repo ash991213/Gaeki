@@ -18,16 +18,21 @@ const Ranking = ({ closeRanking }: any) => {
     const stageList = useSelector(
         (state: rankingType) => state.ranking.stageList
     );
+    const user = useSelector((state: any) => state.user);
+    const myrank = useSelector((state: any) => state.ranking.myranking);
 
     const [stage, setStage] = useState(1);
 
     useEffect(() => {
         dispatch({ type: 'RANKING_LIST_REQUEST' });
+        dispatch({ type: 'MY_RANKING_REQUEST', payload: user });
     }, []);
 
     interface vType {
         nickname: string;
         gold: number;
+        rank: number;
+        myrank: {};
     }
 
     const usersRank = () => {
@@ -41,6 +46,16 @@ const Ranking = ({ closeRanking }: any) => {
             );
         });
         return users;
+    };
+
+    const myRank = () => {
+        return (
+            <ul className="myRank">
+                <li>{myrank.rank}</li>
+                <li>{myrank.myrank.nickname}</li>
+                <li>{myrank.myrank.gold}</li>
+            </ul>
+        );
     };
 
     const usersStage = () => {
@@ -88,11 +103,7 @@ const Ranking = ({ closeRanking }: any) => {
                         <li>재화</li>
                     </ul>
                     {usersRank()}
-                    <ul className="myRank">
-                        <li>순위권 밖</li>
-                        <li>ㄹㄹㅇㄹㅇㄹㄷㅈ</li>
-                        <li>본인 재화</li>
-                    </ul>
+                    {myrank.rank !== undefined ? myRank() : null}
                 </div>
             </div>
         </RankingTemplate>
