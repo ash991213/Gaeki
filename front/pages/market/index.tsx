@@ -363,9 +363,6 @@ const Market = () => {
                 null;
             }
         }
-<<<<<<< HEAD
-    }; 
-=======
     };
     const marketClickMenu = () => {
         if (checkMarket.clickgold === true) {
@@ -447,7 +444,6 @@ const Market = () => {
         });
         handleClick(e);
     };
->>>>>>> 1475f92ef256b802a0797df97870935a7c15b104
 
     return (
         <Market1>
