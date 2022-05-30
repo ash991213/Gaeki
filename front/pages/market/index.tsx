@@ -36,6 +36,7 @@ const Market = () => {
         auto,
         sound_effect,
     } = useSelector((state: any) => state.user);
+    const { desk } = useSelector((state: any) => state.user.auto);
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -58,7 +59,7 @@ const Market = () => {
     };
 
     const auto_desk = () => {
-        dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto } });
+        dispatch({ type: 'AUTO_DESK_REQUEST', payload: { user, auto, gold } });
     };
 
     const luckUp = () => {
@@ -78,7 +79,15 @@ const Market = () => {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
             dispatch({ type: 'AUTO_REQUEST', payload: user });
         }
-    }, [user_idx]);
+        if (desk !== null) {
+            setTimeout(() => {
+                dispatch({
+                    type: 'AUTO_GOLD_REQUEST',
+                    payload: { auto, user },
+                });
+            }, 5000);
+        }
+    }, [user_idx, desk, gold]);
 
     const clickHandle = () => {
         return (
@@ -274,7 +283,6 @@ const Market = () => {
             </div>
         );
     };
-
     const ignoreHandle = () => {
         return (
             <div className="content_ignoreGold">
@@ -289,21 +297,33 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>초당골드 증가</div>
-                            <span>{auto.desk}</span> -&gt;{' '}
-                            <span>{auto.desk + 1}</span>
+                            <div>10초당골드 증가</div>
+                            <span>
+                                {auto.desk == 0 ? 0 : auto.desk * 10}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.desk == 0
+                                    ? auto.desk + 10
+                                    : auto.desk * 10 + 10}
+                            </span>
                         </div>
                         <div>
                             <button
                                 className={
-                                    gold >= auto.desk * 30 ? 'upbt' : 'closeBtn'
+                                    gold >= auto.desk * 300
+                                        ? 'upbt'
+                                        : 'closeBtn'
                                 }
                                 onClick={() => {
                                     auto_desk();
                                 }}
-                                disabled={gold >= auto.desk * 20 ? false : true}
+                                disabled={
+                                    gold >= auto.desk * 300 ? false : true
+                                }
                             >
                                 강화버튼
+                                <div>{auto.desk * 300}</div>
                             </button>
                         </div>
                     </div>
