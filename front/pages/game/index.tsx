@@ -119,7 +119,10 @@ const Game = () => {
             <div className="content">
                 <div className="background">
                     <div className="user_gauge">
-                        <div>피로도 : {gauge}</div>
+                        <div>
+                            피로도 : {((gauge / (gauge + hp)) * 100).toFixed(2)}
+                            %
+                        </div>
                         <div>
                             <progress
                                 className="gauge_progress"

@@ -49,13 +49,23 @@ const Ranking = ({ closeRanking }: any) => {
     };
 
     const myRank = () => {
-        return (
-            <ul className="myRank">
-                <li>{myrank.rank}</li>
-                <li>{myrank.myrank.nickname}</li>
-                <li>{myrank.myrank.gold}</li>
-            </ul>
-        );
+        if (stage === user.stage) {
+            return (
+                <ul className="myRank">
+                    <li>{myrank.rank}</li>
+                    <li>{myrank.myrank.nickname}</li>
+                    <li>{myrank.myrank.gold}</li>
+                </ul>
+            );
+        } else {
+            return (
+                <ul className="myRank">
+                    <li>순위권밖</li>
+                    <li>{myrank.myrank.nickname}</li>
+                    <li>{myrank.myrank.gold}</li>
+                </ul>
+            );
+        }
     };
 
     const usersStage = () => {

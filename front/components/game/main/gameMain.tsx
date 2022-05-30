@@ -129,7 +129,7 @@ const GameTemplate = styled.div`
                                 height: 100%;
                                 position: absolute;
                                 left: 7.5%;
-                                margin-left: -3%;
+                                margin-left: -2%;
                             }
                         }
                     }
