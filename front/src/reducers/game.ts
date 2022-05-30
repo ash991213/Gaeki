@@ -38,15 +38,10 @@ const EFFECT_BUTTON_FAILURE = 'EFFECT_BUTTON_FAILURE';
 const BACK_BUTTON_REQUEST = 'BACK_BUTTON_REQUEST';
 const BACK_BUTTON_SUCCESS = 'BACK_BUTTON_SUCCESS';
 const BACK_BUTTON_FAILURE = 'BACK_BUTTON_FAILURE';
+
 const STATUS_REQUEST = 'STATUS_REQUEST';
 const STATUS_SUCCESS = 'STATUS_SUCCESS';
 const STATUS_FAILURE = 'STATUS_FAILURE';
-const AUTO_REQUEST = 'AUTO_REQUEST';
-const AUTO_SUCCESS = 'AUTO_SUCCESS';
-const AUTO_FAILURE = 'AUTO_FAILURE';
-const AUTO_DESK_REQUEST = 'AUTO_DESK_REQUEST';
-const AUTO_DESK_SUCCESS = 'AUTO_DESK_SUCCESS';
-const AUTO_DESK_FAILURE = 'AUTO_DESK_FAILURE';
 const TYPING_UP_REQUEST = 'TYPING_UP_REQUEST';
 const TYPING_UP_SUCCESS = 'TYPING_UP_SUCCESS';
 const TYPING_UP_FAILURE = 'TYPING_UP_FAILURE';
@@ -65,6 +60,16 @@ const CODING_UP_FAILURE = 'CODING_UP_SUCCESS';
 const HP_DOWN_REQUEST = 'HP_DOWN_REQUEST';
 const HP_DOWN_SUCCESS = 'HP_DOWN_SUCCESS';
 const HP_DOWN_FAILURE = 'HP_DOWN_FAILURE';
+
+const AUTO_GOLD_REQUEST = 'AUTO_GOLD_REQUEST';
+const AUTO_GOLD_SUCCESS = 'AUTO_GOLD_SUCCESS';
+const AUTO_GOLD_FAILURE = 'AUTO_GOLD_FAILURE';
+const AUTO_REQUEST = 'AUTO_REQUEST';
+const AUTO_SUCCESS = 'AUTO_SUCCESS';
+const AUTO_FAILURE = 'AUTO_FAILURE';
+const AUTO_DESK_REQUEST = 'AUTO_DESK_REQUEST';
+const AUTO_DESK_SUCCESS = 'AUTO_DESK_SUCCESS';
+const AUTO_DESK_FAILURE = 'AUTO_DESK_FAILURE';
 
 interface actionType {
     type: string;
@@ -228,35 +233,6 @@ const user = (state = initialState, action: actionType) => {
                     patience: action.payload.patience,
                 },
             };
-        case AUTO_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_SUCCESS:
-            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
-                action.payload;
-            return {
-                ...state,
-                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
-            };
-        case AUTO_FAILURE:
-            return {
-                ...state,
-            };
-        case AUTO_DESK_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_DESK_SUCCESS:
-            console.log(action.payload);
-            return {
-                ...state,
-                auto: { ...state.auto, desk: action.payload.desk },
-            };
-        case AUTO_DESK_FAILURE:
-            return {
-                ...state,
-            };
         case PATIENCE_UP_FAILURE:
             return {
                 ...state,
@@ -289,6 +265,48 @@ const user = (state = initialState, action: actionType) => {
                 gauge: action.payload.gauge,
             };
         case HP_DOWN_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_SUCCESS:
+            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
+                action.payload;
+            return {
+                ...state,
+                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
+            };
+        case AUTO_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, desk: action.payload.desk },
+            };
+        case AUTO_DESK_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_GOLD_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_GOLD_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+            };
+        case AUTO_GOLD_FAILURE:
             return {
                 ...state,
             };
