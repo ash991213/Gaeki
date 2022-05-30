@@ -150,7 +150,7 @@ exports.coding = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ coding: coding - 1000 }, { where: { user_idx } });
-		await User.update({ gold: gold - coding * 100 }, { where: { id: user_idx } });
+		await User.update({ gold: gold - coding / 10 }, { where: { id: user_idx } });
 
 		const type = await Status.findOne({
 			where: { user_idx },

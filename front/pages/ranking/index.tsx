@@ -86,6 +86,7 @@ const Ranking = ({ closeRanking }: any) => {
 
     const stageRank = (num: number) => {
         dispatch({ type: 'RANKING_LIST_REQUEST', payload: num });
+        dispatch({ type: 'MY_RANKING_REQUEST', payload: user });
         setStage(num);
     };
 

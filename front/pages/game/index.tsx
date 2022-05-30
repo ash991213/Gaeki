@@ -71,6 +71,51 @@ const Game = () => {
         }
     };
 
+    const pet = (): any => {
+        return (
+            <>
+                <div className="pet_cat">
+                    <img src={`/고양이/${stage} 스테이지 고양이.gif`} />
+                </div>
+                <div className="pet_dog">
+                    <img src={`/강아지/${stage} 스테이지 강아지.gif`} />
+                </div>
+                <div className="pet_bird">
+                    <img src={`/새/${stage} 스테이지 새.gif`} />
+                </div>
+                <div className="pet_fish">
+                    <img src={`/물고기/${stage} 스테이지 물고기.gif`} />
+                </div>
+            </>
+        );
+    };
+
+    const part = () => {
+        return (
+            <>
+                <div className="cheer">
+                    <img src={`/알바생/${stage} 스테이지 알바생.gif`} />
+                </div>
+                <div className="cook">
+                    <img src={`/요리사/${stage} 스테이지 요리사.gif`} />
+                </div>
+                <div className="homekeeper">
+                    <img src={`/집사/${stage} 스테이지 집사.gif`} />
+                </div>
+            </>
+        );
+    };
+
+    const vehicle = () => {
+        return (
+            <>
+                <div className="vehicle">
+                    <img src={`/탈것/${stage} 스테이지 탈것.gif`} />
+                </div>
+            </>
+        );
+    };
+
     useEffect(() => {
         if (user_idx === null) {
             dispatch({
@@ -168,30 +213,9 @@ const Game = () => {
                         <div className="user_chair_desk">
                             <img src="loading.gif" />
                         </div>
-                        <div className="pet_cat">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="pet_dog">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="pet_bird">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="pet_fish">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="cheer">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="cook">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="homekeeper">
-                            <img src="loading.gif" />
-                        </div>
-                        <div className="vehicle">
-                            <img src="loading.gif" />
-                        </div>
+                        {pet()}
+                        {part()}
+                        {vehicle()}
                     </div>
                 </div>
             </div>
