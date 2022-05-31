@@ -735,7 +735,7 @@ const Market = () => {
                 type: 'GOLD_CLICK_REQUEST',
                 payload: { user, typing: status.typing, luck: status.luck },
             });
-            const audio = new Audio('클릭.mp3');
+            const audio = new Audio('키보드 효과음 2.mp3');
             if (sound_effect === true) {
                 audio.volume = 0.5;
                 audio.play();
@@ -747,6 +747,11 @@ const Market = () => {
                     user,
                 },
             });
+            const audio = new Audio('키보드 효과음 2.mp3');
+            if (sound_effect === true) {
+                audio.volume = 0.5;
+                audio.play();
+            }
         }
         handleClick(e);
     };
