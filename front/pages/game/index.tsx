@@ -116,6 +116,15 @@ const Game = () => {
         );
     };
 
+    const userStage = () => {
+        if (stage === 1) return '서울역';
+        if (stage === 2) return '고시원';
+        if (stage === 3) return '원룸';
+        if (stage === 4) return '아파트';
+        if (stage === 5) return '팬트하우스';
+        if (stage === 6) return '단독주택';
+    };
+
     useEffect(() => {
         if (user_idx === null) {
             dispatch({
@@ -153,6 +162,7 @@ const Game = () => {
 
     return (
         <GameTemplate>
+            <img className="back" src={`/배경/${stage}스테이지 배경.png`} />
             <div className="header">
                 <div className="header_left">
                     <div className="user">
@@ -169,7 +179,9 @@ const Game = () => {
                             <div className="user_exp">
                                 <div>exp</div>
                                 <div className="progress_gauge">
-                                    <div>{(exp / 1000).toFixed(2)}%</div>
+                                    <div className="exp">
+                                        {(exp / 1000).toFixed(2)}%
+                                    </div>
                                     <progress
                                         className="exp_progress"
                                         value={exp}
@@ -179,18 +191,15 @@ const Game = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="stage">
-                        STAGE
-                        <div>{stage}</div>
-                    </div>
+                    <div className="stage">STAGE {userStage()}</div>
                 </div>
                 <div className="header_right">
                     <div className="service">
                         <div className="ranking" onClick={openRanking}>
-                            <img src="./loading.gif" />
+                            <img src="./랭킹.png" />
                         </div>
                         <div className="setting" onClick={openSetting}>
-                            <img src="" />
+                            <img src="./세팅.png" />
                         </div>
                     </div>
                 </div>
@@ -198,10 +207,10 @@ const Game = () => {
             <div className="content">
                 <div className="background">
                     <div className="user_gauge">
-                        <div>
+                        <div className="gauge_name">
                             피로도 : {((gauge / (100 + hp)) * 100).toFixed(2)}%
                         </div>
-                        <div>
+                        <div className="progress">
                             <progress
                                 className="gauge_progress"
                                 value={gauge}

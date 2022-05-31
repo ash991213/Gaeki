@@ -95,14 +95,18 @@ const Ranking = ({ closeRanking }: any) => {
             <div className="content">
                 <div className="header">
                     <div className="header_wrap">
-                        <div className="logo">로고</div>
-                        <div className="rank">랭킹</div>
+                        <div className="logo">
+                            <img src="./랭킹.png" />
+                        </div>
+                        <div className="rank">
+                            <span>랭킹</span>
+                        </div>
                     </div>
                     <button className="button" onClick={() => closeRanking()}>
                         X
                     </button>
                 </div>
-                <div className="stage">stage</div>
+                <div className="stage">STAGE</div>
                 <div className="stage_wrap">{usersStage()}</div>
                 <div className="img">
                     <img src="./redux.png" />
