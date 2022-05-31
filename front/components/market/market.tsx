@@ -48,6 +48,17 @@ const Market = styled.div`
         border-bottom: 1px solid;
         padding: 2.5px 0;
     }
+    .content_name2 {
+        height: 16.7%;
+        border-bottom: 1px solid;
+        padding: 2.5px 0;
+    }
+
+    .content_name3 {
+        height: 25%;
+        border-bottom: 1px solid;
+        padding: 2.5px 0;
+    }
 
     .content_up {
         background: beige;

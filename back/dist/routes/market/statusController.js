@@ -122,7 +122,7 @@ exports.coding = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { coding }, } = req.body;
     try {
         yield Status.update({ coding: coding - 1000 }, { where: { user_idx } });
-        yield User.update({ gold: gold - coding * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - coding / 10 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });

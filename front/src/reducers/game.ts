@@ -24,6 +24,12 @@ const initialState = {
         homekeeper: null,
         vehicle: null,
     },
+    auto_exp: {
+        dog: null,
+        cat: null,
+        fish: null,
+        bird: null,
+    }
 };
 
 const USER_INFO_REQUEST = 'USER_INFO_REQUEST';
@@ -76,6 +82,37 @@ const AUTO_FAILURE = 'AUTO_FAILURE';
 const AUTO_DESK_REQUEST = 'AUTO_DESK_REQUEST';
 const AUTO_DESK_SUCCESS = 'AUTO_DESK_SUCCESS';
 const AUTO_DESK_FAILURE = 'AUTO_DESK_FAILURE';
+const AUTO_CHAIR_REQUEST = 'AUTO_CHAIR_REQUEST';
+const AUTO_CHAIR_SUCCESS = 'AUTO_CHAIR_SUCCESS';
+const AUTO_CHAIR_FAILURE = 'AUTO_CHAIR_FAILURE';
+const AUTO_PC_REQUEST = 'AUTO_PC_REQUEST';
+const AUTO_PC_SUCCESS = 'AUTO_PC_SUCCESS';
+const AUTO_PC_FAILURE = 'AUTO_PC_FAILURE';
+const AUTO_COOK_REQUEST = 'AUTO_COOK_REQUEST';
+const AUTO_COOK_SUCCESS = 'AUTO_COOK_SUCCESS';
+const AUTO_COOK_FAILURE = 'AUTO_COOK_FAILURE';
+const AUTO_HOMEKEEPER_REQUEST = 'AUTO_HOMEKEEPER_REQUEST';
+const AUTO_HOMEKEEPER_SUCCESS = 'AUTO_HOMEKEEPER_SUCCESS';
+const AUTO_HOMEKEEPER_FAILURE = 'AUTO_HOMEKEEPER_FAILURE';
+const AUTO_VEHICLE_REQUEST = 'AUTO_VEHICLE_REQUEST';
+const AUTO_VEHICLE_SUCCESS = 'AUTO_VEHICLE_SUCCESS';
+const AUTO_VEHICLE_FAILURE = 'AUTO_VEHICLE_FAILURE';
+
+const EXP_REQUEST = 'EXP_REQUEST'
+const EXP_SUCCESS = 'EXP_SUCCESS'
+const EXP_FAILURE = 'EXP_FAILURE'
+const EXP_DOG_REQUEST = 'EXP_DOG_REQUEST';
+const EXP_DOG_SUCCESS = 'EXP_DOG_SUCCESS';
+const EXP_DOG_FAILURE = 'EXP_DOG_FAILURE';
+const EXP_CAT_REQUEST = 'EXP_CAT_REQUEST';
+const EXP_CAT_SUCCESS = 'EXP_CAT_SUCCESS';
+const EXP_CAT_FAILURE = 'EXP_CAT_FAILURE';
+const EXP_FISH_REQUEST = 'EXP_FISH_REQUEST';
+const EXP_FISH_SUCCESS = 'EXP_FISH_SUCCESS';
+const EXP_FISH_FAILURE = 'EXP_FISH_FAILURE';
+const EXP_BIRD_REQUEST = 'EXP_BIRD_REQUEST';
+const EXP_BIRD_SUCCESS = 'EXP_BIRD_SUCCESS';
+const EXP_BIRD_FAILURE = 'EXP_BIRD_FAILURE';
 
 interface actionType {
     type: string;
@@ -248,7 +285,6 @@ const user = (state = initialState, action: actionType) => {
                 ...state,
             };
         case CODING_UP_SUCCESS:
-            console.log(action.payload);
             return {
                 ...state,
                 gold: action.payload.gold,
@@ -271,48 +307,6 @@ const user = (state = initialState, action: actionType) => {
                 gauge: action.payload.gauge,
             };
         case HP_DOWN_FAILURE:
-            return {
-                ...state,
-            };
-        case AUTO_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_SUCCESS:
-            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
-                action.payload;
-            return {
-                ...state,
-                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
-            };
-        case AUTO_FAILURE:
-            return {
-                ...state,
-            };
-        case AUTO_DESK_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_DESK_SUCCESS:
-            return {
-                ...state,
-                gold: action.payload.gold,
-                auto: { ...state.auto, desk: action.payload.desk },
-            };
-        case AUTO_DESK_FAILURE:
-            return {
-                ...state,
-            };
-        case AUTO_GOLD_REQUEST:
-            return {
-                ...state,
-            };
-        case AUTO_GOLD_SUCCESS:
-            return {
-                ...state,
-                gold: action.payload.gold,
-            };
-        case AUTO_GOLD_FAILURE:
             return {
                 ...state,
             };
@@ -345,6 +339,183 @@ const user = (state = initialState, action: actionType) => {
             return {
                 ...state,
             };
+        case AUTO_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_SUCCESS:
+            const { chair, cheer, cook, desk, homekeeper, pc, vehicle } =
+                action.payload;
+            return {
+                ...state,
+                auto: { chair, cheer, cook, desk, homekeeper, pc, vehicle },
+            };
+        case AUTO_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_GOLD_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_GOLD_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+            };
+        case AUTO_GOLD_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_DESK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, desk: action.payload.desk },
+            };
+        case AUTO_DESK_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_CHAIR_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_CHAIR_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, chair: action.payload.chair },
+            };
+        case AUTO_CHAIR_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_PC_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_PC_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, pc: action.payload.pc },
+            };
+        case AUTO_PC_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_COOK_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_COOK_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, cook: action.payload.cook },
+            };
+        case AUTO_COOK_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_HOMEKEEPER_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_HOMEKEEPER_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, homekeeper: action.payload.homekeeper },
+            };
+        case AUTO_HOMEKEEPER_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_VEHICLE_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_VEHICLE_SUCCESS:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: { ...state.auto, vehicle: action.payload.vehicle },
+            };
+        case AUTO_VEHICLE_FAILURE:
+            return {
+                ...state,
+            };
+        case EXP_REQUEST:
+            return {
+                ...state,
+            }
+        case EXP_SUCCESS:
+            return {
+                ...state,
+                auto_exp: {
+                    ...state.auto_exp,
+                    dog:action.payload.a
+                }
+            }
+        case EXP_FAILURE:
+            return {
+                ...state
+            }
+
+        case EXP_DOG_REQUEST:
+            return {
+                ...state,
+            }
+        case EXP_DOG_SUCCESS:
+            return {
+                ...state,}
+
+        case EXP_DOG_FAILURE:
+            return {
+                ...state
+            }
+        case EXP_CAT_REQUEST:
+            return {
+                ...state,
+            }
+        case EXP_CAT_SUCCESS:
+            return {
+
+            }
+        case EXP_CAT_FAILURE:
+            return {
+                ...state
+            }
+        case EXP_FISH_REQUEST:
+            return {
+                ...state,
+            }
+        case EXP_FISH_SUCCESS:
+            return {
+
+            }
+        case EXP_FISH_FAILURE:
+            return {
+                ...state
+            }
+        case EXP_BIRD_REQUEST:
+            return {
+                ...state,
+            }
+        case EXP_BIRD_SUCCESS:
+            return {
+
+            }
+        case EXP_BIRD_FAILURE:
+            return {
+                ...state
+            }
         default:
             return state;
     }

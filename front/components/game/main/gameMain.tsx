@@ -6,7 +6,7 @@ const GameTemplate = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background: gray;
+
     * {
         margin: 0;
         padding: 0;
@@ -24,12 +24,10 @@ const GameTemplate = styled.div`
     .header {
         width: 100%;
         height: 15%;
-        background: white;
         display: flex;
         & > .header_left {
             width: 80%;
             height: 100%;
-            background: blue;
             display: flex;
             & > .user {
                 width: 60%;
@@ -37,7 +35,6 @@ const GameTemplate = styled.div`
                 position: relative;
                 left: 5%;
                 top: 10%;
-                background: red;
                 & > .user_wrap {
                     width: 90%;
                     height: 50%;
@@ -48,7 +45,6 @@ const GameTemplate = styled.div`
                     & > .user_image {
                         width: 30%;
                         height: 100%;
-                        background: purple;
                         & > img {
                             width: 100%;
                             height: 100%;
@@ -65,13 +61,11 @@ const GameTemplate = styled.div`
                         & > .user_name {
                             width: 100%;
                             height: 50%;
-                            background: pink;
                             line-height: 150%;
                         }
                         & > .user_gold {
                             width: 100%;
                             height: 50%;
-                            background: yellow;
                             line-height: 150%;
                         }
                     }
@@ -141,14 +135,12 @@ const GameTemplate = styled.div`
                 position: relative;
                 left: 12.5%;
                 top: 20%;
-                background: white;
                 text-align: center;
             }
         }
         & > .header_right {
             width: 20%;
             height: 100%;
-            background: red;
             & > .service {
                 width: 80%;
                 height: 50%;
@@ -156,7 +148,6 @@ const GameTemplate = styled.div`
                 left: 10%;
                 top: 25%;
                 display: flex;
-                background: white;
                 & > div {
                     width: 50%;
                     height: 50%;
@@ -175,14 +166,12 @@ const GameTemplate = styled.div`
     .ranking {
         z-index: 7;
         & > img {
-            background: yellow;
         }
     }
 
     .setting {
         z-index: 7;
         & > img {
-            background: black;
         }
     }
 
@@ -193,7 +182,6 @@ const GameTemplate = styled.div`
         & > .background {
             width: 100%;
             height: 100%;
-            background: skyblue;
             & > .main {
                 width: 100%;
                 height: 80%;
@@ -214,68 +202,64 @@ const GameTemplate = styled.div`
                     z-index: 1;
                 }
                 & > .pet_cat {
-                    width: 10%;
-                    height: 10%;
-                    background: blue;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
                     left: 60%;
                     z-index: 2;
+                    object-fit: scale-down;
                 }
                 & > .pet_dog {
-                    width: 10%;
-                    height: 10%;
-                    background: gray;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
                     top: -10%;
                     left: 30%;
                     z-index: 2;
+                    object-fit: cover;
                 }
                 & > .pet_bird {
-                    width: 10%;
-                    height: 10%;
-                    background: purple;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
-                    top: 5%;
+                    top: -5%;
                     left: 20%;
+                    object-fit: cover;
                 }
                 & > .pet_fish {
-                    width: 10%;
-                    height: 10%;
-                    background: green;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
-                    top: 10%;
+                    top: -10%;
                     left: 10%;
+                    object-fit: fill;
                 }
                 & > .cheer {
                     width: 30%;
                     height: 50%;
-                    background: yellow;
                     position: relative;
-                    top: -80%;
+                    top: -100%;
                     left: 5%;
                 }
                 & > .cook {
                     width: 30%;
                     height: 50%;
-                    background: orange;
                     position: relative;
-                    top: -80%;
+                    top: -100%;
                     left: 35%;
                 }
                 & > .homekeeper {
                     width: 30%;
                     height: 50%;
-                    background: pink;
                     position: relative;
-                    top: -180%;
+                    top: -200%;
                     left: 65%;
                 }
                 & > .vehicle {
                     width: 30%;
                     height: 30%;
-                    background: aqua;
                     position: relative;
-                    top: -170%;
+                    top: -190%;
                     left: 65%;
                 }
             }
