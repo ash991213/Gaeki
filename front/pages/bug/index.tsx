@@ -1,6 +1,4 @@
 import React from 'react';
-import { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import BugTemplate from '../../components/game/bug/bug';
 
 const bug = ({ closebug }: any) => {

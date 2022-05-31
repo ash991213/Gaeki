@@ -2,7 +2,7 @@ const initialState = {
     ranking: {},
     usersRanking: [],
     myranking: {},
-    stageList: [1, 2, 3, 4, 5],
+    stageList: [1, 2, 3, 4, 5, 6],
 };
 const RANKING_LIST_REQUEST = 'RANKING_LIST_REQUEST';
 const RANKING_LIST_SUCCESS = 'RANKING_LIST_SUCCESS';

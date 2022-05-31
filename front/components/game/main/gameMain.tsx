@@ -21,6 +21,13 @@ const GameTemplate = styled.div`
         appearance: none;
     }
 
+    .back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -10;
+    }
+
     .header {
         width: 100%;
         height: 15%;
@@ -59,7 +66,7 @@ const GameTemplate = styled.div`
                         left: 3%;
                         font-size: 12px;
                         & > .user_name {
-                            width: 100%;
+                            width: 150%;
                             height: 50%;
                             line-height: 150%;
                         }
@@ -74,12 +81,11 @@ const GameTemplate = styled.div`
                     width: 95%;
                     height: 40%;
                     position: relative;
-                    left: 2%;
-                    top: 10%;
+                    left: 1%;
+                    top: 2%;
                     & > .user_exp {
                         width: 100%;
                         height: 90%;
-                        background: white;
                         position: relative;
                         font-size: 10px;
                         padding-left: 5%;
@@ -87,16 +93,14 @@ const GameTemplate = styled.div`
                         display: flex;
                         & > .progress_gauge {
                             width: 80%;
-                            height: 80%;
+                            height: 90%;
                             position: relative;
                             top: 10%;
                             right: 2%;
                             text-align: right;
-                            & > div {
-                            }
                             & > .exp_progress {
                                 width: 75%;
-                                height: 100%;
+                                height: 50%;
                                 position: absolute;
                                 left: 7.5%;
                             }
@@ -123,6 +127,7 @@ const GameTemplate = styled.div`
                                 height: 100%;
                                 position: absolute;
                                 left: 7.5%;
+                                top: -10%;
                                 margin-left: -2%;
                             }
                         }
@@ -130,12 +135,14 @@ const GameTemplate = styled.div`
                 }
             }
             & > .stage {
-                width: 20%;
-                height: 60%;
+                width: 40%;
+                height: 40%;
                 position: relative;
-                left: 12.5%;
-                top: 20%;
+                top: 7%;
                 text-align: center;
+                border-radius: 0.5rem;
+                padding-top: 2%;
+                font-weight: bold;
             }
         }
         & > .header_right {
@@ -143,10 +150,10 @@ const GameTemplate = styled.div`
             height: 100%;
             & > .service {
                 width: 80%;
-                height: 50%;
+                height: 60%;
                 position: relative;
                 left: 10%;
-                top: 25%;
+                top: 5%;
                 display: flex;
                 & > div {
                     width: 50%;
@@ -165,14 +172,10 @@ const GameTemplate = styled.div`
 
     .ranking {
         z-index: 7;
-        & > img {
-        }
     }
 
     .setting {
         z-index: 7;
-        & > img {
-        }
     }
 
     .content {
@@ -186,7 +189,7 @@ const GameTemplate = styled.div`
                 width: 100%;
                 height: 80%;
                 position: relative;
-                top: -10%;
+                top: 5%;
                 & > div > img {
                     width: 100%;
                     height: 100%;
@@ -194,7 +197,6 @@ const GameTemplate = styled.div`
                 & > .user_chair_desk {
                     width: 30%;
                     height: 50%;
-                    background: red;
                     position: relative;
                     top: 10%;
                     left: 50%;
@@ -265,13 +267,21 @@ const GameTemplate = styled.div`
             }
             & > .user_gauge {
                 width: 50%;
-                height: 20%;
-                padding-top: 2.5%;
-                margin: 0 auto;
-                & > div {
-                    width: 100;
-                    height: 20%;
-                    text-align: center;
+                height: 10%;
+                position: relative;
+                top: -10.7%;
+                left: 65%;
+                & > .gauge_name {
+                    width: 100%;
+                    height: 5%;
+                    position: relative;
+                    top: 8%;
+                    left: 10%;
+                }
+                & > .progress {
+                    width: 100%;
+                    height: 5%;
+                    text-align: left;
                     & > .gauge_progress::-webkit-progress-bar {
                         background: rgba(0, 0, 0, 0);
                         border-radius: 10px;

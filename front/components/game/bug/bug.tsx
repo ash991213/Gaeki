@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+/* 메인 색상 1 */
+/* #333d79 */
+/* #faebef */
+
 const BugTemplate = styled.div`
     position: fixed;
     top: 0;
@@ -15,8 +19,9 @@ const BugTemplate = styled.div`
         height: 40%;
         margin: 0 auto;
         margin-top: 3rem;
-        background: pink;
-        border-radius: 1rem;
+        background: #faebef;
+        border-radius: 0.5rem;
+        border: 1px solid black;
         & > .image {
             width: 100%;
             height: 100%;
@@ -24,7 +29,8 @@ const BugTemplate = styled.div`
                 width: 100%;
                 height: 80%;
                 object-fit: fill;
-                border-radius: 1rem;
+                border-radius: 0.5rem;
+                border-bottom: 1px solid black;
             }
             & > .closeBtn {
                 width: 50%;
@@ -33,6 +39,9 @@ const BugTemplate = styled.div`
                 position: relative;
                 top: 1%;
                 left: 25%;
+                background: #ff0000;
+                color: #faebef;
+                border: 1px solid black;
                 border-radius: 0.5rem;
             }
         }
