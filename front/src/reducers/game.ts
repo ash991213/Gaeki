@@ -460,7 +460,10 @@ const user = (state = initialState, action: actionType) => {
                 ...state,
                 auto_exp: {
                     ...state.auto_exp,
-                    dog:action.payload.a
+                    dog:action.payload.dog,
+                    cat:action.payload.cat,
+                    fish:action.payload.fish,
+                    bird:action.payload.bird,
                 }
             }
         case EXP_FAILURE:
@@ -474,7 +477,8 @@ const user = (state = initialState, action: actionType) => {
             }
         case EXP_DOG_SUCCESS:
             return {
-                ...state,}
+                ...state,
+            }
 
         case EXP_DOG_FAILURE:
             return {

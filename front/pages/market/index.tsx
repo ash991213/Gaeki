@@ -92,6 +92,30 @@ const Market = () => {
         });
     };
 
+    const exp_Dog = () => {
+        dispatch({
+            type:'EXP_DOG_REQUEST',payload:"승주짱짱"
+        });
+    }
+
+    const exp_Cat = () => {
+        dispatch({
+            type:'EXP_CAT_REQUEST',payload:"승주짱짱1"
+        })
+    }
+
+    const exp_Fish = () => {
+        dispatch({
+            type:'EXP_FISH_REQUEST',payload:"승주짱짱2"
+        })
+    }
+
+    const exp_Bird = () => {
+        dispatch({
+            type:'EXP_BIRD_REQUEST',payload:"승주짱짱3"
+        })
+    }
+
     useEffect(() => {
         if (user_idx !== null) {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
@@ -585,7 +609,7 @@ const Market = () => {
                         <div>
                             <button
                                 className='upbt'
-                                onClick = {()=>{console.log('asdf')}}
+                                onClick = {()=>{exp_Dog()}}
                                 // disabled
                             >
                                 강화버튼
@@ -617,7 +641,7 @@ const Market = () => {
                         <div>
                             <button
                                 className='upbt'
-                                onClick = {()=>{console.log('asdf')}}
+                                onClick = {()=>{exp_Cat()}}
                                 // disabled
                             >
                                 강화버튼
@@ -649,7 +673,7 @@ const Market = () => {
                         <div>
                             <button
                                 className='upbt'
-                                onClick = {()=>{console.log('asdf')}}
+                                onClick = {()=>{exp_Fish()}}
                                 // disabled
                             >
                                 강화버튼
@@ -681,7 +705,7 @@ const Market = () => {
                         <div>
                             <button
                                 className='upbt'
-                                onClick = {()=>{console.log('asdf')}}
+                                onClick = {()=>{exp_Bird()}}
                                 // disabled
                             >
                                 강화버튼

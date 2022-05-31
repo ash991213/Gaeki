@@ -276,6 +276,42 @@ function* auto_Exp(action: any) {
     }
 }
 
+const dogExpAPI:any = async(action:any) => {
+    const obj = {a:action}
+    return await axios.post('http://localhost:4000/market/exp_Dog',obj)
+}
+
+function* dog_Exp(action:any){
+    const result: {data: {}} = yield call(dogExpAPI, action.payload)
+}
+
+const catExpAPI:any = async(action:any) => {
+    const obj1 = {b:action}
+    return await axios.post('http://localhost:4000/market/exp_Cat',obj1)
+}
+
+function* cat_Exp(action:any){
+    const result:{data:{}} = yield call(catExpAPI, action.payload)
+}
+
+const fishExpAPI:any = async(action:any) => {
+    const obj2 = {c:action}
+    return await axios.post('http://localhost:4000/market/exp_Fish',obj2)
+}
+
+function* fish_Exp(action:any){
+    const result:{data:{}} = yield call(fishExpAPI, action.payload)
+}
+
+const birdExpAPI:any = async(action:any) => {
+    const obj3 = {d:action}
+    return await axios.post('http://localhost:4000/market/exp_Bird',obj3)
+}
+
+function* bird_Exp(action:any){
+    const result:{data:{}} = yield call(birdExpAPI, action.payload)
+}
+
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('AUTO_REQUEST', auto);
@@ -291,5 +327,9 @@ export default function* market() {
     yield takeLatest('AUTO_COOK_REQUEST', auto_cook);
     yield takeLatest('AUTO_HOMEKEEPER_REQUEST', auto_homekeeper);
     yield takeLatest('AUTO_VEHICLE_REQUEST', auto_vehicle);
-    yield takeLatest('EXP_REQUEST' , auto_Exp)
+    yield takeLatest('EXP_REQUEST' , auto_Exp);
+    yield takeLatest('EXP_DOG_REQUEST', dog_Exp);
+    yield takeLatest('EXP_CAT_REQUEST',cat_Exp);
+    yield takeLatest('EXP_FISH_REQUEST',fish_Exp);
+    yield takeLatest('EXP_BIRD_REQUEST',bird_Exp);
 }
