@@ -257,7 +257,6 @@ function* auto_vehicle(action: any) {
         });
     }
 }
-
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('AUTO_REQUEST', auto);

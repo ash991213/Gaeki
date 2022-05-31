@@ -13,6 +13,7 @@ interface marketType {
                 typing: number;
             };
         };
+        playTime:number;
     };
 }
 
@@ -33,6 +34,10 @@ const Market = () => {
     );
     const [Auto, setAuto] = useState(false);
     const { desk } = useSelector((state: any) => state.user.auto);
+    const gifPlayTime = useSelector((state: marketType) => state.market.playTime)
+
+    const [gif,setGif] = useState(false)
+    const [tempNum,setTempNum] = useState(1)
 
     const clickGold = () => {
         dispatch({ type: 'CLICK_GOLD' });
@@ -699,35 +704,64 @@ const Market = () => {
         const div = document.createElement('span');
         container.appendChild(div);
         const removeGif = () => {
+            // console.log('지우기 시작')
             root.unmount();
             if (div?.parentNode) {
                 div.parentNode.removeChild(div);
             }
+            setGif(false)
         };
 
         const root = createRoot(div);
 
         function CallbackAfter() {
-            useEffect(() => {
+                
+                // console.log('콜백 시작 할때 상태값',gifPlayTime)
                 setTimeout(removeGif, 2000);
-            });
+                // dispatch({type:'PLAYTIME_RESET'})
+                // console.log('remove 이후 디스패치 보내고 상태',gifPlayTime)
+
+               
+
             return <PopGifLayer></PopGifLayer>;
         }
+        setGif(true)
+        let randomNum = (min: number, max: number):number => {
+            return Math.floor(Math.random()*(max-min + 1)) + min;
+        }
+        let ranTempNum = randomNum(1,10)
+        console.log('초기값',tempNum)
+        console.log('템프넘 변경')
+        setTempNum(ranTempNum)
+        console.log('set 이후',tempNum)
+        // console.log('랜덤숫자',tempNum)
+        // dispatch({type:'CLICK_CONTENT', payload: tempNum})
+        // console.log('dispatch 직후')
+
         root.render(<CallbackAfter />);
         return removeGif;
     };
 
     interface PopGifProps {}
     const PopGifLayer: React.FC<PopGifProps> = () => {
-        return (
-            <img
-                src="./movingPeng.gif"
-                style={{
-                    position: 'absolute',
-                    display: 'block',
-                }}
-            ></img>
-        );
+        console.log('gif에서',tempNum)
+        let srcLink = `./click-popup/click-pop${tempNum}.gif`
+        
+        if (gif) {
+            console.log('gif true 일때',gifPlayTime)
+            return null
+        } else {
+            console.log('gif false 일때',gifPlayTime)
+            return (
+                <img
+                    src= {srcLink}
+                    style={{
+                        position: 'absolute',
+                        display: 'block',
+                    }}
+                ></img>
+            );
+        }   
     };
     const Gold_Click = (e: any) => {
         if (stage < 3) {
