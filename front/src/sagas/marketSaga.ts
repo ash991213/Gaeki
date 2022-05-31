@@ -192,7 +192,6 @@ function* auto_desk(action: any) {
 
 function* auto_chair(action: any) {
     const result: { data: {} } = yield call(autoChairAPI, action.payload);
-    console.log(result.data);
     try {
         yield put({
             type: 'AUTO_CHAIR_SUCCESS',
