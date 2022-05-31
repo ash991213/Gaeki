@@ -40,7 +40,10 @@ exports.auto_Desk = async (req: any, res: any) => {
 
 	await Auto_Gold.update({ desk: desk + 1 }, { where: { user_idx } });
 
-	await User.update({ gold: gold - desk * 300 }, { where: { id: user_idx } });
+	await User.update(
+		{ gold: gold - (desk + 1) * 300 },
+		{ where: { id: user_idx } }
+	);
 
 	const Desk = await Auto_Gold.findOne({ where: user_idx });
 
@@ -55,7 +58,10 @@ exports.auto_Chair = async (req: any, res: any) => {
 
 	await Auto_Gold.update({ chair: chair + 1 }, { where: { user_idx } });
 
-	await User.update({ gold: gold - chair * 1500 }, { where: { id: user_idx } });
+	await User.update(
+		{ gold: gold - (chair + 1) * 1500 },
+		{ where: { id: user_idx } }
+	);
 
 	const Chair = await Auto_Gold.findOne({ where: user_idx });
 
@@ -68,21 +74,39 @@ exports.auto_Chair = async (req: any, res: any) => {
 exports.auto_Pc = async (req: any, res: any) => {
 	const { user_idx, gold } = req.body.user;
 	const { pc } = req.body.auto;
+
 	await Auto_Gold.update({ pc: pc + 1 }, { where: { user_idx } });
-	await User.update({ gold: gold - pc * 7500 }, { where: { id: user_idx } });
+
+	await User.update(
+		{ gold: gold - (pc + 1) * 7500 },
+		{ where: { id: user_idx } }
+	);
+
 	const Pc = await Auto_Gold.findOne({ where: user_idx });
+
 	const currentGold = await User.findOne({ where: { id: user_idx } });
+
 	const result = { pc: Pc.pc, gold: currentGold.gold };
+
 	res.json(result);
 };
 exports.auto_Cook = async (req: any, res: any) => {
 	const { user_idx, gold } = req.body.user;
 	const { cook } = req.body.auto;
+
 	await Auto_Gold.update({ cook: cook + 1 }, { where: { user_idx } });
-	await User.update({ gold: gold - cook * 37500 }, { where: { id: user_idx } });
+
+	await User.update(
+		{ gold: gold - (cook + 1) * 37500 },
+		{ where: { id: user_idx } }
+	);
+
 	const Cook = await Auto_Gold.findOne({ where: user_idx });
+
 	const currentGold = await User.findOne({ where: { id: user_idx } });
+
 	const result = { cook: Cook.cook, gold: currentGold.gold };
+
 	res.json(result);
 };
 exports.auto_Homekeeper = async (req: any, res: any) => {
@@ -92,10 +116,12 @@ exports.auto_Homekeeper = async (req: any, res: any) => {
 		{ homekeeper: homekeeper + 1 },
 		{ where: { user_idx } }
 	);
+
 	await User.update(
-		{ gold: gold - homekeeper * 187500 },
+		{ gold: gold - (homekeeper + 1) * 187500 },
 		{ where: { id: user_idx } }
 	);
+
 	const Homekeeper = await Auto_Gold.findOne({ where: user_idx });
 	const currentGold = await User.findOne({ where: { id: user_idx } });
 	const result = { homekeeper: Homekeeper.homekeeper, gold: currentGold.gold };
@@ -105,10 +131,12 @@ exports.auto_Vehicle = async (req: any, res: any) => {
 	const { user_idx, gold } = req.body.user;
 	const { vehicle } = req.body.auto;
 	await Auto_Gold.update({ vehicle: vehicle + 1 }, { where: { user_idx } });
+
 	await User.update(
-		{ gold: gold - vehicle * 937500 },
+		{ gold: gold - (vehicle + 1) * 937500 },
 		{ where: { id: user_idx } }
 	);
+
 	const Vehicle = await Auto_Gold.findOne({ where: user_idx });
 	const currentGold = await User.findOne({ where: { id: user_idx } });
 	const result = { vehicle: Vehicle.vehicle, gold: currentGold.gold };

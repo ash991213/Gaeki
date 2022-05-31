@@ -9,17 +9,17 @@ module.exports = (sequelize: any, DataTypes: any) => {
 			},
 			hp: {
 				type: DataTypes.INTEGER,
-				defaultValue: 1,
+				defaultValue: 0,
 				allowNull: false,
 			},
 			typing: {
 				type: DataTypes.INTEGER,
-				defaultValue: 1,
+				defaultValue: 0,
 				allowNull: false,
 			},
 			luck: {
 				type: DataTypes.INTEGER,
-				defaultValue: 1,
+				defaultValue: 0,
 				allowNull: false,
 			},
 			patience: {
