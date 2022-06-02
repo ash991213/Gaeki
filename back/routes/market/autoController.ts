@@ -127,13 +127,31 @@ exports.auto_Homekeeper = async (req: any, res: any) => {
 	const result = { homekeeper: Homekeeper.homekeeper, gold: currentGold.gold };
 	res.json(result);
 };
+
+exports.auto_Cheer = async (req: any, res: any) => {
+	const { user_idx, gold } = req.body.user;
+	const { cheer } = req.body.auto;
+
+	await Auto_Gold.update({ cheer: cheer + 1 }, { where: { user_idx } });
+
+	await User.update(
+		{ gold: gold - (cheer + 1) * 937500 },
+		{ where: { id: user_idx } }
+	);
+
+	const Cheer = await Auto_Gold.findOne({ where: user_idx });
+	const currentGold = await User.findOne({ where: { id: user_idx } });
+	const result = { cheer: Cheer.cheer, gold: currentGold.gold };
+	res.json(result);
+};
+
 exports.auto_Vehicle = async (req: any, res: any) => {
 	const { user_idx, gold } = req.body.user;
 	const { vehicle } = req.body.auto;
 	await Auto_Gold.update({ vehicle: vehicle + 1 }, { where: { user_idx } });
 
 	await User.update(
-		{ gold: gold - (vehicle + 1) * 937500 },
+		{ gold: gold - (vehicle + 1) * 4687500 },
 		{ where: { id: user_idx } }
 	);
 

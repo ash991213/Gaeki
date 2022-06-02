@@ -257,6 +257,24 @@ function* auto_vehicle(action: any) {
     }
 }
 
+const autoCheerAPI: any = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/auto_Cheer', action);
+};
+
+function* auto_cheer(action: any) {
+    const result: { data: {} } = yield call(autoCheerAPI, action.payload);
+    try {
+        yield put({
+            type: 'AUTO_CHEER_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'AUTO_CHEER_FAILURE',
+        });
+    }
+}
+
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('AUTO_REQUEST', auto);
@@ -272,4 +290,5 @@ export default function* market() {
     yield takeLatest('AUTO_COOK_REQUEST', auto_cook);
     yield takeLatest('AUTO_HOMEKEEPER_REQUEST', auto_homekeeper);
     yield takeLatest('AUTO_VEHICLE_REQUEST', auto_vehicle);
+    yield takeLatest('AUTO_CHEER_REQUEST', auto_cheer);
 }
