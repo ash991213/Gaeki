@@ -28,6 +28,7 @@ const RankingTemplate = styled.div`
         background: #fff;
         border-radius: 0.5rem;
         border: 1px solid black;
+        box-shadow: 7px 7px 5px black;
     }
 
     .content > .header {
