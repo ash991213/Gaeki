@@ -82,7 +82,7 @@ const Market = styled.div`
         background-color: rgba(0, 0, 0, 0);
         color: indigo;
         padding: 5px;
-        font-size: 0.5rem;
+        font-size: 0.3rem;
     }
 
     .closeBtn {
@@ -93,7 +93,7 @@ const Market = styled.div`
         border: 2px solid indigo;
         background-color: rgba(0, 0, 0, 0);
         padding: 5px;
-        font-size: 0.5rem;
+        font-size: 0.3rem;
         color: white;
         background-color: black;
     }

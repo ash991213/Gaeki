@@ -191,7 +191,7 @@ const Game = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="stage">STAGE {userStage()}</div>
+                    <div className="stage">STAGE : {userStage()}</div>
                 </div>
                 <div className="header_right">
                     <div className="service">
@@ -220,7 +220,7 @@ const Game = () => {
                     </div>
                     <div className="main">
                         <div className="user_chair_desk">
-                            <img src="loading.gif" />
+                            <img src="/사람/2스테이지 사람.png" />
                         </div>
                         {pet()}
                         {part()}
