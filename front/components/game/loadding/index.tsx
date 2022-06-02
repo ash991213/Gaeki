@@ -39,23 +39,17 @@ const Loadding = styled.div`
         }
     }
 
-    /* @media screen and (min-width: 768px) {
-        .wrap {
-            padding: 70px;
-        }
-        .loading {
-            height: 70%;
-        }
-    } */
-
     .loading_bar {
         width: 100%;
         height: 100%;
+        position: relative;
+        top: 20%;
+        font-size: 1.5rem;
+        color: gray;
+        text-shadow: 1px 1px 1px #000;
+        opacity: 0.5;
         margin: 0 auto;
-        & > img {
-            width: 100%;
-            height: 100%;
-        }
+        text-align: center;
     }
 
     @media screen and (max-width: 1000px) {

@@ -63,7 +63,7 @@ const RankingTemplate = styled.div`
         & > span {
             position: relative;
             top: 20%;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
         }
     }
@@ -75,12 +75,14 @@ const RankingTemplate = styled.div`
         background: #fbeaeb;
         color: #2e3c7e;
         border: 1px solid black;
+        font-weight: bold;
+        border-radius: 0.2rem;
     }
 
     .stage {
         width: 100%;
         height: 5%;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: bold;
         text-align: center;
     }
@@ -139,7 +141,7 @@ const RankingTemplate = styled.div`
             height: 8.4%;
             padding-top: 1px;
             display: flex;
-            font-size: 12px;
+            font-size: 10px;
             text-align: center;
             & > li {
                 margin-right: 1%;

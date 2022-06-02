@@ -32,7 +32,7 @@ const Setting = ({ closeSetting }: any) => {
                 <div>
                     <span className="settingHead">설정</span>
                     <div className="imgwrap">
-                        <img src="./설정.jpg" />
+                        <img src="./환경설정.png" />
                     </div>
                     <div className="button">
                         <div className="effectbutton">
@@ -41,7 +41,7 @@ const Setting = ({ closeSetting }: any) => {
                                 {sound_effect === true ? (
                                     <img src="./effect.png" />
                                 ) : (
-                                    <img src="./back.png" />
+                                    <img src="./효과음 off.png" />
                                 )}
                             </div>
                         </div>
@@ -51,7 +51,7 @@ const Setting = ({ closeSetting }: any) => {
                                 {background_sound === true ? (
                                     <img src="./back.png" />
                                 ) : (
-                                    <img src="./effect.png" />
+                                    <img src="./배경음 off.png" />
                                 )}
                             </div>
                         </div>
