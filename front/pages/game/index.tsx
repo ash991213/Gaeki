@@ -191,7 +191,10 @@ const Game = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="stage">STAGE {userStage()}</div>
+                    <div className="stage">
+                        <span>STAGE</span>
+                        <span>{userStage()}</span>
+                    </div>
                 </div>
                 <div className="header_right">
                     <div className="service">

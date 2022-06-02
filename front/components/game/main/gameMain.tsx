@@ -30,10 +30,13 @@ const GameTemplate = styled.div`
 
     .header {
         width: 100%;
+        max-width: 20rem;
         height: 15%;
         display: flex;
+        margin: 0 auto;
+        justify-content: space-evenly;
         & > .header_left {
-            width: 80%;
+            width: 75%;
             height: 100%;
             display: flex;
             & > .user {
@@ -50,10 +53,11 @@ const GameTemplate = styled.div`
                     top: 5%;
                     left: 2.5%;
                     & > .user_image {
+                        display: flex;
+                        justify-content: center;
                         width: 30%;
                         height: 100%;
                         & > img {
-                            width: 100%;
                             height: 100%;
                             border-radius: 50% 50%;
                             object-fit: cover;
@@ -143,10 +147,12 @@ const GameTemplate = styled.div`
                 border-radius: 0.5rem;
                 padding-top: 2%;
                 font-weight: bold;
+                display: flex;
+                flex-direction: column;
             }
         }
         & > .header_right {
-            width: 20%;
+            width: 25%;
             height: 100%;
             & > .service {
                 width: 80%;
@@ -161,7 +167,6 @@ const GameTemplate = styled.div`
                     position: relative;
                     top: 20%;
                     & > img {
-                        width: 100%;
                         height: 100%;
                         object-fit: cover;
                     }
@@ -172,6 +177,9 @@ const GameTemplate = styled.div`
 
     .ranking {
         z-index: 7;
+        & > img {
+            float: right;
+        }
     }
 
     .setting {
@@ -313,6 +321,18 @@ const GameTemplate = styled.div`
                 height: 100%;
                 object-fit: cover;
             }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .header {
+            max-width: 560px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .header {
+            max-width: 768px;
         }
     }
 `;

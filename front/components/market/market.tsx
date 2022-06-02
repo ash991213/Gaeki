@@ -24,6 +24,8 @@ const Market = styled.div`
     }
 
     .content1 {
+        max-width: 20rem;
+        margin: 0 auto;
         overflow: auto;
         display: flex;
         flex-direction: column;
@@ -43,27 +45,47 @@ const Market = styled.div`
         background: plum;
     }
 
-    .content_name {
-        height: 20%;
-        border-bottom: 1px solid;
-        padding: 2.5px 0;
-    }
-    .content_name2 {
-        height: 16.7%;
-        border-bottom: 1px solid;
-        padding: 2.5px 0;
-    }
-
     .content_up {
         background: beige;
         display: flex;
         justify-content: space-around;
         border: 1px solid black;
+        & > div:nth-child(1) {
+            width: 3rem;
+        }
+        & > div:nth-child(2) {
+            width: 9rem;
+        }
+        & > div:nth-child(3) {
+            width: 3rem;
+        }
     }
 
     .content_down {
         display: flex;
         justify-content: space-around;
+        padding: 0.2rem 0 0.2rem 0;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        & > div:nth-child(1) {
+            width: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        & > div:nth-child(2) {
+            width: 9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        & > div:nth-child(3) {
+            width: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         & > div > img {
             width: 2rem;
             object-fit: cover;
@@ -99,6 +121,9 @@ const Market = styled.div`
     }
 
     .footer {
+        margin: 0 auto;
+        max-width: 20rem;
+        box-sizing:
         width: 100%;
         height: 10%;
         display: flex;
@@ -106,28 +131,53 @@ const Market = styled.div`
 
         & > div {
             width: 33.33333%;
+            & > img {
+                object-fit: contain;
+            }
         }
 
         & > .stat {
-            background: orange;
+            background: #333d79;
         }
 
         & > .gold {
-            background: indigo;
+            background: #333d56;
         }
 
         & > .exp {
-            background: purple;
+            background: #333d79;
         }
     }
     .alignCenter {
         padding: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
     .fontNoWrap {
         white-space: nowrap;
     }
     .menuOpacity {
         opacity: 0.5;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .content1 {
+            max-width: 560px;
+        }
+        .footer {
+            max-width: 560px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .content1 {
+            max-width: 768px;
+        }
+        .footer {
+            max-width: 768px;
+        }
     }
 `;
 

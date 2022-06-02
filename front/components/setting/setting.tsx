@@ -16,6 +16,12 @@ const Setting = styled.div`
 
     .closebt {
         align-self: flex-end;
+        width: 10%;
+        height: 50%;
+        margin-right: 20px;
+        background: #fbeaeb;
+        color: #2e3c7e;
+        border: 1px solid black;
     }
 
     .wrap {
