@@ -256,7 +256,7 @@ const Market = () => {
                             {status.coding !== 60000 ? (
                                 <button
                                     className={
-                                        gold >= (120000 - status.coding) * 2.5
+                                        gold >= (121000 - status.coding) * 2.5
                                             ? 'upbt'
                                             : 'closeBtn'
                                     }
@@ -264,13 +264,13 @@ const Market = () => {
                                         codingUp();
                                     }}
                                     disabled={
-                                        gold >= (120000 - status.coding) * 2.5
+                                        gold >= (121000 - status.coding) * 2.5
                                             ? false
                                             : true
                                     }
                                 >
                                     강화버튼 <br />
-                                    {(120000 - status.coding) * 2.5}
+                                    {(121000 - status.coding) * 2.5}
                                 </button>
                             ) : (
                                 <button className="closeBtn" disabled={true}>

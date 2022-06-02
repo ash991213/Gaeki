@@ -142,10 +142,11 @@ const GameTemplate = styled.div`
                 width: 40%;
                 height: 40%;
                 position: relative;
-                top: 7%;
+                top: 10%;
                 text-align: center;
                 border-radius: 0.5rem;
                 padding-top: 2%;
+                font-size: 14px;
                 font-weight: bold;
                 display: flex;
                 flex-direction: column;
@@ -189,7 +190,7 @@ const GameTemplate = styled.div`
     .content {
         width: 100%;
         height: 75%;
-        font-size: 12px;
+        font-size: 11px;
         & > .background {
             width: 100%;
             height: 100%;
@@ -203,7 +204,7 @@ const GameTemplate = styled.div`
                     height: 100%;
                 }
                 & > .user_chair_desk {
-                    width: 30%;
+                    width: 60%;
                     height: 50%;
                     position: relative;
                     top: 10%;
