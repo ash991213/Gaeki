@@ -1,5 +1,5 @@
 module.exports = {
-    apps[
+    apps: [
         {
             name: 'Gaeki-sequelize-pm2',
             script: './server.js',
