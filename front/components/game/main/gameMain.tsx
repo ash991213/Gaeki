@@ -225,7 +225,7 @@ const GameTemplate = styled.div`
                     height: 15%;
                     position: relative;
                     top: -10%;
-                    left: 30%;
+                    left: 25%;
                     z-index: 2;
                     object-fit: cover;
                 }
@@ -252,19 +252,89 @@ const GameTemplate = styled.div`
                     top: -100%;
                     left: 5%;
                 }
-                & > .cook {
-                    width: 30%;
+                & > .cook1 {
+                    width: 60%;
                     height: 50%;
                     position: relative;
-                    top: -100%;
-                    left: 35%;
+                    top: -102%;
+                    left: 22%;
                 }
-                & > .homekeeper {
+                & > .cook2 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: -102%;
+                    left: 22%;
+                }
+                & > .cook3 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: -102%;
+                    left: 22%;
+                }
+                & > .cook4 {
+                    width: 100%;
+                    height: 50%;
+                    position: relative;
+                    top: -105%;
+                    left: 5%;
+                }
+                & > .cook5 {
+                    width: 25%;
+                    height: 40%;
+                    position: relative;
+                    top: -102%;
+                    left: 40%;
+                }
+                & > .cook6 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: -102%;
+                    left: 22%;
+                }
+                & > .homekeeper1 {
                     width: 30%;
                     height: 50%;
                     position: relative;
                     top: -200%;
                     left: 65%;
+                }
+                & > .homekeeper3 {
+                    width: 45%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper4 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper5 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper6 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper2 {
+                    width: 45%;
+                    height: 50%;
+                    position: relative;
+                    top: -190%;
+                    left: 57%;
                 }
                 & > .vehicle {
                     width: 30%;
