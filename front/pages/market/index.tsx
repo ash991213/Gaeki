@@ -110,7 +110,7 @@ const Market = () => {
                 });
                 setTimeout(() => {
                     setAuto(false);
-                }, 3000);
+                }, 100034540);
             }
         }
     }, [user_idx, desk, Auto]);
@@ -360,11 +360,11 @@ const Market = () => {
                                     auto_desk();
                                 }}
                                 disabled={
-                                    gold >= auto.desk * 300 ? false : true
+                                    gold >= (auto.desk + 1) * 300 ? false : true
                                 }
                             >
                                 강화버튼
-                                <div>{auto.desk * 300}</div>
+                                <div>{(auto.desk + 1) * 300}</div>
                             </button>
                         </div>
                     </div>
@@ -398,7 +398,9 @@ const Market = () => {
                                     auto_chair();
                                 }}
                                 disabled={
-                                    gold >= auto.chair * 1500 ? false : true
+                                    gold >= (auto.chair + 1) * 1500
+                                        ? false
+                                        : true
                                 }
                             >
                                 강화버튼
@@ -433,7 +435,9 @@ const Market = () => {
                                 onClick={() => {
                                     auto_pc();
                                 }}
-                                disabled={gold >= auto.pc * 7500 ? false : true}
+                                disabled={
+                                    gold >= (auto.pc + 1) * 7500 ? false : true
+                                }
                             >
                                 강화버튼
                                 <div>{(auto.pc + 1) * 7500}</div>
@@ -470,7 +474,9 @@ const Market = () => {
                                     auto_cook();
                                 }}
                                 disabled={
-                                    gold >= auto.cook * 37500 ? false : true
+                                    gold >= (auto.cook + 1) * 37500
+                                        ? false
+                                        : true
                                 }
                             >
                                 강화버튼
@@ -510,7 +516,7 @@ const Market = () => {
                                     auto_homekeeper();
                                 }}
                                 disabled={
-                                    gold >= auto.homekeeper * 187500
+                                    gold >= (auto.homekeeper + 1) * 187500
                                         ? false
                                         : true
                                 }
@@ -550,7 +556,9 @@ const Market = () => {
                                     auto_vehicle();
                                 }}
                                 disabled={
-                                    gold >= auto.vehicle * 937500 ? false : true
+                                    gold >= (auto.vehicle + 1) * 937500
+                                        ? false
+                                        : true
                                 }
                             >
                                 강화버튼
@@ -769,7 +777,7 @@ const Market = () => {
                 type: 'GOLD_CLICK_REQUEST',
                 payload: { user, typing: status.typing, luck: status.luck },
             });
-            const audio = new Audio('클릭.mp3');
+            const audio = new Audio('키보드 효과음 2.mp3');
             if (sound_effect === true) {
                 audio.volume = 0.5;
                 audio.play();
@@ -781,7 +789,7 @@ const Market = () => {
                     user,
                 },
             });
-            const audio = new Audio('클릭.mp3');
+            const audio = new Audio('키보드 효과음 2.mp3');
             if (sound_effect === true) {
                 audio.volume = 0.5;
                 audio.play();
