@@ -18,16 +18,21 @@ const Ranking = ({ closeRanking }: any) => {
     const stageList = useSelector(
         (state: rankingType) => state.ranking.stageList
     );
+    const user = useSelector((state: any) => state.user);
+    const myrank = useSelector((state: any) => state.ranking.myranking);
 
     const [stage, setStage] = useState(1);
 
     useEffect(() => {
         dispatch({ type: 'RANKING_LIST_REQUEST' });
+        dispatch({ type: 'MY_RANKING_REQUEST', payload: user });
     }, []);
 
     interface vType {
         nickname: string;
         gold: number;
+        rank: number;
+        myrank: {};
     }
 
     const usersRank = () => {
@@ -41,6 +46,26 @@ const Ranking = ({ closeRanking }: any) => {
             );
         });
         return users;
+    };
+
+    const myRank = () => {
+        if (stage === user.stage) {
+            return (
+                <ul className="myRank">
+                    <li>{myrank.rank}</li>
+                    <li>{myrank.myrank.nickname}</li>
+                    <li>{myrank.myrank.gold}</li>
+                </ul>
+            );
+        } else {
+            return (
+                <ul className="myRank">
+                    <li>순위권밖</li>
+                    <li>{myrank.myrank.nickname}</li>
+                    <li>{myrank.myrank.gold}</li>
+                </ul>
+            );
+        }
     };
 
     const usersStage = () => {
@@ -61,6 +86,7 @@ const Ranking = ({ closeRanking }: any) => {
 
     const stageRank = (num: number) => {
         dispatch({ type: 'RANKING_LIST_REQUEST', payload: num });
+        dispatch({ type: 'MY_RANKING_REQUEST', payload: user });
         setStage(num);
     };
 
@@ -69,14 +95,18 @@ const Ranking = ({ closeRanking }: any) => {
             <div className="content">
                 <div className="header">
                     <div className="header_wrap">
-                        <div className="logo">로고</div>
-                        <div className="rank">랭킹</div>
+                        <div className="logo">
+                            <img src="./랭킹.png" />
+                        </div>
+                        <div className="rank">
+                            <span>랭킹</span>
+                        </div>
                     </div>
                     <button className="button" onClick={() => closeRanking()}>
                         X
                     </button>
                 </div>
-                <div className="stage">stage</div>
+                <div className="stage">STAGE</div>
                 <div className="stage_wrap">{usersStage()}</div>
                 <div className="img">
                     <img src="./redux.png" />
@@ -88,11 +118,7 @@ const Ranking = ({ closeRanking }: any) => {
                         <li>재화</li>
                     </ul>
                     {usersRank()}
-                    <ul className="myRank">
-                        <li>순위권 밖</li>
-                        <li>ㄹㄹㅇㄹㅇㄹㄷㅈ</li>
-                        <li>본인 재화</li>
-                    </ul>
+                    {myrank.rank !== undefined ? myRank() : null}
                 </div>
             </div>
         </RankingTemplate>

@@ -6,7 +6,7 @@ const GameTemplate = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background: gray;
+
     * {
         margin: 0;
         padding: 0;
@@ -21,15 +21,23 @@ const GameTemplate = styled.div`
         appearance: none;
     }
 
+    .back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -10;
+    }
+
     .header {
         width: 100%;
+        max-width: 20rem;
         height: 15%;
-        background: white;
         display: flex;
+        margin: 0 auto;
+        justify-content: space-evenly;
         & > .header_left {
-            width: 80%;
+            width: 75%;
             height: 100%;
-            background: blue;
             display: flex;
             & > .user {
                 width: 60%;
@@ -37,7 +45,6 @@ const GameTemplate = styled.div`
                 position: relative;
                 left: 5%;
                 top: 10%;
-                background: red;
                 & > .user_wrap {
                     width: 90%;
                     height: 50%;
@@ -46,11 +53,11 @@ const GameTemplate = styled.div`
                     top: 5%;
                     left: 2.5%;
                     & > .user_image {
+                        display: flex;
+                        justify-content: center;
                         width: 30%;
                         height: 100%;
-                        background: purple;
                         & > img {
-                            width: 100%;
                             height: 100%;
                             border-radius: 50% 50%;
                             object-fit: cover;
@@ -63,15 +70,13 @@ const GameTemplate = styled.div`
                         left: 3%;
                         font-size: 12px;
                         & > .user_name {
-                            width: 100%;
+                            width: 150%;
                             height: 50%;
-                            background: pink;
                             line-height: 150%;
                         }
                         & > .user_gold {
                             width: 100%;
                             height: 50%;
-                            background: yellow;
                             line-height: 150%;
                         }
                     }
@@ -80,74 +85,89 @@ const GameTemplate = styled.div`
                     width: 95%;
                     height: 40%;
                     position: relative;
-                    left: 2%;
-                    top: 10%;
+                    left: 1%;
+                    top: 2%;
                     & > .user_exp {
                         width: 100%;
                         height: 90%;
-                        background: white;
                         position: relative;
-                        font-size: 12px;
+                        font-size: 10px;
                         padding-left: 5%;
                         padding-top: 1%;
                         display: flex;
-                        & > .exp_progress {
+                        & > .progress_gauge {
                             width: 80%;
-                            height: 80%;
+                            height: 90%;
                             position: relative;
-                            left: 7.5%;
-                            top: 7.5%;
-                        }
-                        & > .exp_progress::-webkit-progress-bar {
-                            background: rgba(0, 0, 0, 0);
-                            border-radius: 10px;
-                        }
-                        & > .exp_progress::-webkit-progress-value {
-                            border-radius: 10px;
-                            background: #1d976c;
-                            background: -webkit-linear-gradient(
-                                to right,
-                                #93f9b9,
-                                #1d976c
-                            );
-                            background: linear-gradient(
-                                to right,
-                                #93f9b9,
-                                #1d976c
-                            );
+                            top: 10%;
+                            right: 2%;
+                            text-align: right;
+                            & > .exp_progress {
+                                width: 75%;
+                                height: 50%;
+                                position: absolute;
+                                left: 7.5%;
+                            }
+                            & > .exp_progress::-webkit-progress-bar {
+                                background: rgba(0, 0, 0, 0);
+                                border-radius: 10px;
+                            }
+                            & > .exp_progress::-webkit-progress-value {
+                                border-radius: 10px;
+                                background: #1d976c;
+                                background: -webkit-linear-gradient(
+                                    to right,
+                                    #93f9b9,
+                                    #1d976c
+                                );
+                                background: linear-gradient(
+                                    to right,
+                                    #93f9b9,
+                                    #1d976c
+                                );
+                            }
+                            & > div {
+                                width: 110%;
+                                height: 100%;
+                                position: absolute;
+                                left: 7.5%;
+                                top: -10%;
+                                margin-left: -2%;
+                            }
                         }
                     }
                 }
             }
             & > .stage {
-                width: 20%;
-                height: 60%;
+                width: 40%;
+                height: 40%;
                 position: relative;
-                left: 12.5%;
-                top: 20%;
-                background: white;
+                top: 10%;
                 text-align: center;
+                border-radius: 0.5rem;
+                padding-top: 2%;
+                font-size: 14px;
+                font-weight: bold;
+                display: flex;
+                flex-direction: column;
             }
         }
         & > .header_right {
-            width: 20%;
+            width: 25%;
             height: 100%;
-            background: red;
             & > .service {
                 width: 80%;
-                height: 50%;
+                height: 60%;
                 position: relative;
                 left: 10%;
-                top: 25%;
+                top: 5%;
                 display: flex;
-                background: white;
                 & > div {
                     width: 50%;
                     height: 50%;
                     position: relative;
                     top: 20%;
                     & > img {
-                        width: 100%;
                         height: 100%;
                         object-fit: cover;
                     }
@@ -159,38 +179,33 @@ const GameTemplate = styled.div`
     .ranking {
         z-index: 7;
         & > img {
-            background: yellow;
+            float: right;
         }
     }
 
     .setting {
         z-index: 7;
-        & > img {
-            background: black;
-        }
     }
 
     .content {
         width: 100%;
         height: 75%;
-        font-size: 12px;
+        font-size: 11px;
         & > .background {
             width: 100%;
             height: 100%;
-            background: skyblue;
             & > .main {
                 width: 100%;
                 height: 80%;
                 position: relative;
-                top: -10%;
+                top: 5%;
                 & > div > img {
                     width: 100%;
                     height: 100%;
                 }
                 & > .user_chair_desk {
-                    width: 30%;
+                    width: 60%;
                     height: 50%;
-                    background: red;
                     position: relative;
                     top: 10%;
                     left: 50%;
@@ -198,80 +213,84 @@ const GameTemplate = styled.div`
                     z-index: 1;
                 }
                 & > .pet_cat {
-                    width: 10%;
-                    height: 10%;
-                    background: blue;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
                     left: 60%;
                     z-index: 2;
+                    object-fit: scale-down;
                 }
                 & > .pet_dog {
-                    width: 10%;
-                    height: 10%;
-                    background: gray;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
                     top: -10%;
                     left: 30%;
                     z-index: 2;
+                    object-fit: cover;
                 }
                 & > .pet_bird {
-                    width: 10%;
-                    height: 10%;
-                    background: purple;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
-                    top: 5%;
+                    top: -5%;
                     left: 20%;
+                    object-fit: cover;
                 }
                 & > .pet_fish {
-                    width: 10%;
-                    height: 10%;
-                    background: green;
+                    width: 15%;
+                    height: 15%;
                     position: relative;
-                    top: 10%;
+                    top: -10%;
                     left: 10%;
+                    object-fit: fill;
                 }
                 & > .cheer {
                     width: 30%;
                     height: 50%;
-                    background: yellow;
                     position: relative;
-                    top: -80%;
+                    top: -100%;
                     left: 5%;
                 }
                 & > .cook {
                     width: 30%;
                     height: 50%;
-                    background: orange;
                     position: relative;
-                    top: -80%;
+                    top: -100%;
                     left: 35%;
                 }
                 & > .homekeeper {
                     width: 30%;
                     height: 50%;
-                    background: pink;
                     position: relative;
-                    top: -180%;
+                    top: -200%;
                     left: 65%;
                 }
                 & > .vehicle {
                     width: 30%;
                     height: 30%;
-                    background: aqua;
                     position: relative;
-                    top: -170%;
+                    top: -190%;
                     left: 65%;
                 }
             }
             & > .user_gauge {
                 width: 50%;
-                height: 20%;
-                padding-top: 2.5%;
-                margin: 0 auto;
-                & > div {
-                    width: 100;
-                    height: 20%;
-                    text-align: center;
+                height: 10%;
+                position: relative;
+                top: -10.7%;
+                left: 65%;
+                & > .gauge_name {
+                    width: 100%;
+                    height: 5%;
+                    position: relative;
+                    top: 8%;
+                    left: 10%;
+                }
+                & > .progress {
+                    width: 100%;
+                    height: 5%;
+                    text-align: left;
                     & > .gauge_progress::-webkit-progress-bar {
                         background: rgba(0, 0, 0, 0);
                         border-radius: 10px;
@@ -303,6 +322,18 @@ const GameTemplate = styled.div`
                 height: 100%;
                 object-fit: cover;
             }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .header {
+            max-width: 560px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .header {
+            max-width: 768px;
         }
     }
 `;

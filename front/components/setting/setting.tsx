@@ -10,41 +10,47 @@ const Setting = styled.div`
     z-index: 8;
 
     .settingHead {
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: bold;
     }
 
     .closebt {
         align-self: flex-end;
+        width: 16%;
+        height: 7.2%;
+        background: #fbeaeb;
+        color: #2e3c7e;
+        border: 1px solid black;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        left: 10%;
+        top: -3%;
+        border-radius: 0.2rem;
     }
 
     .wrap {
         display: flex;
         flex-direction: column;
-        alighn-items: center;
+        align-items: center;
         max-width: 255px;
         width: 80%;
         height: 65%;
         margin: 0 auto;
         margin-top: 2.5rem;
         border: 1px solid black;
+        border-radius: 0.5rem;
         padding: 1.5rem 2.2rem 2.2rem 2.2rem;
-        box-shadow: 7px 7px 5px black;
         background: white;
-        text-align:center;
+        text-align: center;
     }
     .imgwrap > img {
-        width: 100%;
+        width: 70%;
         object-fit: cover;
     }
     .header {
         width: 100%;
         height: 20%;
-        margin: 0 auto;
-        padding-bottom: 50px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 50px;
     }
 
     .button {
@@ -62,7 +68,7 @@ const Setting = styled.div`
 
     .text1 {
         padding: 10px;
-        font-size: 1rem;
+        font-size: 1.5rem;
         font-weight: bold;
     }
 

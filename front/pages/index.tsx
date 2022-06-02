@@ -15,9 +15,7 @@ const loadding: NextPage = () => {
                 <div className="loading">
                     <img src="./loading.gif" />
                 </div>
-                <div className="loading_bar">
-                    <img src="./loading-bar.gif" />
-                </div>
+                <div className="loading_bar">화면을 터치해주세요</div>
             </a>
         </Loadding>
     );

@@ -31,6 +31,25 @@ function* ranking(action: actionType) {
     }
 }
 
+const myrankAPI = async (action: any) => {
+    return await axios.post('http://localhost:4000/ranking/myrank', action);
+};
+
+function* myranking(action: any) {
+    const result: resultType = yield call(myrankAPI, action.payload);
+    try {
+        yield put({
+            type: 'MY_RANKING_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'MY_RANKING_FAILURE',
+        });
+    }
+}
+
 export default function* watchRanking() {
     yield takeLatest('RANKING_LIST_REQUEST', ranking);
+    yield takeLatest('MY_RANKING_REQUEST', myranking);
 }
