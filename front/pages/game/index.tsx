@@ -71,9 +71,12 @@ const Game = () => {
         }
     };
 
-    const pet = (): any => {
+    const stageImage = () => {
         return (
             <>
+                <div className="user_chair_desk">
+                    <img src="/사람/4 스테이지 사람.png" />
+                </div>
                 <div className="pet_cat">
                     <img src={`/고양이/${stage} 스테이지 고양이.gif`} />
                 </div>
@@ -86,29 +89,15 @@ const Game = () => {
                 <div className="pet_fish">
                     <img src={`/물고기/${stage} 스테이지 물고기.gif`} />
                 </div>
-            </>
-        );
-    };
-
-    const part = () => {
-        return (
-            <>
                 <div className="cheer">
                     <img src={`/알바생/${stage} 스테이지 알바생.gif`} />
                 </div>
-                <div className="cook">
+                <div className={`cook${stage}`}>
                     <img src={`/요리사/${stage} 스테이지 요리사.gif`} />
                 </div>
-                <div className="homekeeper">
+                <div className={`homekeeper${stage}`}>
                     <img src={`/집사/${stage} 스테이지 집사.gif`} />
                 </div>
-            </>
-        );
-    };
-
-    const vehicle = () => {
-        return (
-            <>
                 <div className="vehicle">
                     <img src={`/탈것/${stage} 스테이지 탈것.gif`} />
                 </div>
@@ -218,14 +207,7 @@ const Game = () => {
                             ></progress>
                         </div>
                     </div>
-                    <div className="main">
-                        <div className="user_chair_desk">
-                            <img src="/사람/2스테이지 사람.png" />
-                        </div>
-                        {pet()}
-                        {part()}
-                        {vehicle()}
-                    </div>
+                    <div className="main">{stageImage()}</div>
                 </div>
             </div>
             <div className="footer">
