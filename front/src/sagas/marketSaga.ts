@@ -276,39 +276,75 @@ function* auto_Exp(action: any) {
 }
 
 const dogExpAPI:any = async(action:any) => {
-    const obj = {a:action}
-    return await axios.post('http://localhost:4000/market/exp_Dog',obj)
+    return await axios.post('http://localhost:4000/market/exp_Dog',action)
 }
 
 function* dog_Exp(action:any){
     const result: {data: {}} = yield call(dogExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_DOG_SUCCESS',
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:'EXP_DOG_FAILURE'
+        });
+    }
 }
 
 const catExpAPI:any = async(action:any) => {
-    const obj1 = {b:action}
-    return await axios.post('http://localhost:4000/market/exp_Cat',obj1)
+    return await axios.post('http://localhost:4000/market/exp_Cat',action)
 }
 
 function* cat_Exp(action:any){
     const result:{data:{}} = yield call(catExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_CAT_SUCCESS', 
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:"EXP_CAT_FAILURE"
+        });
+    }
 }
 
 const fishExpAPI:any = async(action:any) => {
-    const obj2 = {c:action}
-    return await axios.post('http://localhost:4000/market/exp_Fish',obj2)
+    return await axios.post('http://localhost:4000/market/exp_Fish',action)
 }
 
 function* fish_Exp(action:any){
     const result:{data:{}} = yield call(fishExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_FISH_SUCCESS',
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:'EXP_FISH_FAILURE'
+        })
+    }
 }
 
 const birdExpAPI:any = async(action:any) => {
-    const obj3 = {d:action}
-    return await axios.post('http://localhost:4000/market/exp_Bird',obj3)
+    return await axios.post('http://localhost:4000/market/exp_Bird',action)
 }
 
 function* bird_Exp(action:any){
     const result:{data:{}} = yield call(birdExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_BIRD_SUCCESS',
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:'EXP_BIRD_FAILURE'
+        })
+    }
 }
 
 export default function* market() {

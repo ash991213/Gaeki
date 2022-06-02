@@ -94,25 +94,25 @@ const Market = () => {
 
     const exp_Dog = () => {
         dispatch({
-            type:'EXP_DOG_REQUEST',payload:"승주짱짱"
+            type:'EXP_DOG_REQUEST',payload:user
         });
     }
 
     const exp_Cat = () => {
         dispatch({
-            type:'EXP_CAT_REQUEST',payload:"승주짱짱1"
+            type:'EXP_CAT_REQUEST',payload:user
         })
     }
 
     const exp_Fish = () => {
         dispatch({
-            type:'EXP_FISH_REQUEST',payload:"승주짱짱2"
+            type:'EXP_FISH_REQUEST',payload:user
         })
     }
 
     const exp_Bird = () => {
         dispatch({
-            type:'EXP_BIRD_REQUEST',payload:"승주짱짱3"
+            type:'EXP_BIRD_REQUEST',payload:user
         })
     }
 
@@ -131,7 +131,7 @@ const Market = () => {
                 });
                 setTimeout(() => {
                     setAuto(false);
-                }, 100034540);
+                }, 10000);
             }
         }
     }, [user_idx, desk, Auto]);
@@ -607,21 +607,23 @@ const Market = () => {
                         <div>
                             <div>10초당골드 증가 [{auto_exp.dog}]</div>
                             <span>
-                                5
+                                {auto_exp.dog==0?0:auto_exp.dog*100}
                             </span>{' '}
                             -&gt;{' '}
                             <span>
-                                50
+                                {auto_exp.dog==0?100:auto_exp.dog*100+100}
                             </span>
                         </div>
                         <div>
                             <button
                                 className='upbt'
                                 onClick = {()=>{exp_Dog()}}
-                                // disabled
+                                disabled={
+                                    gold>=(auto_exp.dog+1)*1000?false:true
+                                }
                             >
                                 강화버튼
-                                <div>50000</div>
+                                <div>{(auto_exp.dog+1)*1000}</div>
                             </button>
                         </div>
                     </div>
@@ -637,23 +639,25 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가 [5]</div>
+                            <div>10초당골드 증가 [{auto_exp.cat}]</div>
                             <span>
-                                5
+                                {auto_exp.cat==0?0:auto_exp.cat*1000}
                             </span>{' '}
                             -&gt;{' '}
                             <span>
-                                50
+                                {auto_exp.cat==0?1000:auto_exp.cat*1000+1000}
                             </span>
                         </div>
                         <div>
                             <button
                                 className='upbt'
                                 onClick = {()=>{exp_Cat()}}
-                                // disabled
+                                disabled={
+                                    gold>=(auto_exp.cat+1)*10000?false:true
+                                }
                             >
                                 강화버튼
-                                <div>50000</div>
+                                <div>{(auto_exp.cat+1)*10000}</div>
                             </button>
                         </div>
                     </div>
@@ -669,23 +673,25 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가 [5]</div>
+                            <div>10초당골드 증가 [{auto_exp.fish}]</div>
                             <span>
-                                5
+                                {auto_exp.fish==0?0:auto_exp.fish*5000}
                             </span>{' '}
                             -&gt;{' '}
                             <span>
-                                50
+                                {auto_exp.fish==0?5000:auto_exp.fish*5000+5000}
                             </span>
                         </div>
                         <div>
                             <button
                                 className='upbt'
                                 onClick = {()=>{exp_Fish()}}
-                                // disabled
+                                disabled={
+                                    gold>=(auto_exp.fish+1)*50000?false:true
+                                }
                             >
                                 강화버튼
-                                <div>50000</div>
+                                <div>{(auto_exp.fish+1)*50000}</div>
                             </button>
                         </div>
                     </div>
@@ -701,23 +707,25 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가 [5]</div>
+                            <div>10초당골드 증가 [{auto_exp.bird}]</div>
                             <span>
-                                5
+                                {auto_exp.bird==0?0:auto_exp.bird*10000}
                             </span>{' '}
                             -&gt;{' '}
                             <span>
-                                50
+                                {auto_exp.bird==0?10000:auto_exp.bird*10000+10000}
                             </span>
                         </div>
                         <div>
                             <button
                                 className='upbt'
                                 onClick = {()=>{exp_Bird()}}
-                                // disabled
+                                disabled={
+                                    gold>=(auto_exp.bird+1)*100000?false:true
+                                }
                             >
                                 강화버튼
-                                <div>50000</div>
+                                <div>{(auto_exp.bird+1)*100000}</div>
                             </button>
                         </div>
                     </div>

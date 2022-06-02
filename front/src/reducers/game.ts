@@ -478,6 +478,12 @@ const user = (state = initialState, action: actionType) => {
         case EXP_DOG_SUCCESS:
             return {
                 ...state,
+                gold:action.payload.gold,
+                auto_exp:{
+                    ...state.auto_exp,
+                    dog:action.payload.dog
+                }
+
             }
 
         case EXP_DOG_FAILURE:
@@ -490,7 +496,12 @@ const user = (state = initialState, action: actionType) => {
             }
         case EXP_CAT_SUCCESS:
             return {
-
+                ...state,
+                gold:action.payload.gold,
+                auto_exp:{
+                    ...state.auto_exp,
+                    cat:action.payload.cat
+                }
             }
         case EXP_CAT_FAILURE:
             return {
@@ -502,7 +513,12 @@ const user = (state = initialState, action: actionType) => {
             }
         case EXP_FISH_SUCCESS:
             return {
-
+                ...state,
+                gold:action.payload.gold,
+                auto_exp:{
+                    ...state.auto_exp,
+                    fish:action.payload.fish
+                }
             }
         case EXP_FISH_FAILURE:
             return {
@@ -514,7 +530,12 @@ const user = (state = initialState, action: actionType) => {
             }
         case EXP_BIRD_SUCCESS:
             return {
-
+                ...state,
+                gold:action.payload.gold,
+                auto_exp:{
+                    ...state.auto_exp,
+                    bird:action.payload.bird
+                }
             }
         case EXP_BIRD_FAILURE:
             return {
