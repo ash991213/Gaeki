@@ -27,7 +27,7 @@ exports.typing = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ typing: typing + 1 }, { where: { user_idx } });
-		await User.update({ gold: gold - typing * 100 }, { where: { id: user_idx } });
+		await User.update({ gold: gold - typing * 70 }, { where: { id: user_idx } });
 
 		const type = await Status.findOne({
 			where: { user_idx },
@@ -58,7 +58,7 @@ exports.hp = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ hp: hp + 1 }, { where: { user_idx } });
-		await User.update({ gold: gold - hp * 100 }, { where: { id: user_idx } });
+		await User.update({ gold: gold - hp * 30 }, { where: { id: user_idx } });
 
 		const type = await Status.findOne({
 			where: { user_idx },
@@ -88,7 +88,7 @@ exports.luck = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ luck: luck + 1 }, { where: { user_idx } });
-		await User.update({ gold: gold - luck * 100 }, { where: { id: user_idx } });
+		await User.update({ gold: gold - luck * 30 }, { where: { id: user_idx } });
 
 		const type = await Status.findOne({
 			where: { user_idx },
@@ -96,8 +96,6 @@ exports.luck = async (req: any, res: any) => {
 		const user = await User.findOne({
 			where: { id: user_idx },
 		});
-
-		console.log(type.luck);
 
 		const result = {
 			luck: type.luck,
@@ -150,7 +148,7 @@ exports.coding = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ coding: coding - 1000 }, { where: { user_idx } });
-		await User.update({ gold: gold - (121000 - coding) * 2.5 }, { where: { id: user_idx } });
+		await User.update({ gold: gold - (121000 - coding) * 200 }, { where: { id: user_idx } });
 
 		const type = await Status.findOne({
 			where: { user_idx },

@@ -16,15 +16,34 @@ const Loadding = styled.div`
         justify-content: space-evenly;
         flex-direction: column;
         z-index: 5;
+        background: #faebef;
     }
 
     .header {
         width: 100%;
         height: 20%;
-        background-color: #efefef;
         margin: 0 auto;
+        display: flex;
+        position: fixed;
+        top: 15%;
+        left: 7%;
         & > .logo {
-            color: black;
+            & > .logo1 {
+                object-fit: contain;
+                width: 70%;
+                height: 100%;
+                position: relative;
+                top: 20%;
+                left: 20%;
+            }
+            & > .logo2 {
+                object-fit: cover;
+                width: 30%;
+                height: 80%;
+                position: relative;
+                top: -15%;
+                left: 10%;
+            }
         }
     }
 
@@ -35,7 +54,9 @@ const Loadding = styled.div`
         & > img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            position: relative;
+            top: 150%;
+            object-fit: contain;
         }
     }
 
@@ -43,7 +64,7 @@ const Loadding = styled.div`
         width: 100%;
         height: 100%;
         position: relative;
-        top: 20%;
+        top: 50%;
         font-size: 1.5rem;
         color: gray;
         text-shadow: 1px 1px 1px #000;

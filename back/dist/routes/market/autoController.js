@@ -21,13 +21,7 @@ exports.auto_Gold = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const { user_idx, gold, auto } = req.body.user;
     const { chair, cheer, cook, desk, homekeeper, pc, vehicle } = auto;
     yield User.update({
-        gold: gold +
-            desk * 10 +
-            chair * 50 +
-            pc * 250 +
-            cook * 1250 +
-            homekeeper * 6250 +
-            vehicle * 31250,
+        gold: gold + desk * 10 + chair * 50 + pc * 250 + cook * 1250 + homekeeper * 6250 + cheer * 31250 + vehicle * 156250,
     }, { where: { id: user_idx } });
     const now = yield User.findOne({ where: { id: user_idx } });
     const currentGold = now.gold;
@@ -83,11 +77,21 @@ exports.auto_Homekeeper = (req, res) => __awaiter(void 0, void 0, void 0, functi
     const result = { homekeeper: Homekeeper.homekeeper, gold: currentGold.gold };
     res.json(result);
 });
+exports.auto_Cheer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user_idx, gold } = req.body.user;
+    const { cheer } = req.body.auto;
+    yield Auto_Gold.update({ cheer: cheer + 1 }, { where: { user_idx } });
+    yield User.update({ gold: gold - (cheer + 1) * 937500 }, { where: { id: user_idx } });
+    const Cheer = yield Auto_Gold.findOne({ where: user_idx });
+    const currentGold = yield User.findOne({ where: { id: user_idx } });
+    const result = { cheer: Cheer.cheer, gold: currentGold.gold };
+    res.json(result);
+});
 exports.auto_Vehicle = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_idx, gold } = req.body.user;
     const { vehicle } = req.body.auto;
     yield Auto_Gold.update({ vehicle: vehicle + 1 }, { where: { user_idx } });
-    yield User.update({ gold: gold - (vehicle + 1) * 937500 }, { where: { id: user_idx } });
+    yield User.update({ gold: gold - (vehicle + 1) * 4687500 }, { where: { id: user_idx } });
     const Vehicle = yield Auto_Gold.findOne({ where: user_idx });
     const currentGold = yield User.findOne({ where: { id: user_idx } });
     const result = { vehicle: Vehicle.vehicle, gold: currentGold.gold };

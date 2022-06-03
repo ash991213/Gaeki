@@ -29,7 +29,7 @@ exports.typing = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { typing }, } = req.body;
     try {
         yield Status.update({ typing: typing + 1 }, { where: { user_idx } });
-        yield User.update({ gold: gold - typing * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - typing * 70 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
@@ -52,7 +52,7 @@ exports.hp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { hp }, } = req.body;
     try {
         yield Status.update({ hp: hp + 1 }, { where: { user_idx } });
-        yield User.update({ gold: gold - hp * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - hp * 30 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
@@ -75,14 +75,13 @@ exports.luck = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { luck }, } = req.body;
     try {
         yield Status.update({ luck: luck + 1 }, { where: { user_idx } });
-        yield User.update({ gold: gold - luck * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - luck * 30 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
         const user = yield User.findOne({
             where: { id: user_idx },
         });
-        console.log(type.luck);
         const result = {
             luck: type.luck,
             gold: user.gold,
@@ -122,7 +121,7 @@ exports.coding = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { coding }, } = req.body;
     try {
         yield Status.update({ coding: coding - 1000 }, { where: { user_idx } });
-        yield User.update({ gold: gold - (121000 - coding) * 2.5 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - (121000 - coding) * 200 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });

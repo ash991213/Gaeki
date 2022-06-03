@@ -27,22 +27,39 @@ const Market = styled.div`
         max-width: 20rem;
         margin: 0 auto;
         overflow: auto;
-        display: flex;
+        display: flex; 
         flex-direction: column;
         width: 100%;
         height: 30%;
     }
 
     .content_clickGold {
-        background: plum;
+        background: #faebef;
     }
 
     .content_ignoreGold {
-        background: plum;
+        background: #faebef;
     }
 
     .content_ignoreExp {
-        background: plum;
+        background: #faebef;
+    }
+
+    .content_name {
+        height: 20%;
+        border-bottom: 1px solid;
+        padding: 2.5px 0;
+    }
+    .content_name2 {
+        height: 14.3%;
+        border-bottom: 1px solid;
+        padding: 2.5px 0;
+    }
+
+    .content_name3 {
+        height: 25%;
+        border-bottom: 1px solid;
+        padding: 2.5px 0;
     }
 
     .content_up {
@@ -100,9 +117,9 @@ const Market = styled.div`
     }
 
     .upbt {
-        border: 2px solid indigo;
+        border: 2px solid #333d79;
         background-color: rgba(0, 0, 0, 0);
-        color: indigo;
+        color: #333d79;
         padding: 5px;
         font-size: 0.3rem;
     }
@@ -112,7 +129,7 @@ const Market = styled.div`
         border-bottom-left-radius: 5px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        border: 2px solid indigo;
+        border: 2px solid #333d79;
         background-color: rgba(0, 0, 0, 0);
         padding: 5px;
         font-size: 0.3rem;
@@ -123,7 +140,6 @@ const Market = styled.div`
     .footer {
         margin: 0 auto;
         max-width: 20rem;
-        box-sizing:
         width: 100%;
         height: 10%;
         display: flex;
