@@ -40,7 +40,7 @@ function* status(action: any) {
 }
 
 const autoAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/auto_Show', action);
+    return await axios.post('http://15.164.141.28:81/market/auto_Show', action);
 };
 
 function* auto(action: any) {
@@ -58,7 +58,7 @@ function* auto(action: any) {
 }
 
 const hpAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/hp', action);
+    return await axios.post('http://15.164.141.28:81/market/hp', action);
 };
 
 function* hpUp(action: any) {
@@ -76,7 +76,7 @@ function* hpUp(action: any) {
 }
 
 const luckAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/luck', action);
+    return await axios.post('http://15.164.141.28:81/market/luck', action);
 };
 
 function* lcukUp(action: any) {
@@ -94,7 +94,7 @@ function* lcukUp(action: any) {
 }
 
 const patienceAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/patience', action);
+    return await axios.post('http://15.164.141.28:81/market/patience', action);
 };
 
 function* patienceUp(action: any) {
@@ -112,7 +112,7 @@ function* patienceUp(action: any) {
 }
 
 const codingAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/coding', action);
+    return await axios.post('http://15.164.141.28:81/market/coding', action);
 };
 
 function* codingUp(action: any) {
@@ -131,7 +131,7 @@ function* codingUp(action: any) {
 
 const autoGoldAPI: any = async (action: any) => {
     return await axios.post(
-        'http://localhost:4000/market/auto_Gold',
+        'http://15.164.141.28:81/market/auto_Gold',
         action.payload
     );
 };
@@ -151,27 +151,27 @@ function* auto_Gold(action: any) {
 }
 
 const autoDeskAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/auto_Desk', action);
+    return await axios.post('http://15.164.141.28:81/market/auto_Desk', action);
 };
 
 const autoChairAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/auto_Chair', action);
+    return await axios.post('http://15.164.141.28:81/market/auto_Chair', action);
 };
 const autoPcAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/auto_Pc', action);
+    return await axios.post('http://15.164.141.28:81/market/auto_Pc', action);
 };
 const autoCookAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/auto_Cook', action);
+    return await axios.post('http://15.164.141.28:81/market/auto_Cook', action);
 };
 const autoHomekeeperAPI: any = async (action: any) => {
     return await axios.post(
-        'http://localhost:4000/market/auto_Homekeeper',
+        'http://15.164.141.28:81/market/auto_Homekeeper',
         action
     );
 };
 const autoVehicleAPI: any = async (action: any) => {
     return await axios.post(
-        'http://localhost:4000/market/auto_Vehicle',
+        'http://15.164.141.28:81/market/auto_Vehicle',
         action
     );
 };
@@ -258,7 +258,7 @@ function* auto_vehicle(action: any) {
 }
 
 const autoCheerAPI: any = async (action: any) => {
-    return await axios.post('http://localhost:4000/market/auto_Cheer', action);
+    return await axios.post('http://15.164.141.28:81/market/auto_Cheer', action);
 };
 
 function* auto_cheer(action: any) {
@@ -276,7 +276,7 @@ function* auto_cheer(action: any) {
 }
 
 const autoExpAPI:any = async(action:any) => {
-    return await axios.post('http://localhost:4000/market/exp_Show',action)
+    return await axios.post('http://15.164.141.28:81/market/exp_Show',action)
 }
 
 function* auto_Exp(action: any) {
@@ -294,7 +294,7 @@ function* auto_Exp(action: any) {
 }
 
 const dogExpAPI:any = async(action:any) => {
-    return await axios.post('http://localhost:4000/market/exp_Dog',action)
+    return await axios.post('http://15.164.141.28:81/market/exp_Dog',action)
 }
 
 function* dog_Exp(action:any){
@@ -312,7 +312,7 @@ function* dog_Exp(action:any){
 }
 
 const catExpAPI:any = async(action:any) => {
-    return await axios.post('http://localhost:4000/market/exp_Cat',action)
+    return await axios.post('http://15.164.141.28:81/market/exp_Cat',action)
 }
 
 function* cat_Exp(action:any){
@@ -330,7 +330,7 @@ function* cat_Exp(action:any){
 }
 
 const fishExpAPI:any = async(action:any) => {
-    return await axios.post('http://localhost:4000/market/exp_Fish',action)
+    return await axios.post('http://15.164.141.28:81/market/exp_Fish',action)
 }
 
 function* fish_Exp(action:any){
@@ -348,7 +348,7 @@ function* fish_Exp(action:any){
 }
 
 const birdExpAPI:any = async(action:any) => {
-    return await axios.post('http://localhost:4000/market/exp_Bird',action)
+    return await axios.post('http://15.164.141.28:81/market/exp_Bird',action)
 }
 
 function* bird_Exp(action:any){
@@ -366,7 +366,7 @@ function* bird_Exp(action:any){
 }
 
 const guageExpAPI:any = async(action:any) => {
-    return await axios.post('http://localhost:4000/market/guage_Exp',action)
+    return await axios.post('http://15.164.141.28:81/market/guage_Exp',action)
 }
 
 function* guage_Exp(action:any){

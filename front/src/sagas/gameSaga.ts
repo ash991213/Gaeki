@@ -64,7 +64,7 @@ function* gold_click(action: any) {
 
 const hpDownAPI = async (action: any) => {
     return await axios.post(
-        'http://localhost:4000/game/hpDown',
+        'http://15.164.141.28:81/game/hpDown',
         action.payload
     );
 };
@@ -85,7 +85,7 @@ function* hpDown(action: any) {
 
 const gold_exp_clickAPI = async (action: any) => {
     return await axios.post(
-        'http://localhost:4000/game/gold_exp',
+        'http://15.164.141.28:81/game/gold_exp',
         action.payload
     );
 };
@@ -106,7 +106,7 @@ function* gold_exp_click(action: any) {
 }
 
 const bugAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/game/bug', action.payload);
+    return await axios.post('http://15.164.141.28:81/game/bug', action.payload);
 };
 
 function* bug(action: any) {

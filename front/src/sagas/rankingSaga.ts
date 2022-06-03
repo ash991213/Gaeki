@@ -32,7 +32,7 @@ function* ranking(action: actionType) {
 }
 
 const myrankAPI = async (action: any) => {
-    return await axios.post('http://localhost:4000/ranking/myrank', action);
+    return await axios.post('http://15.164.141.28:81/ranking/myrank', action);
 };
 
 function* myranking(action: any) {
