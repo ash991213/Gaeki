@@ -347,6 +347,15 @@ function* bird_Exp(action:any){
     }
 }
 
+const guageExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/guage_Exp',action)
+}
+
+function* guage_Exp(action:any){
+    const result:{data:{}} = yield call(guageExpAPI, action.payload)
+    console.log('프론트에서 받은 res',result)
+}
+
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('AUTO_REQUEST', auto);
@@ -367,4 +376,5 @@ export default function* market() {
     yield takeLatest('EXP_CAT_REQUEST',cat_Exp);
     yield takeLatest('EXP_FISH_REQUEST',fish_Exp);
     yield takeLatest('EXP_BIRD_REQUEST',bird_Exp);
+    yield takeLatest('EXP_GUAGE_REQUEST',guage_Exp);
 }

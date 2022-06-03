@@ -113,6 +113,9 @@ const EXP_FISH_FAILURE = 'EXP_FISH_FAILURE';
 const EXP_BIRD_REQUEST = 'EXP_BIRD_REQUEST';
 const EXP_BIRD_SUCCESS = 'EXP_BIRD_SUCCESS';
 const EXP_BIRD_FAILURE = 'EXP_BIRD_FAILURE';
+const EXP_GUAGE_REQUEST = 'EXP_GUAGE_REQUEST';
+const EXP_GUAGE_SUCCESS = 'EXP_GUAGE_SUCCESS';
+const EXP_GUAGE_FAILURE = 'EXP_GUAGE_FAILURE';
 
 interface actionType {
     type: string;
@@ -541,6 +544,18 @@ const user = (state = initialState, action: actionType) => {
             return {
                 ...state
             }
+        case EXP_GUAGE_REQUEST:
+            return {
+                ...state,
+            }
+        case EXP_GUAGE_SUCCESS:
+            return {
+                ...state,
+            }
+        case EXP_GUAGE_FAILURE:
+            return {
+                ...state,
+            }            
         default:
             return state;
     }

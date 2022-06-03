@@ -69,3 +69,8 @@ exports.exp_Bird = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     };
     res.json(result);
 });
+exports.guage_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { exp, user_idx } = req.body;
+    console.log(exp);
+    console.log(user_idx);
+});

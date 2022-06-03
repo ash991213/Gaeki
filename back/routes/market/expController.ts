@@ -103,6 +103,12 @@ exports.exp_Bird = async(req:any,res:any) => {
         bird:BIRD.bird,
         gold:BirdGold.gold
     }
-
+    
     res.json(result)
 }
+
+exports.guage_exp =async (req:any,res:any) => {
+    const {exp,user_idx} = req.body
+    console.log(exp)
+    console.log(user_idx)
+} 

@@ -23,4 +23,5 @@ router.post('/exp_Dog', expController.exp_Dog);
 router.post('/exp_Cat', expController.exp_Cat);
 router.post('/exp_Fish', expController.exp_Fish);
 router.post('/exp_Bird', expController.exp_Bird);
+router.post('/guage_Exp', expController.guage_exp);
 module.exports = router;
