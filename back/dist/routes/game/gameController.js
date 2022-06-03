@@ -149,6 +149,10 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 console.log('6 스테이지 유저');
                 yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) }, { where: { id: user_idx } });
             }
+            else if (stage === 6) {
+                console.log('6 스테이지 유저');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) }, { where: { id: user_idx } });
+            }
         }
         else {
             console.log('게이지 50이상');

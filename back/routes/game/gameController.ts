@@ -124,7 +124,7 @@ exports.gold_exp = async (req: any, res: any) => {
 			} else if (stage === 5) {
 				console.log('5 스테이지 유저');
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
-			} else if (stage === 5) {
+			} else if (stage === 6) {
 				console.log('6 스테이지 유저');
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) }, { where: { id: user_idx } });
 			}
