@@ -22,7 +22,7 @@ function* typingUp(action: any) {
 }
 
 const statusAPI: any = async (action: any) => {
-    return await axios.post('http://15.164.141.28:81/market/show', action);
+    return await axios.post('http://15.164.141.28:81/market/status_Show', action);
 };
 
 function* status(action: any) {
