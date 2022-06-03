@@ -84,6 +84,7 @@ function* hpDown(action: any) {
 }
 
 const gold_exp_clickAPI = async (action: any) => {
+    console.log('click API 접근')
     return await axios.post(
         'http://15.164.141.28:81/game/gold_exp',
         action.payload
@@ -92,6 +93,7 @@ const gold_exp_clickAPI = async (action: any) => {
 
 function* gold_exp_click(action: any) {
     const result: { data: {} } = yield call(gold_exp_clickAPI, action);
+    console.log('리설트',result)
     try {
         yield put({
             type: 'GOLDEXP_CLICK_SUCCESS',

@@ -58,6 +58,7 @@ exports.user = async (req: any, res: any) => {
 };
 
 exports.gold_exp = async (req: any, res: any) => {
+	console.log('api 진입')
 	const { user_idx, gold, exp, stage, gauge } = req.body.user;
 	const { typing, luck, patience } = req.body.user.status;
 	const { random } = req.body;
@@ -184,7 +185,7 @@ exports.gold_exp = async (req: any, res: any) => {
 	}
 
 	const a = await User.findOne({ where: { id: user_idx } });
-
+	console.log('clik Api: ',gold)
 	res.json({ gold: a.gold, exp: a.exp, stage: a.stage });
 };
 
