@@ -112,7 +112,7 @@ const Market = () => {
                 });
                 setTimeout(() => {
                     setAuto(false);
-                }, 100034540);
+                }, 10000);
             }
         }
     }, [user_idx, desk, Auto]);
@@ -123,7 +123,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>체력</div>
-                        <div>레벨{status.hp}</div>
+                        <div>레벨[{status.hp}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -156,7 +156,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>타수</div>
-                        <div>레벨{status.typing}</div>
+                        <div>레벨[{status.typing}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -193,7 +193,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>운</div>
-                        <div>레벨</div>
+                        <div>레벨[{status.luck}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -238,7 +238,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>코딩력</div>
-                        <div>레벨</div>
+                        <div>레벨[{121 - status.coding / 1000}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -285,7 +285,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>인내력</div>
-                        <div>레벨</div>
+                        <div>레벨[{status.patience}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -336,7 +336,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>책상</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.desk}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -344,7 +344,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가 [{auto.desk}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.desk == 0 ? 0 : auto.desk * 10}
@@ -376,7 +376,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>의자</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.chair}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -384,7 +384,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.chair}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.chair == 0 ? 0 : auto.chair * 50}
@@ -418,7 +418,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>노트북</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.pc}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -426,7 +426,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.pc}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>{auto.pc == 0 ? 0 : auto.pc * 250}</span>{' '}
                                 -&gt;{' '}
@@ -456,7 +456,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>요리사</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.cook}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -464,7 +464,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.cook}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.cook == 0 ? 0 : auto.cook * 1250}
@@ -497,8 +497,8 @@ const Market = () => {
                 </div>
                 <div>
                     <div className="content_up">
-                        <div>홈키퍼</div>
-                        <div>레벨</div>
+                        <div>집사</div>
+                        <div>레벨[{auto.homekeeper}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -506,7 +506,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.homekeeper}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.homekeeper == 0
@@ -541,8 +541,8 @@ const Market = () => {
                 </div>
                 <div>
                     <div className="content_up">
-                        <div>치어리더</div>
-                        <div>레벨</div>
+                        <div>알바생</div>
+                        <div>레벨[{auto.cheer}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -550,11 +550,11 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.cheer}]</div>
+                            <div>10초당골드 증가</div>
                             <span>
                                 {auto.cheer == 0 ? 0 : auto.cheer * 31250}
                             </span>{' '}
-                            -&gt;{' '}
+                            -&gt;
                             <span>
                                 {auto.cheer == 0
                                     ? auto.cheer + 31250
@@ -582,7 +582,7 @@ const Market = () => {
                 <div className="content_name2">
                     <div className="content_up">
                         <div>탈것</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.vehicle}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -590,11 +590,12 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.vehicle}]</div>
+                            <div>10초당골드 증가</div>
                             <span>
                                 {auto.vehicle == 0 ? 0 : auto.vehicle * 156250}
-                            </span>{' '}
-                            -&gt;{' '}
+                            </span>
+                            {''}
+                            -&gt;
                             <span>
                                 {auto.vehicle == 0
                                     ? auto.vehicle + 156250
@@ -825,10 +826,13 @@ const Market = () => {
         );
     };
     const Gold_Click = (e: any) => {
+        const random = Math.random() * 1000;
+
         dispatch({
             type: 'GOLDEXP_CLICK_REQUEST',
             payload: {
                 user,
+                random,
             },
         });
         const audio = new Audio('키보드 효과음 2.mp3');

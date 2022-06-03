@@ -21,13 +21,7 @@ exports.auto_Gold = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const { user_idx, gold, auto } = req.body.user;
     const { chair, cheer, cook, desk, homekeeper, pc, vehicle } = auto;
     yield User.update({
-        gold: gold +
-            desk * 10 +
-            chair * 50 +
-            pc * 250 +
-            cook * 1250 +
-            homekeeper * 6250 +
-            vehicle * 31250,
+        gold: gold + desk * 10 + chair * 50 + pc * 250 + cook * 1250 + homekeeper * 6250 + cheer * 31250 + vehicle * 156250,
     }, { where: { id: user_idx } });
     const now = yield User.findOne({ where: { id: user_idx } });
     const currentGold = now.gold;
