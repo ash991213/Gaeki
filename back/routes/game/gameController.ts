@@ -81,6 +81,9 @@ exports.gold_exp = async (req: any, res: any) => {
 			} else if (stage === 5) {
 				console.log('5 스테이지 유저 골드 2');
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
+			} else if (stage === 6) {
+				console.log('6 스테이지 유저 골드 2');
+				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2 }, { where: { id: user_idx } });
 			}
 		} else {
 			console.log('게이지 50이상');
@@ -99,6 +102,9 @@ exports.gold_exp = async (req: any, res: any) => {
 			} else if (stage === 5) {
 				console.log('5 스테이지 유저 골드 2');
 				await User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
+			} else if (stage === 6) {
+				console.log('6 스테이지 유저 골드 2');
+				await User.update({ gold: gold + typing + typing }, { where: { id: user_idx } });
 			}
 		}
 	} else {
@@ -119,6 +125,9 @@ exports.gold_exp = async (req: any, res: any) => {
 			} else if (stage === 5) {
 				console.log('5 스테이지 유저');
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience / 100 }, { where: { id: user_idx } });
+			} else if (stage === 6) {
+				console.log('6 스테이지 유저');
+				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) }, { where: { id: user_idx } });
 			}
 		} else {
 			console.log('게이지 50이상');
@@ -137,6 +146,9 @@ exports.gold_exp = async (req: any, res: any) => {
 			} else if (stage === 5) {
 				console.log('5 스테이지 유저');
 				await User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
+			} else if (stage === 6) {
+				console.log('6 스테이지 유저');
+				await User.update({ gold: gold + typing }, { where: { id: user_idx } });
 			}
 		}
 	}

@@ -89,6 +89,10 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 console.log('5 스테이지 유저 골드 2');
                 yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
             }
+            else if (stage === 6) {
+                console.log('6 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2 }, { where: { id: user_idx } });
+            }
         }
         else {
             console.log('게이지 50이상');
@@ -111,6 +115,10 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             else if (stage === 5) {
                 console.log('5 스테이지 유저 골드 2');
                 yield User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 6) {
+                console.log('6 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + typing + typing }, { where: { id: user_idx } });
             }
         }
     }
@@ -137,6 +145,10 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 console.log('5 스테이지 유저');
                 yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience / 100 }, { where: { id: user_idx } });
             }
+            else if (stage === 6) {
+                console.log('6 스테이지 유저');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) }, { where: { id: user_idx } });
+            }
         }
         else {
             console.log('게이지 50이상');
@@ -159,6 +171,10 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             else if (stage === 5) {
                 console.log('5 스테이지 유저');
                 yield User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 6) {
+                console.log('6 스테이지 유저');
+                yield User.update({ gold: gold + typing }, { where: { id: user_idx } });
             }
         }
     }
