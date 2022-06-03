@@ -80,6 +80,10 @@ const Setting = styled.div`
         max-width: 180px;
         width: 100%;
     }
+
+    .font-nowrap {
+        white-space: nowrap;
+    }
 `;
 
 const Responsive = ({ children }: any) => {
