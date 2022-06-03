@@ -185,6 +185,8 @@ const GameTemplate = styled.div`
 
     .setting {
         z-index: 7;
+        position: relative;
+        left: 5%;
     }
 
     .content {
