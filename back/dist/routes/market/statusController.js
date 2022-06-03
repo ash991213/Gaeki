@@ -29,7 +29,7 @@ exports.typing = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { typing }, } = req.body;
     try {
         yield Status.update({ typing: typing + 1 }, { where: { user_idx } });
-        yield User.update({ gold: gold - typing * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - typing * 70 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
@@ -52,7 +52,7 @@ exports.hp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { hp }, } = req.body;
     try {
         yield Status.update({ hp: hp + 1 }, { where: { user_idx } });
-        yield User.update({ gold: gold - hp * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - hp * 30 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
@@ -75,7 +75,7 @@ exports.luck = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { luck }, } = req.body;
     try {
         yield Status.update({ luck: luck + 1 }, { where: { user_idx } });
-        yield User.update({ gold: gold - luck * 100 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - luck * 30 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
