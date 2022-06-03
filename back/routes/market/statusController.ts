@@ -97,8 +97,6 @@ exports.luck = async (req: any, res: any) => {
 			where: { id: user_idx },
 		});
 
-		console.log(type.luck);
-
 		const result = {
 			luck: type.luck,
 			gold: user.gold,
@@ -150,7 +148,7 @@ exports.coding = async (req: any, res: any) => {
 
 	try {
 		await Status.update({ coding: coding - 1000 }, { where: { user_idx } });
-		await User.update({ gold: gold - (121000 - coding) * 2.5 }, { where: { id: user_idx } });
+		await User.update({ gold: gold - (121000 - coding) * 200 }, { where: { id: user_idx } });
 
 		const type = await Status.findOne({
 			where: { user_idx },
