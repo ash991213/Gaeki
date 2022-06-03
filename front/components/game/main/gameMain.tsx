@@ -75,7 +75,7 @@ const GameTemplate = styled.div`
                             line-height: 150%;
                         }
                         & > .user_gold {
-                            width: 100%;
+                            width: 130%;
                             height: 50%;
                             line-height: 150%;
                         }
@@ -130,7 +130,7 @@ const GameTemplate = styled.div`
                                 width: 110%;
                                 height: 100%;
                                 position: absolute;
-                                left: 7.5%;
+                                left: 25%;
                                 top: -10%;
                                 margin-left: -2%;
                             }
@@ -142,7 +142,8 @@ const GameTemplate = styled.div`
                 width: 40%;
                 height: 40%;
                 position: relative;
-                top: 10%;
+                left: 2%;
+                top: 2%;
                 text-align: center;
                 border-radius: 0.5rem;
                 padding-top: 2%;
@@ -205,7 +206,52 @@ const GameTemplate = styled.div`
                     width: 100%;
                     height: 100%;
                 }
-                & > .user_chair_desk {
+                & > .user_chair_desk1 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk2 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk3 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk4 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk5 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk6 {
                     width: 60%;
                     height: 50%;
                     position: relative;
@@ -303,6 +349,13 @@ const GameTemplate = styled.div`
                     top: -200%;
                     left: 65%;
                 }
+                & > .homekeeper2 {
+                    width: 45%;
+                    height: 50%;
+                    position: relative;
+                    top: -190%;
+                    left: 57%;
+                }
                 & > .homekeeper3 {
                     width: 45%;
                     height: 50%;
@@ -331,14 +384,42 @@ const GameTemplate = styled.div`
                     top: -200%;
                     left: 65%;
                 }
-                & > .homekeeper2 {
-                    width: 45%;
-                    height: 50%;
+                & > .vehicle1 {
+                    width: 30%;
+                    height: 30%;
                     position: relative;
                     top: -190%;
-                    left: 57%;
+                    left: 65%;
                 }
-                & > .vehicle {
+                & > .vehicle2 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle3 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle4 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle5 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle6 {
                     width: 30%;
                     height: 30%;
                     position: relative;

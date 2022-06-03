@@ -75,8 +75,8 @@ const Game = () => {
     const stageImage = () => {
         return (
             <>
-                <div className="user_chair_desk">
-                    <img src="/사람/4 스테이지 사람.png" />
+                <div className={`user_chair_desk${stage}`}>
+                    <img src={`/사람/${stage} 스테이지 사람.gif`} />
                 </div>
                 <div className="pet_cat">
                     <img src={`/고양이/${stage} 스테이지 고양이.gif`} />
@@ -99,7 +99,7 @@ const Game = () => {
                 <div className={`homekeeper${stage}`}>
                     <img src={`/집사/${stage} 스테이지 집사.gif`} />
                 </div>
-                <div className="vehicle">
+                <div className={`vehicle${stage}`}>
                     <img src={`/탈것/${stage} 스테이지 탈것.gif`} />
                 </div>
             </>
@@ -134,7 +134,7 @@ const Game = () => {
                     });
                     setTimeout(() => {
                         setHpdown(false);
-                    }, 5000);
+                    }, 10000);
                 }
             }
         }
@@ -170,15 +170,36 @@ const Game = () => {
                             <div className="user_exp">
                                 <div>exp</div>
                                 <div className="progress_gauge">
-                                    <div className="exp">
-                                        {(exp / 1000).toFixed(2)}%
-                                        {exp==0?0:exp}
-                                    </div>
-                                    <progress
-                                        className="exp_progress"
-                                        value={exp}
-                                        max="100000"
-                                    ></progress>
+                                    {stage !== 6 ? (
+                                        <>
+                                            <div className="exp">
+                                                {(
+                                                    (exp /
+                                                        (100000 +
+                                                            (stage - 1) *
+                                                                25000)) *
+                                                    100
+                                                ).toFixed(2)}
+                                                %
+                                            </div>
+                                            <progress
+                                                className="exp_progress"
+                                                value={exp}
+                                                max={
+                                                    100000 + (stage - 1) * 25000
+                                                }
+                                            ></progress>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="exp">Max Level</div>
+                                            <progress
+                                                className="exp_progress"
+                                                value={1}
+                                                max={1}
+                                            ></progress>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
