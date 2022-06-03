@@ -1,3 +1,5 @@
+import { appendFile } from 'fs';
+
 var express = require('express');
 var router = express.Router();
 const statusController = require('./statusController');
@@ -17,6 +19,7 @@ router.post('/auto_Chair', autoController.auto_Chair);
 router.post('/auto_Pc', autoController.auto_Pc);
 router.post('/auto_Cook', autoController.auto_Cook);
 router.post('/auto_Homekeeper', autoController.auto_Homekeeper);
+router.post('/auto_Cheer', autoController.auto_Cheer);
 router.post('/auto_Vehicle', autoController.auto_Vehicle);
 router.post('/exp_Show', expController.exp_Show)
 router.post('/exp_Dog', expController.exp_Dog);

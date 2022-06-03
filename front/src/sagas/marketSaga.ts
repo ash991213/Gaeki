@@ -257,6 +257,24 @@ function* auto_vehicle(action: any) {
     }
 }
 
+const autoCheerAPI: any = async (action: any) => {
+    return await axios.post('http://localhost:4000/market/auto_Cheer', action);
+};
+
+function* auto_cheer(action: any) {
+    const result: { data: {} } = yield call(autoCheerAPI, action.payload);
+    try {
+        yield put({
+            type: 'AUTO_CHEER_SUCCESS',
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: 'AUTO_CHEER_FAILURE',
+        });
+    }
+}
+
 const autoExpAPI:any = async(action:any) => {
     return await axios.post('http://localhost:4000/market/exp_Show',action)
 }
@@ -266,11 +284,11 @@ function* auto_Exp(action: any) {
     try {
         yield put({
             type: 'EXP_SUCCESS',
-            payload: result.data,
-        });
+            payload:result.data,
+        });    
     } catch (e) {
         yield put({
-            type: 'EXP_FAILURE',
+            type: 'AUTO_CHEER_FAILURE',
         });
     }
 }
@@ -371,6 +389,7 @@ export default function* market() {
     yield takeLatest('AUTO_COOK_REQUEST', auto_cook);
     yield takeLatest('AUTO_HOMEKEEPER_REQUEST', auto_homekeeper);
     yield takeLatest('AUTO_VEHICLE_REQUEST', auto_vehicle);
+    yield takeLatest('AUTO_CHEER_REQUEST', auto_cheer);
     yield takeLatest('EXP_REQUEST' , auto_Exp);
     yield takeLatest('EXP_DOG_REQUEST', dog_Exp);
     yield takeLatest('EXP_CAT_REQUEST',cat_Exp);

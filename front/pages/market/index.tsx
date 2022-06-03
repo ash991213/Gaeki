@@ -13,6 +13,7 @@ interface marketType {
                 typing: number;
             };
         };
+        playTime: number;
     };
 }
 
@@ -85,6 +86,12 @@ const Market = () => {
             payload: { user, auto, gold },
         });
     };
+    const auto_cheer = () => {
+        dispatch({
+            type: 'AUTO_CHEER_REQUEST',
+            payload: { user, auto, gold },
+        });
+    };
     const auto_vehicle = () => {
         dispatch({
             type: 'AUTO_VEHICLE_REQUEST',
@@ -143,7 +150,7 @@ const Market = () => {
     const clickHandle = () => {
         return (
             <div className="content_clickGold">
-                <div className="content_name">
+                <div>
                     <div className="content_up">
                         <div>체력</div>
                         <div>레벨{status.hp}</div>
@@ -155,30 +162,28 @@ const Market = () => {
                         </div>
                         <div>
                             <div>피로도 맥스치 증가</div>
-                            <span>{status.hp}</span> -&gt;{' '}
-                            <span>{status.hp + 1}</span>
+                            <div>
+                                <span>{status.hp}</span> -&gt;{' '}
+                                <span>{status.hp + 1}</span>
+                            </div>
                         </div>
                         <div>
                             <button
                                 className={
-                                    gold >= status.hp * 100
-                                        ? 'upbt'
-                                        : 'closeBtn'
+                                    gold >= status.hp * 30 ? 'upbt' : 'closeBtn'
                                 }
                                 onClick={() => {
                                     hpUp();
                                 }}
-                                disabled={
-                                    gold >= status.hp * 100 ? false : true
-                                }
+                                disabled={gold >= status.hp * 30 ? false : true}
                             >
-                                강화버튼 <br />
-                                {status.hp * 100}
+                                강화 <br />
+                                {status.hp * 30}
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div>
                     <div className="content_up">
                         <div>타수</div>
                         <div>레벨{status.typing}</div>
@@ -198,7 +203,7 @@ const Market = () => {
                         <div>
                             <button
                                 className={
-                                    gold >= status.typing * 100
+                                    gold >= status.typing * 70
                                         ? 'upbt'
                                         : 'closeBtn'
                                 }
@@ -206,16 +211,16 @@ const Market = () => {
                                     typingUp();
                                 }}
                                 disabled={
-                                    gold >= status.typing * 100 ? false : true
+                                    gold >= status.typing * 70 ? false : true
                                 }
                             >
-                                강화버튼 <br />
-                                {status.typing * 100}
+                                강화 <br />
+                                {status.typing * 70}
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div>
                     <div className="content_up">
                         <div>운</div>
                         <div>레벨</div>
@@ -227,14 +232,18 @@ const Market = () => {
                         </div>
                         <div>
                             <div>행운 증가</div>
-                            <span>{status.luck / 10}%</span> -&gt;{' '}
-                            <span>{(status.luck / 10 + 0.1).toFixed(1)}%</span>
+                            <div>
+                                <span>{status.luck / 10}%</span> -&gt;{' '}
+                                <span>
+                                    {(status.luck / 10 + 0.1).toFixed(1)}%
+                                </span>
+                            </div>
                         </div>
                         <div>
                             {status.luck !== 1000 ? (
                                 <button
                                     className={
-                                        gold >= status.luck * 100
+                                        gold >= status.luck * 30
                                             ? 'upbt'
                                             : 'closeBtn'
                                     }
@@ -242,11 +251,11 @@ const Market = () => {
                                         luckUp();
                                     }}
                                     disabled={
-                                        gold >= status.luck * 100 ? false : true
+                                        gold >= status.luck * 30 ? false : true
                                     }
                                 >
-                                    강화버튼 <br />
-                                    {status.luck * 100}
+                                    강화 <br />
+                                    {status.luck * 30}
                                 </button>
                             ) : (
                                 <button className="closeBtn" disabled={true}>
@@ -256,7 +265,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div>
                     <div className="content_up">
                         <div>코딩력</div>
                         <div>레벨</div>
@@ -268,14 +277,18 @@ const Market = () => {
                         </div>
                         <div>
                             <div>버그 발생 시간 감소</div>
-                            <span>{status.coding / 1000}초</span> -&gt;{' '}
-                            <span>{status.coding / 1000 - 1}초</span>
+                            <div>
+                                <span>{status.coding / 1000}초</span> -&gt;
+                                {status.coding !== 60000 ? (
+                                    <span>{status.coding / 1000 - 1}초</span>
+                                ) : null}
+                            </div>
                         </div>
                         <div>
                             {status.coding !== 60000 ? (
                                 <button
                                     className={
-                                        gold >= (120000 - status.coding) * 2.5
+                                        gold >= (121000 - status.coding) * 200
                                             ? 'upbt'
                                             : 'closeBtn'
                                     }
@@ -283,13 +296,13 @@ const Market = () => {
                                         codingUp();
                                     }}
                                     disabled={
-                                        gold >= (120000 - status.coding) * 2.5
+                                        gold >= (121000 - status.coding) * 200
                                             ? false
                                             : true
                                     }
                                 >
-                                    강화버튼 <br />
-                                    {(120000 - status.coding) * 2.5}
+                                    강화 <br />
+                                    {(121000 - status.coding) * 200}
                                 </button>
                             ) : (
                                 <button className="closeBtn" disabled={true}>
@@ -299,7 +312,7 @@ const Market = () => {
                         </div>
                     </div>
                 </div>
-                <div className="content_name">
+                <div>
                     <div className="content_up">
                         <div>인내력</div>
                         <div>레벨</div>
@@ -311,35 +324,29 @@ const Market = () => {
                         </div>
                         <div>
                             <div>획득 경험치 증가</div>
-                            <span>{status.patience}</span> -&gt;{' '}
-                            <span>{status.patience + 1}</span>
+                            <div>
+                                <span>{status.patience}</span> -&gt;{' '}
+                                <span>{status.patience + 1}</span>
+                            </div>
                         </div>
                         <div>
-                            {stage >= 3 ? (
-                                <button
-                                    className={
-                                        gold >= status.patience * 100
-                                            ? 'upbt'
-                                            : 'closeBtn'
-                                    }
-                                    onClick={() => {
-                                        patienceUp();
-                                    }}
-                                    disabled={
-                                        gold >= status.patience * 100
-                                            ? false
-                                            : true
-                                    }
-                                >
-                                    강화버튼 <br />
-                                    {status.patience * 100}
-                                </button>
-                            ) : (
-                                <button className="closeBtn" disabled={true}>
-                                    3 스테이지 <br />
-                                    오픈
-                                </button>
-                            )}
+                            <button
+                                className={
+                                    gold >= status.patience * 70
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    patienceUp();
+                                }}
+                                disabled={
+                                    gold >= status.patience * 70 ? false : true
+                                }
+                            >
+                                강화
+                                <br />
+                                {status.patience * 70}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -356,7 +363,7 @@ const Market = () => {
 
         return (
             <div className="content_ignoreGold">
-                <div className="content_name2">
+                <div>
                     <div className="content_up">
                         <div>책상</div>
                         <div>레벨</div>
@@ -368,15 +375,17 @@ const Market = () => {
                         </div>
                         <div>
                             <div>10초당골드 증가 [{auto.desk}]</div>
-                            <span>
-                                {auto.desk == 0 ? 0 : auto.desk * 10}
-                            </span>{' '}
-                            -&gt;{' '}
-                            <span>
-                                {auto.desk == 0
-                                    ? auto.desk + 10
-                                    : auto.desk * 10 + 10}
-                            </span>
+                            <div>
+                                <span>
+                                    {auto.desk == 0 ? 0 : auto.desk * 10}
+                                </span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.desk == 0
+                                        ? auto.desk + 10
+                                        : auto.desk * 10 + 10}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
@@ -388,13 +397,13 @@ const Market = () => {
                                     gold >= (auto.desk + 1) * 300 ? false : true
                                 }
                             >
-                                강화버튼
+                                강화
                                 <div>{(auto.desk + 1) * 300}</div>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="content_name2">
+                <div>
                     <div className="content_up">
                         <div>의자</div>
                         <div>레벨</div>
@@ -406,15 +415,17 @@ const Market = () => {
                         </div>
                         <div>
                             <div>10초당골드 증가[{auto.chair}]</div>
-                            <span>
-                                {auto.chair == 0 ? 0 : auto.chair * 50}
-                            </span>{' '}
-                            -&gt;{' '}
-                            <span>
-                                {auto.chair == 0
-                                    ? auto.chair + 50
-                                    : auto.chair * 50 + 50}
-                            </span>
+                            <div>
+                                <span>
+                                    {auto.chair == 0 ? 0 : auto.chair * 50}
+                                </span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.chair == 0
+                                        ? auto.chair + 50
+                                        : auto.chair * 50 + 50}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
@@ -428,13 +439,13 @@ const Market = () => {
                                         : true
                                 }
                             >
-                                강화버튼
+                                강화
                                 <div>{(auto.chair + 1) * 1500}</div>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="content_name2">
+                <div>
                     <div className="content_up">
                         <div>노트북</div>
                         <div>레벨</div>
@@ -446,13 +457,15 @@ const Market = () => {
                         </div>
                         <div>
                             <div>10초당골드 증가[{auto.pc}]</div>
-                            <span>{auto.pc == 0 ? 0 : auto.pc * 250}</span>{' '}
-                            -&gt;{' '}
-                            <span>
-                                {auto.pc == 0
-                                    ? auto.pc + 250
-                                    : auto.pc * 250 + 250}
-                            </span>
+                            <div>
+                                <span>{auto.pc == 0 ? 0 : auto.pc * 250}</span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.pc == 0
+                                        ? auto.pc + 250
+                                        : auto.pc * 250 + 250}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
@@ -464,13 +477,13 @@ const Market = () => {
                                     gold >= (auto.pc + 1) * 7500 ? false : true
                                 }
                             >
-                                강화버튼
+                                강화
                                 <div>{(auto.pc + 1) * 7500}</div>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="content_name2">
+                <div>
                     <div className="content_up">
                         <div>요리사</div>
                         <div>레벨</div>
@@ -482,15 +495,17 @@ const Market = () => {
                         </div>
                         <div>
                             <div>10초당골드 증가[{auto.cook}]</div>
-                            <span>
-                                {auto.cook == 0 ? 0 : auto.cook * 1250}
-                            </span>{' '}
-                            -&gt;{' '}
-                            <span>
-                                {auto.cook == 0
-                                    ? auto.cook + 1250
-                                    : auto.cook * 1250 + 1250}
-                            </span>
+                            <div>
+                                <span>
+                                    {auto.cook == 0 ? 0 : auto.cook * 1250}
+                                </span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.cook == 0
+                                        ? auto.cook + 1250
+                                        : auto.cook * 1250 + 1250}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
@@ -504,13 +519,13 @@ const Market = () => {
                                         : true
                                 }
                             >
-                                강화버튼
+                                강화
                                 <div>{(auto.cook + 1) * 37500}</div>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="content_name2">
+                <div>
                     <div className="content_up">
                         <div>홈키퍼</div>
                         <div>레벨</div>
@@ -522,17 +537,19 @@ const Market = () => {
                         </div>
                         <div>
                             <div>10초당골드 증가[{auto.homekeeper}]</div>
-                            <span>
-                                {auto.homekeeper == 0
-                                    ? 0
-                                    : auto.homekeeper * 6250}
-                            </span>{' '}
-                            -&gt;{' '}
-                            <span>
-                                {auto.homekeeper == 0
-                                    ? auto.homekeeper + 6250
-                                    : auto.homekeeper * 6250 + 6250}
-                            </span>
+                            <div>
+                                <span>
+                                    {auto.homekeeper == 0
+                                        ? 0
+                                        : auto.homekeeper * 6250}
+                                </span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.homekeeper == 0
+                                        ? auto.homekeeper + 6250
+                                        : auto.homekeeper * 6250 + 6250}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
@@ -546,8 +563,48 @@ const Market = () => {
                                         : true
                                 }
                             >
-                                강화버튼
+                                강화
                                 <div>{(auto.homekeeper + 1) * 187500}</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div className="content_up">
+                        <div>치어리더</div>
+                        <div>레벨</div>
+                        <div>추가</div>
+                    </div>
+                    <div className="content_down">
+                        <div>
+                            <img src="./loading.gif" />
+                        </div>
+                        <div>
+                            <div>10초당골드 증가[{auto.cheer}]</div>
+                            <span>
+                                {auto.cheer == 0 ? 0 : auto.cheer * 31250}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.cheer == 0
+                                    ? auto.cheer + 31250
+                                    : auto.cheer * 31250 + 31250}
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                className={classNameOn(auto.cheer, 937500)}
+                                onClick={() => {
+                                    auto_cheer();
+                                }}
+                                disabled={
+                                    gold >= (auto.cheer + 1) * 937500
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto.cheer + 1) * 937500}</div>
                             </button>
                         </div>
                     </div>
@@ -565,29 +622,29 @@ const Market = () => {
                         <div>
                             <div>10초당골드 증가[{auto.vehicle}]</div>
                             <span>
-                                {auto.vehicle == 0 ? 0 : auto.vehicle * 31250}
+                                {auto.vehicle == 0 ? 0 : auto.vehicle * 156250}
                             </span>{' '}
                             -&gt;{' '}
                             <span>
                                 {auto.vehicle == 0
-                                    ? auto.vehicle + 31250
-                                    : auto.vehicle * 31250 + 31250}
+                                    ? auto.vehicle + 156250
+                                    : auto.vehicle * 156250 + 156250}
                             </span>
                         </div>
                         <div>
                             <button
-                                className={classNameOn(auto.vehicle, 937500)}
+                                className={classNameOn(auto.vehicle, 4687500)}
                                 onClick={() => {
                                     auto_vehicle();
                                 }}
                                 disabled={
-                                    gold >= (auto.vehicle + 1) * 937500
+                                    gold >= (auto.vehicle + 1) * 4687500
                                         ? false
                                         : true
                                 }
                             >
                                 강화버튼
-                                <div>{(auto.vehicle + 1) * 937500}</div>
+                                <div>{(auto.vehicle + 1) * 4687500}</div>
                             </button>
                         </div>
                     </div>
@@ -774,6 +831,30 @@ const Market = () => {
         }
     };
 
+    const clickIcon = () => {
+        if (checkMarket.clickgold === true) {
+            return <img src="./footer/toClick.gif"></img>;
+        } else {
+            return <img src="./footer/toClick-stop.gif"></img>;
+        }
+    };
+
+    const autoGold = () => {
+        if (checkMarket.ignoregold === true) {
+            return <img src="./footer/spin-coin.gif"></img>;
+        } else {
+            return <img src="./footer/spin-coin-stop.gif"></img>;
+        }
+    };
+
+    const autoExp = () => {
+        if (checkMarket.ignoreexp === true) {
+            return <img src="./footer/auto-exp.gif"></img>;
+        } else {
+            return <img src="./footer/auto-exp-stop.gif"></img>;
+        }
+    };
+
     let count = 0;
     const handleClick = (e: any) => {
         count++;
@@ -802,20 +883,26 @@ const Market = () => {
         const root = createRoot(div);
 
         function CallbackAfter() {
-            useEffect(() => {
-                setTimeout(removeGif, 2000);
-            });
+            setTimeout(removeGif, 2000);
             return <PopGifLayer></PopGifLayer>;
         }
+
         root.render(<CallbackAfter />);
         return removeGif;
     };
 
     interface PopGifProps {}
     const PopGifLayer: React.FC<PopGifProps> = () => {
+        let randomNum = (min: number, max: number): number => {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        };
+        let ranTempNum = randomNum(1, 10);
+
+        let srcLink = `./click-popup/click-pop${ranTempNum}.gif`;
+
         return (
             <img
-                src="./movingPeng.gif"
+                src={srcLink}
                 style={{
                     position: 'absolute',
                     display: 'block',
@@ -824,28 +911,16 @@ const Market = () => {
         );
     };
     const Gold_Click = (e: any) => {
-        if (stage < 3) {
-            dispatch({
-                type: 'GOLD_CLICK_REQUEST',
-                payload: { user, typing: status.typing, luck: status.luck },
-            });
-            const audio = new Audio('키보드 효과음 2.mp3');
-            if (sound_effect === true) {
-                audio.volume = 0.5;
-                audio.play();
-            }
-        } else {
-            dispatch({
-                type: 'GOLDEXP_CLICK_REQUEST',
-                payload: {
-                    user,
-                },
-            });
-            const audio = new Audio('키보드 효과음 2.mp3');
-            if (sound_effect === true) {
-                audio.volume = 0.5;
-                audio.play();
-            }
+        dispatch({
+            type: 'GOLDEXP_CLICK_REQUEST',
+            payload: {
+                user,
+            },
+        });
+        const audio = new Audio('키보드 효과음 2.mp3');
+        if (sound_effect === true) {
+            audio.volume = 0.5;
+            audio.play();
         }
         handleClick(e);
     };
@@ -867,6 +942,7 @@ const Market = () => {
                             clickGold();
                         }}
                     >
+                        {clickIcon()}
                         <span>클릭골드</span>
                     </div>
                     <div
@@ -875,6 +951,7 @@ const Market = () => {
                             ignoreGold();
                         }}
                     >
+                        {autoGold()}
                         <span>방치골드</span>
                     </div>
                     <div
@@ -883,6 +960,7 @@ const Market = () => {
                             ignoreExp();
                         }}
                     >
+                        {autoExp()}
                         <span className="fontNoWrap">방치경험치</span>
                     </div>
                 </div>
