@@ -75,7 +75,7 @@ const GameTemplate = styled.div`
                             line-height: 150%;
                         }
                         & > .user_gold {
-                            width: 100%;
+                            width: 130%;
                             height: 50%;
                             line-height: 150%;
                         }
@@ -130,7 +130,7 @@ const GameTemplate = styled.div`
                                 width: 110%;
                                 height: 100%;
                                 position: absolute;
-                                left: 7.5%;
+                                left: 25%;
                                 top: -10%;
                                 margin-left: -2%;
                             }
@@ -142,7 +142,8 @@ const GameTemplate = styled.div`
                 width: 40%;
                 height: 40%;
                 position: relative;
-                top: 10%;
+                left: 2%;
+                top: 2%;
                 text-align: center;
                 border-radius: 0.5rem;
                 padding-top: 2%;
@@ -205,7 +206,16 @@ const GameTemplate = styled.div`
                     width: 100%;
                     height: 100%;
                 }
-                & > .user_chair_desk {
+                & > .user_chair_desk1 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 0%;
+                    left: 60%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk2 {
                     width: 60%;
                     height: 50%;
                     position: relative;
@@ -214,11 +224,91 @@ const GameTemplate = styled.div`
                     transform: translate(-50%, 0%);
                     z-index: 1;
                 }
-                & > .pet_cat {
+                & > .user_chair_desk3 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 20%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk4 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk5 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 15%;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .user_chair_desk6 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: 10%;
+                    left: 65%;
+                    transform: translate(-50%, 0%);
+                    z-index: 1;
+                }
+                & > .pet_cat1 {
                     width: 15%;
                     height: 15%;
                     position: relative;
-                    left: 60%;
+                    left: 50%;
+                    z-index: 2;
+                    object-fit: scale-down;
+                }
+                & > .pet_cat2 {
+                    width: 15%;
+                    height: 15%;
+                    position: relative;
+                    top: 10%;
+                    left: 10%;
+                    z-index: 2;
+                    object-fit: scale-down;
+                }
+                & > .pet_cat3 {
+                    width: 15%;
+                    height: 15%;
+                    position: relative;
+                    top: 10%;
+                    left: 10%;
+                    z-index: 2;
+                    object-fit: scale-down;
+                }
+                & > .pet_cat4 {
+                    width: 15%;
+                    height: 15%;
+                    position: relative;
+                    left: 50%;
+                    z-index: 2;
+                    object-fit: scale-down;
+                }
+                & > .pet_cat5 {
+                    width: 15%;
+                    height: 15%;
+                    position: relative;
+                    top: 10%;
+                    left: 5%;
+                    z-index: 2;
+                    object-fit: scale-down;
+                }
+                & > .pet_cat6 {
+                    width: 15%;
+                    height: 15%;
+                    position: relative;
+                    top: 10%;
+                    left: 10%;
                     z-index: 2;
                     object-fit: scale-down;
                 }
@@ -247,7 +337,42 @@ const GameTemplate = styled.div`
                     left: 10%;
                     object-fit: fill;
                 }
-                & > .cheer {
+                & > .cheer1 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -100%;
+                    left: 5%;
+                }
+                & > .cheer2 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -100%;
+                    left: 5%;
+                }
+                & > .cheer3 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -100%;
+                    left: 45%;
+                }
+                & > .cheer4 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -100%;
+                    left: 5%;
+                }
+                & > .cheer5 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -100%;
+                    left: 5%;
+                }
+                & > .cheer6 {
                     width: 30%;
                     height: 50%;
                     position: relative;
@@ -294,14 +419,21 @@ const GameTemplate = styled.div`
                     height: 50%;
                     position: relative;
                     top: -102%;
-                    left: 22%;
+                    left: 35%;
                 }
                 & > .homekeeper1 {
                     width: 30%;
                     height: 50%;
                     position: relative;
-                    top: -200%;
+                    top: -180%;
                     left: 65%;
+                }
+                & > .homekeeper2 {
+                    width: 45%;
+                    height: 50%;
+                    position: relative;
+                    top: -180%;
+                    left: 55%;
                 }
                 & > .homekeeper3 {
                     width: 45%;
@@ -328,21 +460,49 @@ const GameTemplate = styled.div`
                     width: 30%;
                     height: 50%;
                     position: relative;
-                    top: -200%;
-                    left: 65%;
+                    top: -180%;
+                    left: 50%;
                 }
-                & > .homekeeper2 {
-                    width: 45%;
-                    height: 50%;
-                    position: relative;
-                    top: -190%;
-                    left: 57%;
-                }
-                & > .vehicle {
+                & > .vehicle1 {
                     width: 30%;
                     height: 30%;
                     position: relative;
                     top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle2 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle3 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle4 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle5 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -190%;
+                    left: 65%;
+                }
+                & > .vehicle6 {
+                    width: 30%;
+                    height: 30%;
+                    position: relative;
+                    top: -285%;
                     left: 65%;
                 }
             }

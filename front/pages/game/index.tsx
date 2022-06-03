@@ -74,10 +74,10 @@ const Game = () => {
     const stageImage = () => {
         return (
             <>
-                <div className="user_chair_desk">
-                    <img src="/사람/4 스테이지 사람.png" />
+                <div className={`user_chair_desk${stage}`}>
+                    <img src={`/사람/${stage} 스테이지 사람.gif`} />
                 </div>
-                <div className="pet_cat">
+                <div className={`pet_cat${stage}`}>
                     <img src={`/고양이/${stage} 스테이지 고양이.gif`} />
                 </div>
                 <div className="pet_dog">
@@ -89,7 +89,7 @@ const Game = () => {
                 <div className="pet_fish">
                     <img src={`/물고기/${stage} 스테이지 물고기.gif`} />
                 </div>
-                <div className="cheer">
+                <div className={`cheer${stage}`}>
                     <img src={`/알바생/${stage} 스테이지 알바생.gif`} />
                 </div>
                 <div className={`cook${stage}`}>
@@ -98,7 +98,7 @@ const Game = () => {
                 <div className={`homekeeper${stage}`}>
                     <img src={`/집사/${stage} 스테이지 집사.gif`} />
                 </div>
-                <div className="vehicle">
+                <div className={`vehicle${stage}`}>
                     <img src={`/탈것/${stage} 스테이지 탈것.gif`} />
                 </div>
             </>
@@ -133,7 +133,7 @@ const Game = () => {
                     });
                     setTimeout(() => {
                         setHpdown(false);
-                    }, 5000);
+                    }, 10000);
                 }
             }
         }
@@ -168,14 +168,36 @@ const Game = () => {
                             <div className="user_exp">
                                 <div>exp</div>
                                 <div className="progress_gauge">
-                                    <div className="exp">
-                                        {(exp / 1000).toFixed(2)}%
-                                    </div>
-                                    <progress
-                                        className="exp_progress"
-                                        value={exp}
-                                        max="100000"
-                                    ></progress>
+                                    {stage !== 6 ? (
+                                        <>
+                                            <div className="exp">
+                                                {(
+                                                    (exp /
+                                                        (100000 +
+                                                            (stage - 1) *
+                                                                25000)) *
+                                                    100
+                                                ).toFixed(2)}
+                                                %
+                                            </div>
+                                            <progress
+                                                className="exp_progress"
+                                                value={exp}
+                                                max={
+                                                    100000 + (stage - 1) * 25000
+                                                }
+                                            ></progress>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="exp">Max Level</div>
+                                            <progress
+                                                className="exp_progress"
+                                                value={1}
+                                                max={1}
+                                            ></progress>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -214,11 +236,9 @@ const Game = () => {
                 </div>
             </div>
             <div className="footer">
-                <div className="stat">{/* <img src="./설정.jpg" /> */}</div>
-                <div className="auto_gold">
-                    {/* <img src="./설정.jpg" /> */}
-                </div>
-                <div className="auto_exp">{/* <img src="./설정.jpg" /> */}</div>
+                <div className="stat"></div>
+                <div className="auto_gold"></div>
+                <div className="auto_exp"></div>
             </div>
             {ranking ? <Ranking closeRanking={closeRanking} /> : null}
             {setting ? <Setting closeSetting={closeSetting} /> : null}
