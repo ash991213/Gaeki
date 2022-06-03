@@ -29,9 +29,9 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const { user_idx, gold, stage, status, auto, sound_effect } = useSelector(
-        (state: any) => state.user
-    );
+    const { user_idx, gold, stage, status, auto, sound_effect, auto_exp } =
+        useSelector((state: any) => state.user);
+
     const [Auto, setAuto] = useState(false);
     const { desk } = useSelector((state: any) => state.user.auto);
 
@@ -98,10 +98,40 @@ const Market = () => {
         });
     };
 
+    const exp_Dog = () => {
+        dispatch({
+            type: 'EXP_DOG_REQUEST',
+            payload: user,
+        });
+    };
+
+    const exp_Cat = () => {
+        dispatch({
+            type: 'EXP_CAT_REQUEST',
+            payload: user,
+        });
+    };
+
+    const exp_Fish = () => {
+        dispatch({
+            type: 'EXP_FISH_REQUEST',
+            payload: user,
+        });
+    };
+
+    const exp_Bird = () => {
+        dispatch({
+            type: 'EXP_BIRD_REQUEST',
+            payload: user,
+        });
+    };
+
     useEffect(() => {
         if (user_idx !== null) {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
             dispatch({ type: 'AUTO_REQUEST', payload: user });
+            dispatch({ type: 'EXP_REQUEST', payload: user });
+            dispatch({ type: 'EXP_GUAGE_REQUEST', payload: user });
         }
         if (desk !== null) {
             if (Auto === false) {
@@ -112,7 +142,7 @@ const Market = () => {
                 });
                 setTimeout(() => {
                     setAuto(false);
-                }, 100034540);
+                }, 10000);
             }
         }
     }, [user_idx, desk, Auto]);
@@ -123,7 +153,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>체력</div>
-                        <div>레벨{status.hp}</div>
+                        <div>레벨[{status.hp}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -156,7 +186,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>타수</div>
-                        <div>레벨{status.typing}</div>
+                        <div>레벨[{status.typing}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -193,7 +223,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>운</div>
-                        <div>레벨</div>
+                        <div>레벨[{status.luck}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -238,7 +268,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>코딩력</div>
-                        <div>레벨</div>
+                        <div>레벨[{121 - status.coding / 1000}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -285,7 +315,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>인내력</div>
-                        <div>레벨</div>
+                        <div>레벨[{status.patience}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -336,7 +366,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>책상</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.desk}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -344,7 +374,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가 [{auto.desk}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.desk == 0 ? 0 : auto.desk * 10}
@@ -376,7 +406,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>의자</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.chair}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -384,7 +414,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.chair}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.chair == 0 ? 0 : auto.chair * 50}
@@ -418,7 +448,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>노트북</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.pc}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -426,7 +456,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.pc}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>{auto.pc == 0 ? 0 : auto.pc * 250}</span>{' '}
                                 -&gt;{' '}
@@ -456,7 +486,7 @@ const Market = () => {
                 <div>
                     <div className="content_up">
                         <div>요리사</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.cook}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -464,7 +494,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.cook}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.cook == 0 ? 0 : auto.cook * 1250}
@@ -497,8 +527,8 @@ const Market = () => {
                 </div>
                 <div>
                     <div className="content_up">
-                        <div>홈키퍼</div>
-                        <div>레벨</div>
+                        <div>집사</div>
+                        <div>레벨[{auto.homekeeper}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -506,7 +536,7 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.homekeeper}]</div>
+                            <div>10초당골드 증가</div>
                             <div>
                                 <span>
                                     {auto.homekeeper == 0
@@ -541,8 +571,8 @@ const Market = () => {
                 </div>
                 <div>
                     <div className="content_up">
-                        <div>치어리더</div>
-                        <div>레벨</div>
+                        <div>알바생</div>
+                        <div>레벨[{auto.cheer}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -550,11 +580,11 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.cheer}]</div>
+                            <div>10초당골드 증가</div>
                             <span>
                                 {auto.cheer == 0 ? 0 : auto.cheer * 31250}
                             </span>{' '}
-                            -&gt;{' '}
+                            -&gt;
                             <span>
                                 {auto.cheer == 0
                                     ? auto.cheer + 31250
@@ -582,7 +612,7 @@ const Market = () => {
                 <div className="content_name2">
                     <div className="content_up">
                         <div>탈것</div>
-                        <div>레벨</div>
+                        <div>레벨[{auto.vehicle}]</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -590,11 +620,12 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가[{auto.vehicle}]</div>
+                            <div>10초당골드 증가</div>
                             <span>
                                 {auto.vehicle == 0 ? 0 : auto.vehicle * 156250}
-                            </span>{' '}
-                            -&gt;{' '}
+                            </span>
+                            {''}
+                            -&gt;
                             <span>
                                 {auto.vehicle == 0
                                     ? auto.vehicle + 156250
@@ -626,83 +657,151 @@ const Market = () => {
     const ignoreExHandle = () => {
         return (
             <div className="content_ignoreExp">
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
-                        <div>레벨</div>
-                        <div>추가</div>
+                        <div>강아지</div>
+                        <div>레벨 [{auto_exp.dog}]</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초마다 경험치 획득 </div>
+                            <span>{auto_exp.dog * 10}</span> -&gt;{' '}
+                            <span>{(auto_exp.dog + 1) * 10}</span>
+                        </div>
+                        <div>
+                            <button
+                                className={
+                                    gold >= auto_exp.dog * 5000
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    exp_Dog();
+                                }}
+                                disabled={
+                                    gold >= (auto_exp.dog + 1) * 5000
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.dog + 1) * 5000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
-                        <div>레벨</div>
-                        <div>추가</div>
+                        <div>고양이</div>
+                        <div>레벨 [{auto_exp.cat}]</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초마다 경험치 획득</div>
+                            <span>{auto_exp.cat * 20}</span> -&gt;{' '}
+                            <span>{(auto_exp.cat + 1) * 20}</span>
+                        </div>
+                        <div>
+                            <button
+                                className={
+                                    gold >= auto_exp.cat * 9000
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    exp_Cat();
+                                }}
+                                disabled={
+                                    gold >= (auto_exp.cat + 1) * 9000
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.cat + 1) * 9000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
-                        <div>레벨</div>
-                        <div>추가</div>
+                        <div>물고기</div>
+                        <div>레벨 [{auto_exp.fish}]</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초마다 경험치 획득</div>
+                            <span>{auto_exp.fish * 40}</span> -&gt;{' '}
+                            <span>{(auto_exp.fish + 1) * 40}</span>
+                        </div>
+                        <div>
+                            <button
+                                className={
+                                    gold >= auto_exp.fish * 16500
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    exp_Fish();
+                                }}
+                                disabled={
+                                    gold >= (auto_exp.fish + 1) * 16500
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.fish + 1) * 16500}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
-                        <div>레벨</div>
-                        <div>추가</div>
+                        <div>새</div>
+                        <div>레벨 [{auto_exp.bird}]</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초마다 경험치 획득</div>
+                            <span>{auto_exp.bird * 80}</span> -&gt;{' '}
+                            <span>{(auto_exp.bird + 1) * 80}</span>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <div className="content_up">
-                        <div>방치</div>
-                        <div>레벨</div>
-                        <div>추가</div>
-                    </div>
-                    <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
-                        </div>
-                        <div>획득능력</div>
-                        <div>
-                            <button className="upbt">강화</button>
+                            <button
+                                className={
+                                    gold >= auto_exp.fish * 30000
+                                        ? 'upbt'
+                                        : 'closeBtn'
+                                }
+                                onClick={() => {
+                                    exp_Bird();
+                                }}
+                                disabled={
+                                    gold >= (auto_exp.bird + 1) * 30000
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.bird + 1) * 30000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -825,10 +924,13 @@ const Market = () => {
         );
     };
     const Gold_Click = (e: any) => {
+        const random = Math.random() * 1000;
+
         dispatch({
             type: 'GOLDEXP_CLICK_REQUEST',
             payload: {
                 user,
+                random,
             },
         });
         const audio = new Audio('키보드 효과음 2.mp3');

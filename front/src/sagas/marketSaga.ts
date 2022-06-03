@@ -275,6 +275,114 @@ function* auto_cheer(action: any) {
     }
 }
 
+const autoExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/exp_Show',action)
+}
+
+function* auto_Exp(action: any) {
+    const result: { data: {} } = yield call(autoExpAPI, action.payload)
+    try {
+        yield put({
+            type: 'EXP_SUCCESS',
+            payload:result.data,
+        });    
+    } catch (e) {
+        yield put({
+            type: 'EXP_FAILURE',
+        });
+    }
+}
+
+const dogExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/exp_Dog',action)
+}
+
+function* dog_Exp(action:any){
+    const result: {data: {}} = yield call(dogExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_DOG_SUCCESS',
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:'EXP_DOG_FAILURE'
+        });
+    }
+}
+
+const catExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/exp_Cat',action)
+}
+
+function* cat_Exp(action:any){
+    const result:{data:{}} = yield call(catExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_CAT_SUCCESS', 
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:"EXP_CAT_FAILURE"
+        });
+    }
+}
+
+const fishExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/exp_Fish',action)
+}
+
+function* fish_Exp(action:any){
+    const result:{data:{}} = yield call(fishExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_FISH_SUCCESS',
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:'EXP_FISH_FAILURE'
+        })
+    }
+}
+
+const birdExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/exp_Bird',action)
+}
+
+function* bird_Exp(action:any){
+    const result:{data:{}} = yield call(birdExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_BIRD_SUCCESS',
+            payload:result.data,
+        });
+    }catch(e){
+        yield put({
+            type:'EXP_BIRD_FAILURE'
+        })
+    }
+}
+
+const guageExpAPI:any = async(action:any) => {
+    return await axios.post('http://localhost:4000/market/guage_Exp',action)
+}
+
+function* guage_Exp(action:any){
+    const result:{data:{}} = yield call(guageExpAPI, action.payload)
+    try{
+        yield put({
+            type:'EXP_GUAGE_SUCCESS',
+            payload:result.data,
+        })
+    }catch(e){
+        yield put({
+            type:'EXP_GUAGE_FAILURE'
+        })
+    }
+}
+
 export default function* market() {
     yield takeLatest('STATUS_REQUEST', status);
     yield takeLatest('AUTO_REQUEST', auto);
@@ -291,4 +399,10 @@ export default function* market() {
     yield takeLatest('AUTO_HOMEKEEPER_REQUEST', auto_homekeeper);
     yield takeLatest('AUTO_VEHICLE_REQUEST', auto_vehicle);
     yield takeLatest('AUTO_CHEER_REQUEST', auto_cheer);
+    yield takeLatest('EXP_REQUEST' , auto_Exp);
+    yield takeLatest('EXP_DOG_REQUEST', dog_Exp);
+    yield takeLatest('EXP_CAT_REQUEST',cat_Exp);
+    yield takeLatest('EXP_FISH_REQUEST',fish_Exp);
+    yield takeLatest('EXP_BIRD_REQUEST',bird_Exp);
+    yield takeLatest('EXP_GUAGE_REQUEST',guage_Exp);
 }

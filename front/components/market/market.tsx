@@ -27,7 +27,7 @@ const Market = styled.div`
         max-width: 20rem;
         margin: 0 auto;
         overflow: auto;
-        display: flex;
+        display: flex; 
         flex-direction: column;
         width: 100%;
         height: 30%;
@@ -52,6 +52,12 @@ const Market = styled.div`
     }
     .content_name2 {
         height: 14.3%;
+        border-bottom: 1px solid;
+        padding: 2.5px 0;
+    }
+
+    .content_name3 {
+        height: 25%;
         border-bottom: 1px solid;
         padding: 2.5px 0;
     }

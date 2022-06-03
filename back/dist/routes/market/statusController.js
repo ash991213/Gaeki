@@ -82,7 +82,6 @@ exports.luck = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield User.findOne({
             where: { id: user_idx },
         });
-        console.log(type.luck);
         const result = {
             luck: type.luck,
             gold: user.gold,
@@ -122,7 +121,7 @@ exports.coding = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user: { user_idx, gold }, status: { coding }, } = req.body;
     try {
         yield Status.update({ coding: coding - 1000 }, { where: { user_idx } });
-        yield User.update({ gold: gold - (121000 - coding) * 2.5 }, { where: { id: user_idx } });
+        yield User.update({ gold: gold - (121000 - coding) * 200 }, { where: { id: user_idx } });
         const type = yield Status.findOne({
             where: { user_idx },
         });
