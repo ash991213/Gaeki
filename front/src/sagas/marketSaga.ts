@@ -288,7 +288,7 @@ function* auto_Exp(action: any) {
         });    
     } catch (e) {
         yield put({
-            type: 'AUTO_CHEER_FAILURE',
+            type: 'EXP_FAILURE',
         });
     }
 }
@@ -371,7 +371,16 @@ const guageExpAPI:any = async(action:any) => {
 
 function* guage_Exp(action:any){
     const result:{data:{}} = yield call(guageExpAPI, action.payload)
-    console.log('프론트에서 받은 res',result)
+    try{
+        yield put({
+            type:'EXP_GUAGE_SUCCESS',
+            payload:result.data,
+        })
+    }catch(e){
+        yield put({
+            type:'EXP_GUAGE_FAILURE'
+        })
+    }
 }
 
 export default function* market() {

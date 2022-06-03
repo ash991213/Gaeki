@@ -107,8 +107,18 @@ exports.exp_Bird = async(req:any,res:any) => {
     res.json(result)
 }
 
-exports.guage_exp =async (req:any,res:any) => {
+exports.guage_Exp =async (req:any,res:any) => {
     const {exp,user_idx} = req.body
-    console.log(exp)
-    console.log(user_idx)
+    const {dog,cat,fish,bird} = req.body.auto_exp
+
+    await User.update(
+        {exp:exp+(dog*100)+(cat*1000)+(fish*5000)+(bird*10000)},
+        {where:{id:user_idx}}
+    )
+
+    const GuageExp = await User.findOne({where:{id:user_idx}})
+
+    res.json(GuageExp.exp)
+    
+   
 } 

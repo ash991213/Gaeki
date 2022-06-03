@@ -69,8 +69,10 @@ exports.exp_Bird = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     };
     res.json(result);
 });
-exports.guage_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.guage_Exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { exp, user_idx } = req.body;
-    console.log(exp);
-    console.log(user_idx);
+    const { dog, cat, fish, bird } = req.body.auto_exp;
+    yield User.update({ exp: exp + (dog * 100) + (cat * 1000) + (fish * 5000) + (bird * 10000) }, { where: { id: user_idx } });
+    const GuageExp = yield User.findOne({ where: { id: user_idx } });
+    res.json(GuageExp.exp);
 });

@@ -128,6 +128,7 @@ const Market = () => {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
             dispatch({ type: 'AUTO_REQUEST', payload: user });
             dispatch({ type: 'EXP_REQUEST', payload: user });
+            dispatch({type:'EXP_GUAGE_REQUEST',payload:user})
         }   
         if (desk !== null) {
             if (Auto === false) {
@@ -136,11 +137,6 @@ const Market = () => {
                     type: 'AUTO_GOLD_REQUEST',
                     payload: { auto, user },
                 });
-                dispatch({
-                    type:'EXP_GUAGE_REQUEST',
-                    payload:user
-                    
-                })
                 setTimeout(() => {
                     setAuto(false);
                 }, 10000);

@@ -492,7 +492,7 @@ const user = (state = initialState, action: actionType) => {
             }
         case EXP_FAILURE:
             return {
-                ...state
+                ...state,
             }
 
         case EXP_DOG_REQUEST:
@@ -572,6 +572,7 @@ const user = (state = initialState, action: actionType) => {
         case EXP_GUAGE_SUCCESS:
             return {
                 ...state,
+                exp:action.payload
             }
         case EXP_GUAGE_FAILURE:
             return {

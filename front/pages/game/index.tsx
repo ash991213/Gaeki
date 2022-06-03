@@ -7,6 +7,7 @@ import Setting from '../setting';
 import Market from '../market';
 import Bug from '../bug';
 
+
 const Game = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user);
@@ -149,6 +150,7 @@ const Game = () => {
         backMusic();
     }, [user_idx, bug, coding, hpdown, openBug, background_sound]);
 
+
     return (
         <GameTemplate>
             <img className="back" src={`/배경/${stage}스테이지 배경.png`} />
@@ -161,7 +163,7 @@ const Game = () => {
                             </div>
                             <div className="user_info">
                                 <p className="user_name">닉네임 : {nickname}</p>
-                                <p className="user_gold">골드 : {gold} </p>
+                                {/* <p className="user_gold">골드 : {gold} </p> */}
                             </div>
                         </div>
                         <div className="user_progress">
@@ -170,6 +172,7 @@ const Game = () => {
                                 <div className="progress_gauge">
                                     <div className="exp">
                                         {(exp / 1000).toFixed(2)}%
+                                        {exp==0?0:exp}
                                     </div>
                                     <progress
                                         className="exp_progress"
