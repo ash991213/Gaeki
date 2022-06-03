@@ -69,45 +69,69 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     if (random < luck) {
         if (gauge < 50) {
             console.log('게이지 50미만');
-            if (stage === 3) {
+            if (stage === 1) {
+                console.log('1 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 2) {
+                console.log('2 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 3) {
                 console.log('3 스테이지 유저 골드 2');
-                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience / 10 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 4) {
                 console.log('4 스테이지 유저 골드 2');
-                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience / 50 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 5) {
                 console.log('5 스테이지 유저 골드 2');
-                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience / 100 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) * 2, exp: exp + patience }, { where: { id: user_idx } });
             }
         }
         else {
             console.log('게이지 50이상');
-            if (stage === 3) {
-                console.log('3 스테이지 유저 골드 2');
-                yield User.update({ gold: gold + typing + typing, exp: exp + patience / 10 }, { where: { id: user_idx } });
+            if (stage === 1) {
+                console.log('1 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 2) {
+                console.log('2 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 2) {
+                console.log('2 스테이지 유저 골드 2');
+                yield User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 4) {
                 console.log('4 스테이지 유저 골드 2');
-                yield User.update({ gold: gold + typing + typing, exp: exp + patience / 50 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 5) {
                 console.log('5 스테이지 유저 골드 2');
-                yield User.update({ gold: gold + typing + typing, exp: exp + patience / 100 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + typing + typing, exp: exp + patience }, { where: { id: user_idx } });
             }
         }
     }
     else {
         if (gauge < 50) {
             console.log('게이지 50미만');
-            if (stage === 3) {
+            if (stage === 1) {
+                console.log('1 스테이지 유저');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 2) {
+                console.log('2 스테이지 유저');
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 3) {
                 console.log('3 스테이지 유저');
-                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience / 10 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 4) {
                 console.log('4 스테이지 유저');
-                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience / 50 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 5) {
                 console.log('5 스테이지 유저');
@@ -116,17 +140,25 @@ exports.gold_exp = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
         else {
             console.log('게이지 50이상');
-            if (stage === 3) {
+            if (stage === 1) {
+                console.log('1 스테이지 유저');
+                yield User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 3) {
+                console.log('2 스테이지 유저');
+                yield User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
+            }
+            else if (stage === 3) {
                 console.log('3 스테이지 유저');
-                yield User.update({ gold: gold + typing, exp: exp + patience / 10 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 4) {
                 console.log('4 스테이지 유저');
-                yield User.update({ gold: gold + typing, exp: exp + patience / 50 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
             }
             else if (stage === 5) {
                 console.log('5 스테이지 유저');
-                yield User.update({ gold: gold + typing, exp: exp + patience / 100 }, { where: { id: user_idx } });
+                yield User.update({ gold: gold + typing, exp: exp + patience }, { where: { id: user_idx } });
             }
         }
     }

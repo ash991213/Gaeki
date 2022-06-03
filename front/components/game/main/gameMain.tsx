@@ -30,10 +30,13 @@ const GameTemplate = styled.div`
 
     .header {
         width: 100%;
+        max-width: 20rem;
         height: 15%;
         display: flex;
+        margin: 0 auto;
+        justify-content: space-evenly;
         & > .header_left {
-            width: 80%;
+            width: 75%;
             height: 100%;
             display: flex;
             & > .user {
@@ -50,10 +53,11 @@ const GameTemplate = styled.div`
                     top: 5%;
                     left: 2.5%;
                     & > .user_image {
+                        display: flex;
+                        justify-content: center;
                         width: 30%;
                         height: 100%;
                         & > img {
-                            width: 100%;
                             height: 100%;
                             border-radius: 50% 50%;
                             object-fit: cover;
@@ -138,15 +142,18 @@ const GameTemplate = styled.div`
                 width: 40%;
                 height: 40%;
                 position: relative;
-                top: 7%;
+                top: 10%;
                 text-align: center;
                 border-radius: 0.5rem;
                 padding-top: 2%;
+                font-size: 14px;
                 font-weight: bold;
+                display: flex;
+                flex-direction: column;
             }
         }
         & > .header_right {
-            width: 20%;
+            width: 25%;
             height: 100%;
             & > .service {
                 width: 80%;
@@ -161,7 +168,6 @@ const GameTemplate = styled.div`
                     position: relative;
                     top: 20%;
                     & > img {
-                        width: 100%;
                         height: 100%;
                         object-fit: cover;
                     }
@@ -172,16 +178,21 @@ const GameTemplate = styled.div`
 
     .ranking {
         z-index: 7;
+        & > img {
+            float: right;
+        }
     }
 
     .setting {
         z-index: 7;
+        position: relative;
+        left: 5%;
     }
 
     .content {
         width: 100%;
         height: 75%;
-        font-size: 12px;
+        font-size: 11px;
         & > .background {
             width: 100%;
             height: 100%;
@@ -195,7 +206,7 @@ const GameTemplate = styled.div`
                     height: 100%;
                 }
                 & > .user_chair_desk {
-                    width: 30%;
+                    width: 60%;
                     height: 50%;
                     position: relative;
                     top: 10%;
@@ -216,7 +227,7 @@ const GameTemplate = styled.div`
                     height: 15%;
                     position: relative;
                     top: -10%;
-                    left: 30%;
+                    left: 25%;
                     z-index: 2;
                     object-fit: cover;
                 }
@@ -243,19 +254,89 @@ const GameTemplate = styled.div`
                     top: -100%;
                     left: 5%;
                 }
-                & > .cook {
-                    width: 30%;
+                & > .cook1 {
+                    width: 60%;
                     height: 50%;
                     position: relative;
-                    top: -100%;
-                    left: 35%;
+                    top: -102%;
+                    left: 22%;
                 }
-                & > .homekeeper {
+                & > .cook2 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: -102%;
+                    left: 22%;
+                }
+                & > .cook3 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: -102%;
+                    left: 22%;
+                }
+                & > .cook4 {
+                    width: 100%;
+                    height: 50%;
+                    position: relative;
+                    top: -105%;
+                    left: 5%;
+                }
+                & > .cook5 {
+                    width: 25%;
+                    height: 40%;
+                    position: relative;
+                    top: -102%;
+                    left: 40%;
+                }
+                & > .cook6 {
+                    width: 60%;
+                    height: 50%;
+                    position: relative;
+                    top: -102%;
+                    left: 22%;
+                }
+                & > .homekeeper1 {
                     width: 30%;
                     height: 50%;
                     position: relative;
                     top: -200%;
                     left: 65%;
+                }
+                & > .homekeeper3 {
+                    width: 45%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper4 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper5 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper6 {
+                    width: 30%;
+                    height: 50%;
+                    position: relative;
+                    top: -200%;
+                    left: 65%;
+                }
+                & > .homekeeper2 {
+                    width: 45%;
+                    height: 50%;
+                    position: relative;
+                    top: -190%;
+                    left: 57%;
                 }
                 & > .vehicle {
                     width: 30%;
@@ -313,6 +394,18 @@ const GameTemplate = styled.div`
                 height: 100%;
                 object-fit: cover;
             }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .header {
+            max-width: 560px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .header {
+            max-width: 768px;
         }
     }
 `;
