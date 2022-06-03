@@ -85,6 +85,12 @@ const Market = () => {
             payload: { user, auto, gold },
         });
     };
+    const auto_cheer = () => {
+        dispatch({
+            type: 'AUTO_CHEER_REQUEST',
+            payload: { user, auto, gold },
+        });
+    };
     const auto_vehicle = () => {
         dispatch({
             type: 'AUTO_VEHICLE_REQUEST',
@@ -535,6 +541,46 @@ const Market = () => {
                 </div>
                 <div>
                     <div className="content_up">
+                        <div>치어리더</div>
+                        <div>레벨</div>
+                        <div>추가</div>
+                    </div>
+                    <div className="content_down">
+                        <div>
+                            <img src="./loading.gif" />
+                        </div>
+                        <div>
+                            <div>10초당골드 증가[{auto.cheer}]</div>
+                            <span>
+                                {auto.cheer == 0 ? 0 : auto.cheer * 31250}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.cheer == 0
+                                    ? auto.cheer + 31250
+                                    : auto.cheer * 31250 + 31250}
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                className={classNameOn(auto.cheer, 937500)}
+                                onClick={() => {
+                                    auto_cheer();
+                                }}
+                                disabled={
+                                    gold >= (auto.cheer + 1) * 937500
+                                        ? false
+                                        : true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto.cheer + 1) * 937500}</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="content_name2">
+                    <div className="content_up">
                         <div>탈것</div>
                         <div>레벨</div>
                         <div>추가</div>
@@ -545,34 +591,30 @@ const Market = () => {
                         </div>
                         <div>
                             <div>10초당골드 증가[{auto.vehicle}]</div>
-                            <div>
-                                <span>
-                                    {auto.vehicle == 0
-                                        ? 0
-                                        : auto.vehicle * 31250}
-                                </span>{' '}
-                                -&gt;{' '}
-                                <span>
-                                    {auto.vehicle == 0
-                                        ? auto.vehicle + 31250
-                                        : auto.vehicle * 31250 + 31250}
-                                </span>
-                            </div>
+                            <span>
+                                {auto.vehicle == 0 ? 0 : auto.vehicle * 156250}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto.vehicle == 0
+                                    ? auto.vehicle + 156250
+                                    : auto.vehicle * 156250 + 156250}
+                            </span>
                         </div>
                         <div>
                             <button
-                                className={classNameOn(auto.vehicle, 937500)}
+                                className={classNameOn(auto.vehicle, 4687500)}
                                 onClick={() => {
                                     auto_vehicle();
                                 }}
                                 disabled={
-                                    gold >= (auto.vehicle + 1) * 937500
+                                    gold >= (auto.vehicle + 1) * 4687500
                                         ? false
                                         : true
                                 }
                             >
-                                강화
-                                <div>{(auto.vehicle + 1) * 937500}</div>
+                                강화버튼
+                                <div>{(auto.vehicle + 1) * 4687500}</div>
                             </button>
                         </div>
                     </div>

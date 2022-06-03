@@ -88,6 +88,9 @@ const AUTO_COOK_FAILURE = 'AUTO_COOK_FAILURE';
 const AUTO_HOMEKEEPER_REQUEST = 'AUTO_HOMEKEEPER_REQUEST';
 const AUTO_HOMEKEEPER_SUCCESS = 'AUTO_HOMEKEEPER_SUCCESS';
 const AUTO_HOMEKEEPER_FAILURE = 'AUTO_HOMEKEEPER_FAILURE';
+const AUTO_CHEER_REQUEST = 'AUTO_CHEER_REQUEST';
+const AUTO_CHEER_SUCCESS = 'AUTO_CHEER_SUCCESS';
+const AUTO_CHEER_FAILURE = 'AUTO_CHEER_FAILURE';
 const AUTO_VEHICLE_REQUEST = 'AUTO_VEHICLE_REQUEST';
 const AUTO_VEHICLE_SUCCESS = 'AUTO_VEHICLE_SUCCESS';
 const AUTO_VEHICLE_FAILURE = 'AUTO_VEHICLE_FAILURE';
@@ -412,6 +415,24 @@ const user = (state = initialState, action: actionType) => {
                 auto: { ...state.auto, homekeeper: action.payload.homekeeper },
             };
         case AUTO_HOMEKEEPER_FAILURE:
+            return {
+                ...state,
+            };
+        case AUTO_CHEER_REQUEST:
+            return {
+                ...state,
+            };
+        case AUTO_CHEER_SUCCESS:
+            console.log(action.payload);
+            return {
+                ...state,
+                gold: action.payload.gold,
+                auto: {
+                    ...state.auto,
+                    cheer: action.payload.cheer,
+                },
+            };
+        case AUTO_CHEER_FAILURE:
             return {
                 ...state,
             };
