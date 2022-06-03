@@ -16,7 +16,7 @@ const loadding: NextPage = () => {
     return (
         <Loadding>
             {loading === true ? (
-                <a className="wrap" href="http://http://15.164.141.28//kakao/login">
+                <a className="wrap" href="http://15.164.141.28//kakao/login">
                     <div className="header">
                         <h1 className="logo">
                             <img className="logo1" src="./게임 로고.gif" />
