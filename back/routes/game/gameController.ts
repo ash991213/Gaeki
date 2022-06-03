@@ -123,8 +123,13 @@ exports.gold_exp = async (req: any, res: any) => {
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
 			} else if (stage === 5) {
 				console.log('5 스테이지 유저');
+<<<<<<< HEAD
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience }, { where: { id: user_idx } });
 			} else if (stage === 5) {
+=======
+				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)), exp: exp + patience / 100 }, { where: { id: user_idx } });
+			} else if (stage === 6) {
+>>>>>>> 06e23ec6c507e1e40c3388c680451c16b3903481
 				console.log('6 스테이지 유저');
 				await User.update({ gold: gold + parseInt(((typing / 100) * 70).toFixed(0)) }, { where: { id: user_idx } });
 			}
