@@ -571,8 +571,8 @@ const Market = () => {
                 </div>
                 <div>
                     <div className="content_up">
-                        <div>알바생</div>
-                        <div>레벨[{auto.cheer}]</div>
+                        <div className="font-nowrap">치어리더</div>
+                        <div>레벨</div>
                         <div>추가</div>
                     </div>
                     <div className="content_down">
@@ -580,16 +580,18 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
-                            <span>
-                                {auto.cheer == 0 ? 0 : auto.cheer * 31250}
-                            </span>{' '}
-                            -&gt;
-                            <span>
-                                {auto.cheer == 0
-                                    ? auto.cheer + 31250
-                                    : auto.cheer * 31250 + 31250}
-                            </span>
+                            <div>10초당골드 증가[{auto.cheer}]</div>
+                            <div>
+                                <span>
+                                    {auto.cheer == 0 ? 0 : auto.cheer * 31250}
+                                </span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.cheer == 0
+                                        ? auto.cheer + 31250
+                                        : auto.cheer * 31250 + 31250}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
@@ -620,17 +622,18 @@ const Market = () => {
                             <img src="./loading.gif" />
                         </div>
                         <div>
-                            <div>10초당골드 증가</div>
-                            <span>
-                                {auto.vehicle == 0 ? 0 : auto.vehicle * 156250}
-                            </span>
-                            {''}
-                            -&gt;
-                            <span>
-                                {auto.vehicle == 0
-                                    ? auto.vehicle + 156250
-                                    : auto.vehicle * 156250 + 156250}
-                            </span>
+                            <div>10초당골드 증가[{auto.vehicle}]</div>
+                            <div>
+                                <span>
+                                    {auto.vehicle == 0 ? 0 : auto.vehicle * 156250}
+                                </span>{' '}
+                                -&gt;{' '}
+                                <span>
+                                    {auto.vehicle == 0
+                                        ? auto.vehicle + 156250
+                                        : auto.vehicle * 156250 + 156250}
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <button
