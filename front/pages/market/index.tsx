@@ -29,9 +29,10 @@ const Market = () => {
     const dispatch = useDispatch();
     const checkMarket = useSelector((state: marketType) => state.market);
     const user = useSelector((state: any) => state.user);
-    const { user_idx, gold, stage, status, auto, sound_effect } = useSelector(
+    const { user_idx, gold, stage, status, auto, sound_effect,auto_exp } = useSelector(
         (state: any) => state.user
     );
+    
     const [Auto, setAuto] = useState(false);
     const { desk } = useSelector((state: any) => state.user.auto);
 
@@ -98,11 +99,37 @@ const Market = () => {
         });
     };
 
+    const exp_Dog = () => {
+        dispatch({
+            type:'EXP_DOG_REQUEST',payload:user
+        });
+    }
+
+    const exp_Cat = () => {
+        dispatch({
+            type:'EXP_CAT_REQUEST',payload:user
+        })
+    }
+
+    const exp_Fish = () => {
+        dispatch({
+            type:'EXP_FISH_REQUEST',payload:user
+        })
+    }
+
+    const exp_Bird = () => {
+        dispatch({
+            type:'EXP_BIRD_REQUEST',payload:user
+        })
+    }
+
     useEffect(() => {
         if (user_idx !== null) {
             dispatch({ type: 'STATUS_REQUEST', payload: user });
             dispatch({ type: 'AUTO_REQUEST', payload: user });
-        }
+            dispatch({ type: 'EXP_REQUEST', payload: user });
+            dispatch({type:'EXP_GUAGE_REQUEST',payload:user})
+        }   
         if (desk !== null) {
             if (Auto === false) {
                 setAuto(true);
@@ -116,7 +143,6 @@ const Market = () => {
             }
         }
     }, [user_idx, desk, Auto]);
-
     const clickHandle = () => {
         return (
             <div className="content_clickGold">
@@ -627,83 +653,139 @@ const Market = () => {
     const ignoreExHandle = () => {
         return (
             <div className="content_ignoreExp">
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
+                        <div>강아지</div>
                         <div>레벨</div>
-                        <div>추가</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초당골드 증가 [{auto_exp.dog}]</div>
+                            <span>
+                                {auto_exp.dog==0?0:auto_exp.dog*100}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto_exp.dog==0?100:auto_exp.dog*100+100}
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                className='upbt'
+                                onClick = {()=>{exp_Dog()}}
+                                disabled={
+                                    gold>=(auto_exp.dog+1)*1000?false:true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.dog+1)*1000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
+                        <div>고양이</div>
                         <div>레벨</div>
-                        <div>추가</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초당골드 증가 [{auto_exp.cat}]</div>
+                            <span>
+                                {auto_exp.cat==0?0:auto_exp.cat*1000}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto_exp.cat==0?1000:auto_exp.cat*1000+1000}
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                className='upbt'
+                                onClick = {()=>{exp_Cat()}}
+                                disabled={
+                                    gold>=(auto_exp.cat+1)*10000?false:true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.cat+1)*10000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
+                        <div>물고기</div>
                         <div>레벨</div>
-                        <div>추가</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초당골드 증가 [{auto_exp.fish}]</div>
+                            <span>
+                                {auto_exp.fish==0?0:auto_exp.fish*5000}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto_exp.fish==0?5000:auto_exp.fish*5000+5000}
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                className='upbt'
+                                onClick = {()=>{exp_Fish()}}
+                                disabled={
+                                    gold>=(auto_exp.fish+1)*50000?false:true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.fish+1)*50000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="content_name3">
                     <div className="content_up">
-                        <div>방치</div>
+                        <div>새</div>
                         <div>레벨</div>
-                        <div>추가</div>
+                        <div>강화</div>
                     </div>
                     <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
+                            <img src="./loading.gif" />
                         </div>
-                        <div>획득능력</div>
                         <div>
-                            <button className="upbt">강화</button>
+                            <div>10초당골드 증가 [{auto_exp.bird}]</div>
+                            <span>
+                                {auto_exp.bird==0?0:auto_exp.bird*10000}
+                            </span>{' '}
+                            -&gt;{' '}
+                            <span>
+                                {auto_exp.bird==0?10000:auto_exp.bird*10000+10000}
+                            </span>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <div className="content_up">
-                        <div>방치</div>
-                        <div>레벨</div>
-                        <div>추가</div>
-                    </div>
-                    <div className="content_down">
                         <div>
-                            <img src="./loading-bar.gif" />
-                        </div>
-                        <div>획득능력</div>
-                        <div>
-                            <button className="upbt">강화</button>
+                            <button
+                                className='upbt'
+                                onClick = {()=>{exp_Bird()}}
+                                disabled={
+                                    gold>=(auto_exp.bird+1)*100000?false:true
+                                }
+                            >
+                                강화버튼
+                                <div>{(auto_exp.bird+1)*100000}</div>
+                            </button>
                         </div>
                     </div>
                 </div>
