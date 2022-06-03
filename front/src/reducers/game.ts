@@ -29,7 +29,7 @@ const initialState = {
         cat: null,
         fish: null,
         bird: null,
-    }
+    },
 };
 
 const USER_INFO_REQUEST = 'USER_INFO_REQUEST';
@@ -101,9 +101,9 @@ const AUTO_VEHICLE_REQUEST = 'AUTO_VEHICLE_REQUEST';
 const AUTO_VEHICLE_SUCCESS = 'AUTO_VEHICLE_SUCCESS';
 const AUTO_VEHICLE_FAILURE = 'AUTO_VEHICLE_FAILURE';
 
-const EXP_REQUEST = 'EXP_REQUEST'
-const EXP_SUCCESS = 'EXP_SUCCESS'
-const EXP_FAILURE = 'EXP_FAILURE'
+const EXP_REQUEST = 'EXP_REQUEST';
+const EXP_SUCCESS = 'EXP_SUCCESS';
+const EXP_FAILURE = 'EXP_FAILURE';
 const EXP_DOG_REQUEST = 'EXP_DOG_REQUEST';
 const EXP_DOG_SUCCESS = 'EXP_DOG_SUCCESS';
 const EXP_DOG_FAILURE = 'EXP_DOG_FAILURE';
@@ -478,106 +478,106 @@ const user = (state = initialState, action: actionType) => {
         case EXP_REQUEST:
             return {
                 ...state,
-            }
+            };
         case EXP_SUCCESS:
             return {
                 ...state,
                 auto_exp: {
                     ...state.auto_exp,
-                    dog:action.payload.dog,
-                    cat:action.payload.cat,
-                    fish:action.payload.fish,
-                    bird:action.payload.bird,
-                }
-            }
+                    dog: action.payload.dog,
+                    cat: action.payload.cat,
+                    fish: action.payload.fish,
+                    bird: action.payload.bird,
+                },
+            };
         case EXP_FAILURE:
             return {
                 ...state,
-            }
+            };
 
         case EXP_DOG_REQUEST:
             return {
                 ...state,
-            }
+            };
         case EXP_DOG_SUCCESS:
             return {
                 ...state,
-                gold:action.payload.gold,
-                auto_exp:{
+                gold: action.payload.gold,
+                auto_exp: {
                     ...state.auto_exp,
-                    dog:action.payload.dog
-                }
-
-            }
+                    dog: action.payload.dog,
+                },
+            };
 
         case EXP_DOG_FAILURE:
             return {
-                ...state
-            }
+                ...state,
+            };
         case EXP_CAT_REQUEST:
             return {
                 ...state,
-            }
+            };
         case EXP_CAT_SUCCESS:
             return {
                 ...state,
-                gold:action.payload.gold,
-                auto_exp:{
+                gold: action.payload.gold,
+                auto_exp: {
                     ...state.auto_exp,
-                    cat:action.payload.cat
-                }
-            }
+                    cat: action.payload.cat,
+                },
+            };
         case EXP_CAT_FAILURE:
             return {
-                ...state
-            }
+                ...state,
+            };
         case EXP_FISH_REQUEST:
             return {
                 ...state,
-            }
+            };
         case EXP_FISH_SUCCESS:
             return {
                 ...state,
-                gold:action.payload.gold,
-                auto_exp:{
+                gold: action.payload.gold,
+                auto_exp: {
                     ...state.auto_exp,
-                    fish:action.payload.fish
-                }
-            }
+                    fish: action.payload.fish,
+                },
+            };
         case EXP_FISH_FAILURE:
             return {
-                ...state
-            }
+                ...state,
+            };
         case EXP_BIRD_REQUEST:
             return {
                 ...state,
-            }
+            };
         case EXP_BIRD_SUCCESS:
             return {
                 ...state,
-                gold:action.payload.gold,
-                auto_exp:{
+                gold: action.payload.gold,
+                auto_exp: {
                     ...state.auto_exp,
-                    bird:action.payload.bird
-                }
-            }
+                    bird: action.payload.bird,
+                },
+            };
         case EXP_BIRD_FAILURE:
             return {
-                ...state
-            }
+                ...state,
+            };
         case EXP_GUAGE_REQUEST:
             return {
                 ...state,
-            }
+            };
         case EXP_GUAGE_SUCCESS:
             return {
                 ...state,
-                exp:action.payload
-            }
+                exp: action.payload.exp,
+                stage: action.payload.stage,
+            };
         case EXP_GUAGE_FAILURE:
             return {
                 ...state,
-            }            
+            };
         default:
             return state;
     }
