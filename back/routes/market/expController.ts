@@ -13,7 +13,7 @@ exports.exp_Dog = async (req: any, res: any) => {
 	const { dog } = req.body.auto_exp;
 	await Auto_Exp.update({ dog: dog + 1 }, { where: { user_idx } });
 
-	await User.update({ gold: gold - (dog + 1) * 5000 }, { where: { id: user_idx } });
+	await User.update({ gold: gold - (dog + 1) * 10 }, { where: { id: user_idx } });
 
 	const Dog = await Auto_Exp.findOne({ where: user_idx });
 	const DogGold = await User.findOne({ where: { id: user_idx } });
@@ -29,7 +29,7 @@ exports.exp_Cat = async (req: any, res: any) => {
 	const { cat } = req.body.auto_exp;
 	await Auto_Exp.update({ cat: cat + 1 }, { where: { user_idx } });
 
-	await User.update({ gold: gold - (cat + 1) * 9000 }, { where: { id: user_idx } });
+	await User.update({ gold: gold - (cat + 1) * 20 }, { where: { id: user_idx } });
 
 	const CAT = await Auto_Exp.findOne({ where: user_idx });
 	const CatGold = await User.findOne({ where: { id: user_idx } });
@@ -48,7 +48,7 @@ exports.exp_Fish = async (req: any, res: any) => {
 
 	await Auto_Exp.update({ fish: fish + 1 }, { where: { user_idx } });
 
-	await User.update({ gold: gold - (fish + 1) * 16500 }, { where: { id: user_idx } });
+	await User.update({ gold: gold - (fish + 1) * 40 }, { where: { id: user_idx } });
 
 	const FISH = await Auto_Exp.findOne({ where: user_idx });
 	const FishGold = await User.findOne({ where: { id: user_idx } });
@@ -67,7 +67,7 @@ exports.exp_Bird = async (req: any, res: any) => {
 
 	await Auto_Exp.update({ bird: bird + 1 }, { where: { user_idx } });
 
-	await User.update({ gold: gold - (bird + 1) * 30000 }, { where: { id: user_idx } });
+	await User.update({ gold: gold - (bird + 1) * 80 }, { where: { id: user_idx } });
 
 	const BIRD = await Auto_Exp.findOne({ where: user_idx });
 	const BirdGold = await User.findOne({ where: { id: user_idx } });
